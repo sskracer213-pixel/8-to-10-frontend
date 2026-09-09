@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Details</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            padding: 30px;
+        }
+
+        input, button {
+            padding: 10px;
+            margin: 5px;
+        }
+
+        button {
+            background-color: blue;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .student {
+            background-color: #f2f2f2;
+            padding: 15px;
+            margin-top: 10px;
+            width: 300px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Student Details</h1>
+
+    <input type="text" id="name" placeholder="Name">
+    <input type="number" id="age" placeholder="Age">
+    <input type="text" id="city" placeholder="City">
+
+    <button onclick="addStudent()">Add Student</button>
+
+    <div id="studentList"></div>
+
+    <script src="assets/task1.js"></script>
+
+</body>
+</html>
+
