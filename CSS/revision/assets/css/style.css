@@ -1,0 +1,21 @@
+ *{padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+
+}
+html{scroll-behavior: smooth;}
+body{font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;}
+a{text-decoration: none;}
+body{background-color: black;}
+.header{display: flex;
+         text-align: center;
+         padding: 20px;
+         gap: 30px;
+
+
+}
+.header>h1{background-color: white;
+    color: black;
+   text-align: center;
+
+}

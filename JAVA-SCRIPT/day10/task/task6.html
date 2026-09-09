@@ -1,0 +1,31 @@
+ <h1>student objects and display</h1>
+
+ <script>
+
+class Student {
+
+    constructor(name, age, mark) {
+        this.name = name;
+        this.age = age;
+        this.mark = mark;
+    }
+
+    displayDetails() {
+        console.log(`Name: ${this.name}`);
+        console.log(`Age: ${this.age}`);
+        console.log(`Mark: ${this.mark}`);
+    }
+}
+
+// First student object
+const student1 = new Student("Santhosh", 20, 85);
+
+// Second student object
+const student2 = new Student("Gopiga", 19, 90);
+
+// Display details
+student1.displayDetails();
+student2.displayDetails();
+
+
+ </script>

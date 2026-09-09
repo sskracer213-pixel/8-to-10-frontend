@@ -1,0 +1,25 @@
+ <h1>ES6+ array methods</h1>
+
+
+ <script>
+
+
+const numbers = [10, 25, 30, 45, 50, 65];
+
+// 1. Numbers greater than 30
+const greaterThan30 = numbers.filter(num => num > 30);
+console.log(greaterThan30);
+
+// 2. First number greater than 40
+const firstGreaterThan40 = numbers.find(num => num > 40);
+console.log(firstGreaterThan40);
+
+// 3. Check whether 50 exists
+const check50 = numbers.includes(50);
+console.log(check50);
+
+// 4. Doubled values
+const doubled = numbers.map(num => num * 2);
+console.log(doubled);
+
+ </script>

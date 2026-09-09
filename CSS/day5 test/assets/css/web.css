@@ -1,0 +1,125 @@
+ 
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+
+body{
+    font-family:Arial,sans-serif;
+    background:#f4f4f4;
+}
+
+header{
+    background:navy;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+footer{
+    background:#222;
+    color:white;
+    text-align:center;
+    padding:15px;
+}
+
+
+.navbar{
+    background:#444;
+}
+
+.navbar ul{
+    display:flex;
+    justify-content:center;
+    list-style:none;
+}
+
+.navbar ul li{
+    margin:15px;
+}
+
+.navbar ul li a{
+    color:white;
+    text-decoration:none;
+}
+
+.section{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:30px;
+}
+
+
+.box{
+    width:700px;
+    padding:20px;
+    margin:20px;
+    border:2px solid navy;
+    border-radius:10px;
+    background:white;
+}
+
+
+#skills{
+    background:#e8f4ff;
+}
+
+#projects{
+    background:#f9f9f9;
+    text-align:center;
+}
+
+
+.project-container{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:20px;
+    flex-wrap:wrap;
+    margin-top:20px;
+}
+
+.project-card{
+    width:220px;
+    padding:20px;
+    border:2px solid navy;
+    border-radius:10px;
+    background:white;
+}
+
+
+h1,h2,h3{
+    color:navy;
+}
+
+
+.box p{
+    font-size:18px;
+    margin-top:10px;
+}
+
+.project-card p{
+    margin-top:10px;
+}
+
+
+.navbar > ul{
+    padding:10px;
+}
+
+.box > ul{
+    margin-left:20px;
+}
+
+.project-card:hover{
+    background:navy;
+    color:white;
+    transition:0.3s;
+}
+
+.project-card:hover h3{
+    color:yellow;
+}

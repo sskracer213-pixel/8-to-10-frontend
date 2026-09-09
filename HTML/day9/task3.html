@@ -1,0 +1,133 @@
+ <!DOCTYPE html>
+<html>
+<head>
+    <title>Apollo Hospital Patient Registration</title>
+</head>
+
+<body>
+
+<center>
+    <h1>Apollo Hospital</h1>
+    <h2>Patient Registration Form</h2>
+</center>
+
+<form>
+
+<label>Patient ID :</label><br>
+<input type="text" placeholder="Enter Patient ID"><br><br>
+
+<label>Patient Name :</label><br>
+<input type="text" placeholder="Enter Patient Name"><br><br>
+
+<label>Age :</label><br>
+<input type="number" placeholder="Enter Age"><br><br>
+
+<label>Gender :</label><br>
+<input type="radio" name="gender"> Male
+<input type="radio" name="gender"> Female
+<input type="radio" name="gender"> Other
+<br><br>
+
+<label>Blood Group :</label><br>
+<select>
+    <option>Select Blood Group</option>
+    <option>A+</option>
+    <option>A-</option>
+    <option>B+</option>
+    <option>B-</option>
+    <option>AB+</option>
+    <option>AB-</option>
+    <option>O+</option>
+    <option>O-</option>
+</select>
+<br><br>
+
+<label>Doctor :</label><br>
+<select>
+    <option>Select Doctor</option>
+    <option>Dr. Kumar</option>
+    <option>Dr. Priya</option>
+    <option>Dr. Arjun</option>
+    <option>Dr. Meena</option>
+</select>
+<br><br>
+
+<label>Appointment Date :</label><br>
+<input type="date"><br><br>
+
+<label>Symptoms :</label><br>
+<textarea rows="5" cols="35" placeholder="Enter Symptoms"></textarea>
+<br><br>
+
+<label>Medical Report Upload :</label><br>
+<input type="file"><br><br>
+
+<button type="submit">Register</button>
+<button type="reset">Reset</button>
+
+</form>
+
+<hr>
+
+<center>
+<h2>Patient Details</h2>
+
+<table border="2">
+
+<thead>
+<tr>
+    <th>Patient ID</th>
+    <th>Patient Name</th>
+    <th>Doctor</th>
+    <th>Blood Group</th>
+    <th>Appointment Date</th>
+    <th>Status</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+    <td>P101</td>
+    <td>Rahul</td>
+    <td>Dr. Kumar</td>
+    <td>O+</td>
+    <td>25-07-2026</td>
+    <td>Confirmed</td>
+</tr>
+
+<tr>
+    <td>P102</td>
+    <td>Priya</td>
+    <td>Dr. Meena</td>
+    <td>A+</td>
+    <td>26-07-2026</td>
+    <td>Waiting</td>
+</tr>
+
+<tr>
+    <td>P103</td>
+    <td>Kathika</td>
+    <td>Dr. Arjun</td>
+    <td>B+</td>
+    <td>27-07-2026</td>
+    <td>Confirmed</td>
+</tr>
+
+<tr>
+    <td>P104</td>
+    <td>Divya</td>
+    <td>Dr. Priya</td>
+    <td>AB+</td>
+    <td>28-07-2026</td>
+    <td>Completed</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</center>
+
+</body>
+</html>

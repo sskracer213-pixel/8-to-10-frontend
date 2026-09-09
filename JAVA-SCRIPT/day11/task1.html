@@ -1,0 +1,16 @@
+ <h1> Simple Callback Function</h1>
+
+ <script>
+
+function processNumber(number, callback) {
+    callback(number);
+}
+
+function display(result) {
+    console.log("Number is: " + result);
+}
+
+processNumber(10, display);
+
+
+ </script>

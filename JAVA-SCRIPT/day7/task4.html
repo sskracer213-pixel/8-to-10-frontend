@@ -1,0 +1,23 @@
+ 
+ <h1>Find a Student</h1>
+ 
+ 
+ <script>
+ 
+ let students = [
+    { name: "Santhosh", mark: 85 },
+    { name: "Kumar", mark: 90 },
+    { name: "Arun", mark: 78 }
+];
+
+let searchName = "Kumar";
+
+for (let i = 0; i < students.length; i++) {
+    if (students[i].name == searchName) {
+        console.log(students[i].name);
+        console.log(students[i].mark);
+    }
+}
+
+
+</script>

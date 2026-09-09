@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Smart Agriculture Crop Scanner | விவசாய பயிர் ஸ்கேனர் & வேளாண் வழிகாட்டி</title>
+  <meta name="description" content="AI Crop Diagnosis, Verified Agronomic Advisory, Seed-to-Harvest Lifecycle & Honest Agri-Shop Guide in English & Tamil.">
+  <meta name="theme-color" content="#14532d">
+  
+  <!-- Google Fonts for English & Tamil -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Top Official Advisory Bar -->
+  <aside class="top-notice-bar" aria-label="Official Advisory Standard">
+    <span data-i18n="govtAdvisoryNotice">Official Advisory Standard: Tamil Nadu Agricultural University (TNAU) & ICAR Practices</span>
+    <div class="top-bar-right">
+      <button type="button" id="notifBellBtn" class="notif-bell-btn" aria-label="Farm Alerts & Notifications">
+        🔔 <span id="notifBadge" class="notif-badge">2</span>
+      </button>
+      <a href="tel:18001801551" class="helpline">📞 <span data-i18n="emergencyHelpline">Kisan Call Center: 1800-180-1551 (Toll Free)</span></a>
+    </div>
+  </aside>
+
+  <!-- Notification Center Dropdown Panel -->
+  <div id="notificationPanel" class="notification-panel" role="region" aria-label="Farm Notifications">
+    <div class="notif-header">
+      <h3 data-i18n="notificationsTitle">Notifications & Farm Alerts</h3>
+      <div class="notif-actions">
+        <button type="button" id="markAllReadBtn" class="btn-text" data-i18n="markAllRead">Mark all as read</button>
+        <button type="button" id="clearNotifsBtn" class="btn-text" data-i18n="clearNotifications">Clear all</button>
+      </div>
+    </div>
+    <ul id="notificationList" class="notif-list">
+      <!-- Injected Dynamically -->
+    </ul>
+  </div>
+
+  <!-- Live Farm Weather & Spray Advisory Bar -->
+  <div class="weather-spray-bar">
+    <div>
+      <span>🌤️</span> <strong data-i18n="weatherTitle">Live Field Spray Advisory</strong>: 
+      <span data-i18n="weatherConditionGood">✅ Weather Optimal for Spraying (Wind 6 km/h, Temp 28°C, Humidity 68%)</span>
+    </div>
+    <span class="weather-badge-good">☀️ Clear Skies</span>
+  </div>
+
+  <!-- Main App Header -->
+  <header class="app-header">
+    <div class="container header-content">
+      <div class="brand-wrapper">
+        <span class="brand-logo-glow" aria-hidden="true">🌱</span>
+        <div class="brand-text">
+          <h1 data-i18n="appTitle">Smart Agriculture Crop Scanner</h1>
+          <p data-i18n="appSubtitle">Instant AI Crop Diagnosis, Verified Agronomic Advisory & Honest Agri-Shop Guide</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button type="button" id="sunlightModeBtn" class="sunlight-toggle-btn" aria-label="Toggle Outdoor Sunlight Mode">
+          <span id="sunlightIcon">☀️</span> <span id="sunlightText" data-i18n="sunlightMode">Sunlight Mode</span>
+        </button>
+
+        <button type="button" id="langToggleBtn" class="lang-btn" aria-label="Toggle Language between English and Tamil">
+          🌐 <span>தமிழ்</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Step Navigation Progress Bar -->
+  <nav class="steps-nav-wrapper" aria-label="Workflow Steps">
+    <div class="container">
+      <ul class="steps-list">
+        <li class="step-item active" id="stepIndicator1" data-step-target="farmer-form">
+          <span>👨‍🌾</span> <span data-i18n="step1Title">1. Farmer Info</span>
+        </li>
+        <li class="step-item" id="stepIndicator2" data-step-target="scanner">
+          <span>📷</span> <span data-i18n="step2Title">2. Scan Crop</span>
+        </li>
+        <li class="step-item" id="stepIndicator3" data-step-target="result">
+          <span>💊</span> <span data-i18n="step3Title">3. Complete Advisory</span>
+        </li>
+        <li class="step-item" id="stepIndicator4" data-step-target="seed-calendar">
+          <span>📖</span> <span data-i18n="step4Title">4. Seed & Harvest Journey</span>
+        </li>
+        <li class="step-item" id="stepIndicator5" data-step-target="crop-shop">
+          <span>🛒</span> <span data-i18n="step5Title">5. Crop Shop</span>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main Application Content Area -->
+  <main class="main-content">
+    <div class="container">
+
+      <!-- ====================================================================
+           SECTION 1: Farmer & Land Area Details Form + Active Dashboard
+           ==================================================================== -->
+      <section id="farmerFormSection" class="app-section active" aria-labelledby="farmerFormHeading">
+        
+        <!-- Active Farmer Quick Dashboard (if profile exists) -->
+        <div id="farmerDashboardCard" class="farmer-dash-card" style="display: none;">
+          <div class="dash-card-header">
+            <h3><span>👨‍🌾</span> <span data-i18n="farmerDashboardTitle">Farmer Active Dashboard</span></h3>
+            <button type="button" id="editProfileBtn" class="btn-text">✏️ Edit</button>
+          </div>
+          <div class="dash-grid">
+            <div class="dash-item"><strong data-i18n="dashFarmer">Farmer:</strong> <span id="dashFarmerName">-</span></div>
+            <div class="dash-item"><strong data-i18n="dashCrop">Selected Crop:</strong> <span id="dashCropName">-</span></div>
+            <div class="dash-item"><strong data-i18n="dashArea">Land Area:</strong> <span id="dashLandArea">-</span></div>
+            <div class="dash-item"><strong data-i18n="dashStatus">Crop Health:</strong> <span id="dashHealthStatus">-</span></div>
+          </div>
+        </div>
+
+        <div class="content-card">
+          <div class="card-header">
+            <h2 id="farmerFormHeading">
+              <span>👨‍🌾</span> <span data-i18n="farmerDetailsTitle">Farmer & Land Information</span>
+            </h2>
+            <p data-i18n="farmerDetailsSubtitle">Enter your land area to get exact water, pesticide quantities & estimated costs</p>
+          </div>
+
+          <form id="farmerForm">
+            <div class="form-grid">
+              
+              <!-- Farmer Name -->
+              <div class="form-group">
+                <label for="farmerName">
+                  <span>👤</span> <span data-i18n="labelName">Farmer Name</span>
+                </label>
+                <input type="text" id="farmerName" class="form-input" placeholder="e.g., Muthuvel / Rajesh" data-i18n-placeholder="placeholderName" required autocomplete="name">
+              </div>
+
+              <!-- Mobile Number -->
+              <div class="form-group">
+                <label for="farmerMobile">
+                  <span>📱</span> <span data-i18n="labelMobile">Mobile Number</span>
+                </label>
+                <input type="tel" id="farmerMobile" class="form-input" placeholder="e.g., 9876543210" data-i18n-placeholder="placeholderMobile" pattern="[0-9]{10}" autocomplete="tel">
+              </div>
+
+              <!-- Email ID (For Official Prescription Report) -->
+              <div class="form-group">
+                <label for="farmerEmail">
+                  <span>✉️</span> <strong data-i18n="labelEmail">Farmer Email ID (For Official Prescription Report)</strong>
+                </label>
+                <input type="email" id="farmerEmail" class="form-input" placeholder="e.g., farmer@gmail.com" data-i18n-placeholder="placeholderEmail" autocomplete="email">
+              </div>
+
+              <!-- Land Area in Acres (Core Scaling Factor) -->
+              <div class="form-group">
+                <label for="landArea">
+                  <span>📏</span> <strong data-i18n="labelLandArea">Land Area (in Acres)</strong> *
+                </label>
+                <input type="number" id="landArea" class="form-input" step="0.1" min="0.1" max="500" value="1.0" placeholder="e.g. 1.5" data-i18n-placeholder="placeholderLandArea" required>
+                
+                <!-- Quick Acreage Chips -->
+                <div class="quick-area-selector">
+                  <span data-i18n="quickSelectArea">Quick Select Area:</span>
+                  <div class="chips-container">
+                    <button type="button" class="area-chip" data-acres="0.5">0.5 Acre</button>
+                    <button type="button" class="area-chip active" data-acres="1">1 Acre</button>
+                    <button type="button" class="area-chip" data-acres="2">2 Acres</button>
+                    <button type="button" class="area-chip" data-acres="3">3 Acres</button>
+                    <button type="button" class="area-chip" data-acres="5">5 Acres</button>
+                    <button type="button" class="area-chip" data-acres="10">10 Acres</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Full 12 Major Crops Selection -->
+              <div class="form-group">
+                <label for="primaryCrop">
+                  <span>🌾</span> <span data-i18n="labelCrop">Select Primary Crop</span>
+                </label>
+                <select id="primaryCrop" class="form-select">
+                  <option value="auto" data-i18n="cropAutoDetect">Auto Detect from Photo</option>
+                  <option value="paddy" data-i18n="cropPaddy">🌾 Paddy / Rice (நெல்)</option>
+                  <option value="groundnut" data-i18n="cropGroundnut">🥜 Groundnut / Peanut (நிலக்கடலை)</option>
+                  <option value="corn" data-i18n="cropCorn">🌽 Corn / Maize (மக்காச்சோளம்)</option>
+                  <option value="cashew" data-i18n="cropCashew">🌰 Cashew (முந்திரி)</option>
+                  <option value="jackfruit" data-i18n="cropJackfruit">🍈 Jackfruit (பலாப்பழம்)</option>
+                  <option value="cotton" data-i18n="cropCotton">🌱 Cotton (பருத்தி)</option>
+                  <option value="sugarcane" data-i18n="cropSugarcane">🎋 Sugarcane (கரும்பு)</option>
+                  <option value="banana" data-i18n="cropBanana">🍌 Banana (வாழை)</option>
+                  <option value="tomato" data-i18n="cropTomato">🍅 Tomato (தக்காளி)</option>
+                  <option value="chilli" data-i18n="cropChilli">🌶️ Chilli (மிளகாய்)</option>
+                  <option value="coconut" data-i18n="cropCoconut">🥥 Coconut (தென்னை)</option>
+                  <option value="turmeric" data-i18n="cropTurmeric">🟡 Turmeric (மஞ்சள்)</option>
+                </select>
+              </div>
+
+            </div>
+
+            <button type="submit" class="btn-primary">
+              <span data-i18n="btnProceedToScan">Proceed to Crop Scanner ➔</span>
+            </button>
+          </form>
+
+          <!-- Scan History Preview inside Form -->
+          <div class="scan-history-box" id="scanHistoryContainer">
+            <div class="history-header">
+              <h4 data-i18n="scanHistoryTitle">🕒 Previous Scan History</h4>
+              <button type="button" id="clearHistoryBtn" class="btn-text" data-i18n="btnClearHistory">Clear History</button>
+            </div>
+            <ul id="scanHistoryList" class="history-list">
+              <li class="history-empty" data-i18n="noScanHistory">No scan history recorded yet.</li>
+            </ul>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SECTION 2: Crop Scanner (Live Camera & Gallery Upload)
+           ==================================================================== -->
+      <section id="scannerSection" class="app-section" aria-labelledby="scannerHeading">
+        <div class="content-card">
+          <div class="card-header">
+            <h2 id="scannerHeading">
+              <span>📷</span> <span data-i18n="scannerTitle">Crop Photo Scanner</span>
+            </h2>
+            <p data-i18n="scannerSubtitle">Take a real-time photo or upload an image of your crop leaf, stem, or field</p>
+          </div>
+
+          <!-- Scanner Mode Tabs -->
+          <div class="scanner-tabs">
+            <button type="button" id="tabCameraBtn" class="scanner-tab-btn active">
+              <span data-i18n="tabLiveCamera">📸 Take Live Photo</span>
+            </button>
+            <button type="button" id="tabUploadBtn" class="scanner-tab-btn">
+              <span data-i18n="tabUploadPhoto">📁 Upload Photo</span>
+            </button>
+          </div>
+
+          <!-- TAB 1: Live Web Camera Viewport -->
+          <div id="cameraViewContainer" class="scanner-viewport-wrapper active">
+            <div class="camera-box">
+              <video id="cameraFeed" playsinline autoplay muted style="display:none;"></video>
+              <img id="capturedPhotoPreview" alt="Captured Crop Preview" style="display:none;">
+              
+              <div id="cameraPlaceholder" class="camera-placeholder">
+                <span class="cam-icon">📷</span>
+                <p data-i18n="cameraInstruction">Point your phone camera directly at the affected crop leaf, stem or panicle and take a clear photo.</p>
+                <button type="button" id="startCameraBtn" class="btn-secondary" style="margin-top: 10px;">
+                  <span data-i18n="btnStartCamera">Open Camera</span>
+                </button>
+              </div>
+
+              <div class="camera-overlay-frame"></div>
+            </div>
+
+            <div id="cameraActionControls" class="camera-controls-bar" style="display:none;">
+              <button type="button" id="capturePhotoBtn" class="btn-primary" style="width: auto;">
+                <span>🔘</span> <span data-i18n="btnCapturePhoto">Capture Crop Photo</span>
+              </button>
+              <button type="button" id="switchCameraBtn" class="btn-secondary">
+                <span>🔄</span> <span data-i18n="btnSwitchCamera">Flip Camera</span>
+              </button>
+              <button type="button" id="retakePhotoBtn" class="btn-secondary" style="display:none;">
+                <span>↩️</span> <span data-i18n="btnRetake">Retake Photo</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- TAB 2: File Upload Viewport -->
+          <div id="uploadViewContainer" class="scanner-viewport-wrapper">
+            <div id="uploadDropZone" class="upload-drop-zone">
+              <div class="upload-icon">📂</div>
+              <p data-i18n="uploadInstruction">Drag & drop your crop photo here, or click to browse from device gallery.</p>
+              <div class="upload-hint" data-i18n="uploadHint">Supported formats: JPG, PNG, WEBP (Max 15MB)</div>
+              <button type="button" id="selectFileBtn" class="btn-secondary">
+                <span>📁</span> <span data-i18n="uploadButtonText">Select Photo from Device</span>
+              </button>
+              <input type="file" id="cropPhotoInput" accept="image/*" style="display:none;">
+              <img id="uploadPhotoPreview" class="upload-preview-img" alt="Uploaded Crop Image">
+            </div>
+          </div>
+
+          <!-- Interactive Realistic Sample Photos for Testing -->
+          <div class="samples-section">
+            <h3>
+              <span>🧪</span> <span data-i18n="orTrySamples">Or test with realistic crop samples:</span>
+            </h3>
+            <div class="samples-grid">
+              
+              <!-- Paddy Blast -->
+              <div class="sample-card" data-sample="samplePaddyBlast">
+                <img src="assets/samples/paddy_blast.svg" alt="Paddy Blast Leaf Spot">
+                <span data-i18n="samplePaddyBlast">Paddy Blast (Booting)</span>
+              </div>
+
+              <!-- Paddy Stem Borer -->
+              <div class="sample-card" data-sample="samplePaddyStemBorer">
+                <img src="assets/samples/paddy_stem_borer.svg" alt="Paddy Stem Borer Dead Heart">
+                <span data-i18n="samplePaddyStemBorer">Paddy Stem Borer (Tillering)</span>
+              </div>
+
+              <!-- Paddy Healthy -->
+              <div class="sample-card" data-sample="samplePaddyHealthy">
+                <img src="assets/samples/paddy_healthy.svg" alt="Paddy Healthy Panicle">
+                <span data-i18n="samplePaddyHealthy">Paddy Healthy (Panicle)</span>
+              </div>
+
+              <!-- Groundnut Tikka Spot -->
+              <div class="sample-card" data-sample="sampleGroundnutTikka">
+                <img src="assets/samples/groundnut_tikka.svg" alt="Groundnut Tikka Leaf Spot">
+                <span data-i18n="sampleGroundnutTikka">Groundnut Tikka (Pegging)</span>
+              </div>
+
+              <!-- Corn Fall Armyworm -->
+              <div class="sample-card" data-sample="sampleCornFAW">
+                <img src="assets/samples/corn_faw.svg" alt="Corn Fall Armyworm">
+                <span data-i18n="sampleCornFAW">Corn Fall Armyworm</span>
+              </div>
+
+              <!-- Blurry / Unclear Photo (Safety Requirement Test) -->
+              <div class="sample-card" data-sample="sampleUnclear">
+                <img src="assets/samples/blurry_unclear.svg" alt="Blurry / Unclear Photo">
+                <span data-i18n="sampleUnclear">Blurry / Unclear Photo (Safety Test)</span>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SECTION 3: ONE COMPLETE FARMER AGRONOMIC ADVISORY CARD
+           ==================================================================== -->
+      <section id="resultSection" class="app-section" aria-labelledby="resultHeading">
+        <div class="content-card result-card">
+          
+          <!-- Top Banner: Health Status & Farmer Land Area Summary -->
+          <div class="result-top-banner">
+            <div id="resultStatusBadge" class="status-badge status-warning">
+              <span>⚡</span> <span data-i18n="badgeActionRequired">Treatment Action Required</span>
+            </div>
+            <div class="farmer-summary-tag">
+              👤 <span id="resFarmerNameVal">Farmer</span> | 📏 <span id="resLandAreaVal">1 Acre</span>
+            </div>
+          </div>
+
+          <!-- Hero Identification Overview Grid -->
+          <div class="result-hero-grid">
+            <div class="result-img-box">
+              <img id="resultCropImage" src="assets/samples/paddy_blast.svg" alt="Analyzed Crop Feature">
+              <div class="ai-reticle-overlay"></div>
+              <div class="ai-confidence-pill">🎯 <span id="aiConfidenceVal">98% Confident</span></div>
+            </div>
+            
+            <div class="result-primary-info">
+              <!-- 1. Detected Crop -->
+              <div class="info-row">
+                <span class="info-label" data-i18n="resCrop">🌾 Detected Crop</span>
+                <span id="resCropVal" class="info-value-big">Paddy (Rice)</span>
+              </div>
+
+              <!-- 2. Current Growth Stage -->
+              <div class="info-row">
+                <span class="info-label" data-i18n="resGrowthStage">🌱 Growth Stage</span>
+                <span id="resStageVal" style="font-size: 1.15rem; font-weight: 800; color: var(--primary);">Panicle Initiation / Booting Stage</span>
+              </div>
+
+              <!-- 3. Problem Detected -->
+              <div class="info-row">
+                <span class="info-label" data-i18n="resProblem">🔍 Problem Detected</span>
+                <span id="resProblemVal" class="info-value-problem">Rice Blast (Leaf & Neck Blast)</span>
+                <span id="resScientificVal" class="scientific-name">(Magnaporthe oryzae)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ====================================================================
+               HERO MEDICINE CARD: PROMINENT WHAT TO BUY AT AGRI-SHOP
+               ==================================================================== -->
+          <div id="heroPesticideContainer" class="hero-pesticide-card">
+            <div class="hero-med-header">
+              <span class="med-icon">💊</span>
+              <div>
+                <h3 data-i18n="resHeroPesticide">What to Buy at Agri-Shop (Recommended Medicine)</h3>
+                <p id="heroPesticideSubTitle">Official TNAU crop-specific verified recommendation</p>
+              </div>
+            </div>
+            
+            <div class="hero-med-body">
+              <div class="brand-highlight-box">
+                <div class="brand-tag-title" data-i18n="resBrandName">Commercial Brand Name:</div>
+                <div id="resBrandVal" class="brand-name-huge">Beam (Corteva) / Fujione (Rallis)</div>
+                <div class="technical-row">
+                  <span data-i18n="resTechnicalName">Active Chemical Ingredient:</span>
+                  <strong id="resTechnicalVal">Tricyclazole 75% WP @ 120 g/acre</strong>
+                </div>
+              </div>
+
+              <div class="price-pack-strip">
+                <div class="price-chip">
+                  <span>💰</span> <span data-i18n="resEstimatedCost">Estimated Cost:</span>
+                  <strong id="resTotalCostVal">₹190</strong>
+                  <span id="resPackSizeVal">(per 120g pack)</span>
+                </div>
+                <div class="phi-chip">
+                  <span>⏳</span> <span>PHI:</span> <strong id="resPhiVal">30 Days</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ====================================================================
+               HEALTHY CROP NOTICE BANNER (Only shown when crop is healthy)
+               ==================================================================== -->
+          <div id="healthyCropNoticeBlock" class="healthy-crop-banner" style="display: none;">
+            <div class="healthy-icon">🌿</div>
+            <div>
+              <h3 data-i18n="healthyTitle">✅ Crop is Healthy & Growing Well!</h3>
+              <p data-i18n="healthySubtitle">No chemical pesticide treatment required now. Focus on balanced nutrition and moisture maintenance.</p>
+              <div id="healthyActionDetail" style="margin-top: 8px; font-weight: 700; color: #166534;"></div>
+            </div>
+          </div>
+
+          <!-- ====================================================================
+               SEED & GROWTH CARE / NUTRITION BOOSTER
+               ==================================================================== -->
+          <div class="guidance-block seed-growth-care-card">
+            <h4 style="color: #065f46;">
+              <span>🌱</span> <span data-i18n="resGrowthCareTitle">Seed & Growth Care Guidance</span>
+            </h4>
+            <div class="growth-care-grid">
+              <div class="care-item">
+                <strong data-i18n="resNutrientTonic">🌾 Growth & Nutrient Booster:</strong>
+                <p id="resNutrientVal">Grain Filling Booster: Spray Soluble NPK 19:19:19 (1 kg/acre) + Soluble Boron 20% (200 g/acre) at 10% panicle emergence.</p>
+              </div>
+              <div class="care-item">
+                <strong data-i18n="resWaterRule">🌊 Field Water & Moisture Rule:</strong>
+                <p id="resWaterRuleVal">Continuous 5 cm standing water mandatory. Spray only when morning dew evaporates.</p>
+              </div>
+              <div class="care-item">
+                <strong data-i18n="resMonitoring">👀 Pest & Disease Monitoring:</strong>
+                <p id="resMonitoringVal">Screen flag leaves for spindle-shaped blast spots and sheath blight lesions.</p>
+              </div>
+              <div class="care-item">
+                <strong data-i18n="resNextAction">📅 Next Action / Check Date:</strong>
+                <p id="resNextActionVal">Inspect crop again in 7-10 days. Apply 2nd foliar spray only if cloudy humid weather persists.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- ====================================================================
+               WATER, DOSAGE & SPRAYER TANK METRICS
+               ==================================================================== -->
+          <div class="metrics-calc-panel">
+            <div class="metrics-grid">
+              
+              <!-- Total Water Required -->
+              <div class="metric-card water">
+                <div class="metric-header">
+                  <span>💧</span> <span data-i18n="resWaterRequired">Total Water Required</span>
+                </div>
+                <div id="resWaterVal" class="metric-number">
+                  <strong>200</strong> Litres
+                </div>
+              </div>
+
+              <!-- Total Medicine Dosage -->
+              <div class="metric-card dosage">
+                <div class="metric-header">
+                  <span>🧪</span> <span data-i18n="resDosageTotal">Required Medicine Quantity</span>
+                </div>
+                <div id="resChemVal" class="metric-number">
+                  <strong>120</strong> g
+                </div>
+              </div>
+
+              <!-- Mixing Ratio per Litre -->
+              <div class="metric-card mixing">
+                <div class="metric-header">
+                  <span>🪣</span> <span data-i18n="resMixingRatio">Mixing Ratio per Litre</span>
+                </div>
+                <div id="resMixingRatioVal" style="font-size: 1.05rem; font-weight: 800; color: #9333ea; margin-top: 4px;">
+                  0.6 g per 1 Litre of water
+                </div>
+              </div>
+
+              <!-- Sprayer Tanks Needed (16L Tank) -->
+              <div class="metric-card tanks">
+                <div class="metric-header">
+                  <span>🚜</span> <span data-i18n="resTanksCount">Sprayer Tanks Needed</span>
+                </div>
+                <div id="resTankVal" class="metric-number">
+                  <strong>13</strong> Tanks (10g / tank)
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Instant Land Area Recalculator Bar -->
+            <div class="land-adjuster-bar">
+              <label for="resultLandAreaInput">
+                <span>📏</span> <span data-i18n="btnAdjustLandArea">Change Land Area:</span>
+              </label>
+              <div class="adjuster-input-group">
+                <input type="number" id="resultLandAreaInput" step="0.1" min="0.1" max="500" value="1.0">
+                <button type="button" id="recalculateDosageBtn" class="btn-primary" style="width:auto; min-height: 42px;">
+                  <span data-i18n="recalculateBtn">Recalculate Dosage</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- ====================================================================
+               ORGANIC / BIO-CONTROL ALTERNATIVE
+               ==================================================================== -->
+          <div id="organicOptionContainer" class="guidance-block organic-box">
+            <h4 style="color: #15803d;">
+              <span>🌿</span> <span data-i18n="resOrganicOption">Recommended Organic / Bio-Control Alternative</span>
+            </h4>
+            <div class="organic-content">
+              <div id="orgTitleVal" style="font-weight: 800; font-size: 1.05rem; color: #14532d; margin-bottom: 6px;">
+                Pseudomonas fluorescens (1 kg/acre) + 5-day Sour Buttermilk Spray
+              </div>
+              <div class="organic-meta">
+                <div>💧 <strong>Water:</strong> <span id="orgWaterVal">200 Litres</span></div>
+                <div>⚖️ <strong>Dosage:</strong> <span id="orgDosageVal">1000 g</span></div>
+                <div>🪣 <strong>Mixing:</strong> <span id="orgMixingVal">5g + 25ml buttermilk per Litre</span></div>
+              </div>
+              <div id="orgPrepVal" style="font-size: 0.88rem; color: #166534; margin-top: 8px; line-height: 1.45;">
+                Dissolve 1 kg Pseudomonas and 5 L fermented sour buttermilk into 200 Litres water. Spray canopy thoroughly.
+              </div>
+            </div>
+          </div>
+
+          <!-- ====================================================================
+               HONEST AGRI-SHOP PRESCRIPTION & ANTI-UPSELL WARNING
+               ==================================================================== -->
+          <div class="honest-shop-card">
+            <div class="honest-shop-header">
+              <span>🛒</span> <strong data-i18n="resHonestShopTitle">Honest Agri-Dealer Counter Advice</strong>
+            </div>
+            <div id="resHonestShopAdvice" class="honest-shop-text">
+              ✅ BUY ONLY: 1 pack of Beam (120g) + Soluble Boron (200g). 🚫 AVOID: Do NOT buy unproven liquid bio-stimulants. Beam provides complete cure for blast.
+            </div>
+          </div>
+
+          <!-- ====================================================================
+               SAFETY PRECAUTIONS & FIRST AID ANTIDOTE
+               ==================================================================== -->
+          <div class="guidance-block" style="border-left: 5px solid var(--danger);">
+            <h4 style="color: #991b1b;">
+              <span>🛡️</span> <span data-i18n="resPrecautions">Important Safety Precautions</span>
+            </h4>
+            <ul id="resPrecautionsList" class="precautions-list">
+              <li>Avoid excessive nitrogen during cloudy weather.</li>
+              <li>Wear protective gloves and mask. Do not spray against wind direction.</li>
+            </ul>
+            <div style="margin-top: 10px; font-size: 0.88rem; font-weight: 700; color: #991b1b;">
+              <span>🚨</span> <span data-i18n="resAntidote">First Aid & Antidote:</span>
+              <span id="resAntidoteVal" style="font-weight: 500; color: #7f1d1d;">Treat symptomatically.</span>
+            </div>
+          </div>
+
+          <!-- ====================================================================
+               DUAL LANGUAGE AUDIO VOICE ASSISTANT (English + தமிழ்)
+               ==================================================================== -->
+          <div class="voice-assistant-bar">
+            <div class="voice-header">
+              <span class="voice-icon">🔊</span>
+              <strong data-i18n="voiceSectionTitle">Audio Voice Assistant (English & தமிழ்)</strong>
+            </div>
+            
+            <div class="voice-controls-row">
+              <!-- Voice Language Selector -->
+              <div class="voice-lang-buttons">
+                <button type="button" id="voiceEngBtn" class="voice-lang-btn active" data-i18n="btnSelectEnglishVoice">
+                  🔊 English Voice
+                </button>
+                <button type="button" id="voiceTaBtn" class="voice-lang-btn" data-i18n="btnSelectTamilVoice">
+                  🔊 தமிழ் குரல் விளக்கம்
+                </button>
+              </div>
+
+              <!-- Playback Controls -->
+              <div class="playback-btn-group">
+                <button type="button" id="voicePlayBtn" class="btn-voice-ctrl play" aria-label="Play Voice Advice">
+                  <span>▶️</span> <span id="voicePlayText" data-i18n="btnVoicePlay">Play Advice</span>
+                </button>
+                <button type="button" id="voicePauseBtn" class="btn-voice-ctrl pause" style="display:none;" aria-label="Pause Voice Advice">
+                  <span>⏸️</span> <span data-i18n="btnVoicePause">Pause</span>
+                </button>
+                <button type="button" id="voiceStopBtn" class="btn-voice-ctrl stop" style="display:none;" aria-label="Stop Voice Advice">
+                  <span>⏹️</span> <span data-i18n="btnVoiceStop">Stop</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Voice Sound Wave Animation -->
+            <div id="voiceWaveContainer" class="sound-wave-display" style="display:none;">
+              <span class="wave-bar"></span>
+              <span class="wave-bar"></span>
+              <span class="wave-bar"></span>
+              <span class="wave-bar"></span>
+              <span class="wave-bar"></span>
+              <span id="voiceReadingLabel" style="font-size:0.85rem; font-weight:700; color:#14532d; margin-left:8px;">Speaking advisory...</span>
+            </div>
+          </div>
+
+          <!-- Action Buttons Grid -->
+          <div class="result-actions-grid">
+            <!-- Send Official Email Report -->
+            <button type="button" id="sendEmailCardBtn" class="btn-email-action" aria-label="Email Official Prescription Report">
+              <span>📧</span> <span data-i18n="btnSendEmail">Email Official Prescription Report</span>
+            </button>
+
+            <!-- Share WhatsApp -->
+            <button type="button" id="shareWhatsAppBtn" class="btn-whatsapp" aria-label="Share summary on WhatsApp">
+              <span>📲</span> <span data-i18n="btnShareWhatsApp">Share on WhatsApp</span>
+            </button>
+
+            <!-- View Seed to Harvest Journey -->
+            <button type="button" id="viewCalendarBtn" class="btn-secondary" aria-label="View Seed to Harvest Journey">
+              <span>📖</span> <span data-i18n="step4Title">Seed to Harvest Journey</span>
+            </button>
+
+            <!-- Browse Crop Protection Shop -->
+            <button type="button" id="viewShopFromAdvisoryBtn" class="btn-primary" aria-label="Browse Crop Growth & Protection Shop">
+              <span>🛒</span> <span data-i18n="step5Title">5. Crop Shop</span>
+            </button>
+
+            <!-- Print Report -->
+            <button type="button" id="printReportBtn" class="btn-print" aria-label="Print or save advisory PDF">
+              <span>🖨️</span> <span data-i18n="btnPrintReport">Print Prescription</span>
+            </button>
+
+            <!-- Scan Another -->
+            <button type="button" id="scanAnotherBtn" class="btn-secondary" aria-label="Scan another crop">
+              <span>🔄</span> <span data-i18n="btnScanAnother">Scan Another Crop</span>
+            </button>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SECTION 4: Safety Fallback (Uncertain / Blurry Image)
+           ==================================================================== -->
+      <section id="uncertainSection" class="app-section" aria-labelledby="uncertainHeading">
+        <div class="content-card uncertain-card">
+          <div class="uncertain-banner">
+            <div class="alert-icon">⚠️</div>
+            <div>
+              <h2 id="uncertainHeading" style="color: var(--danger); font-size: 1.35rem; margin-bottom: 4px;" data-i18n="unclearTitle">
+                Reliable Identification Not Possible
+              </h2>
+              <p id="uncertainMessageText" data-i18n="unclearMessage">
+                Unable to identify the crop/problem reliably. Please upload a clearer photo or consult a qualified agricultural expert.
+              </p>
+            </div>
+          </div>
+
+          <div style="text-align: center; margin-bottom: 20px;">
+            <img id="uncertainPhotoPreview" src="assets/samples/blurry_unclear.svg" alt="Unclear Photo Preview" style="max-height: 220px; border-radius: var(--radius-md); border: 2.5px dashed var(--danger);">
+          </div>
+
+          <div class="photo-guidelines-box">
+            <h3 data-i18n="unclearTipsTitle">Tips for taking a clear crop photo:</h3>
+            <ul class="guidelines-list">
+              <li data-i18n="tip1">Focus clearly on the leaf spot, pest, or affected plant part in daylight.</li>
+              <li data-i18n="tip2">Avoid camera shaking, extreme shadows, or overexposure.</li>
+              <li data-i18n="tip3">Hold camera 15-30 cm away from the leaf surface.</li>
+            </ul>
+          </div>
+
+          <div class="result-actions-grid">
+            <button type="button" id="tryAgainBtn" class="btn-primary">
+              <span>📷</span> <span data-i18n="btnTryAgain">Take Another Photo</span>
+            </button>
+            <a href="tel:18001801551" class="btn-secondary" style="text-decoration: none;">
+              <span>📞</span> <span data-i18n="btnContactExpert">Call Kisan Helpline (1800-180-1551)</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SECTION 5: SEED-TO-HARVEST COMPLETE CROP JOURNEY
+           ==================================================================== -->
+      <section id="seedCalendarSection" class="app-section" aria-labelledby="calendarHeading">
+        <div class="content-card">
+          <div class="card-header">
+            <h2 id="calendarHeading">
+              <span>📖</span> <span data-i18n="seedCalendarSectionTitle">Seed to Harvest Crop Journey & Master Calendar</span>
+            </h2>
+            <p data-i18n="seedCalendarSubtitle">Interactive stage-by-stage lifecycle guide: Seed treatment, nutrition, pest monitoring & water management</p>
+          </div>
+
+          <!-- Crop Selector for Journey -->
+          <div class="calendar-crop-selector-box">
+            <label for="calendarCropSelect" data-i18n="selectCropCalendar">
+              Select Crop to View Lifecycle Journey:
+            </label>
+            <select id="calendarCropSelect" class="form-select" style="font-size: 1.05rem;">
+              <option value="paddy">🌾 Paddy / Rice (நெல்)</option>
+              <option value="groundnut">🥜 Groundnut / Peanut (நிலக்கடலை)</option>
+              <option value="corn">🌽 Corn / Maize (மக்காச்சோளம்)</option>
+              <option value="cashew">🌰 Cashew Tree (முந்திரி)</option>
+              <option value="jackfruit">🍈 Jackfruit Tree (பலாப்பழம்)</option>
+              <option value="cotton">🌱 Cotton (பருத்தி)</option>
+              <option value="sugarcane">🎋 Sugarcane (கரும்பு)</option>
+              <option value="banana">🍌 Banana (வாழை)</option>
+              <option value="tomato">🍅 Tomato (தக்காளி)</option>
+              <option value="chilli">🌶️ Chilli (மிளகாய்)</option>
+              <option value="coconut">🥥 Coconut Palm (தென்னை)</option>
+              <option value="turmeric">🟡 Turmeric (மஞ்சள்)</option>
+            </select>
+          </div>
+
+          <!-- Interactive Clickable Lifecycle Nodes -->
+          <div class="lifecycle-timeline-wrapper">
+            <div id="lifecycleNodesContainer" class="lifecycle-nodes-bar"></div>
+          </div>
+
+          <!-- Dynamic Lifecycle Stage Details Container -->
+          <div id="calendarTimelineDisplay" style="display: flex; flex-direction: column; gap: 16px; margin-top: 16px;"></div>
+
+          <div style="margin-top: 24px;">
+            <button type="button" id="backToResultBtn" class="btn-primary" style="width: auto;">
+              <span>⬅️</span> <span data-i18n="btnBackToAdvisory">Back to Diagnostic Advisory</span>
+            </button>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SECTION 6: CROP GROWTH & PLANT PROTECTION SHOP
+           ==================================================================== -->
+      <section id="cropShopSection" class="app-section" aria-labelledby="cropShopHeading">
+        <div class="content-card shop-content-card">
+          
+          <div class="card-header">
+            <h2 id="cropShopHeading">
+              <span>🌱</span> <span data-i18n="shopTitle">Crop Growth & Plant Protection Shop</span>
+            </h2>
+            <p data-i18n="shopSubtitle">Farmer-Friendly Guide to Agricultural Products, Growth Boosters, Pest & Disease Treatments</p>
+          </div>
+
+          <!-- Farmer Notice Banner (Responsible pesticide / fertilizer use disclaimer) -->
+          <div class="shop-notice-banner">
+            <div class="shop-notice-title">
+              <span>⚠️</span> <strong data-i18n="shopNoticeTitle">Important Farmer Notice</strong>
+            </div>
+            <p data-i18n="shopNoticeText">
+              Pesticides, fungicides, fertilizers and micronutrients should not be used randomly. Products and dosages should always follow official crop-specific recommendations and certified product labels. Unnecessary extra sprays do not guarantee higher yield and will increase production costs.
+            </p>
+          </div>
+
+          <!-- 2-Step Filter & Search Control Panel -->
+          <div class="shop-filters-card">
+            <div class="shop-filters-grid">
+              
+              <!-- 1. Select Crop Filter -->
+              <div class="shop-filter-group">
+                <label for="shopCropFilterSelect">
+                  <span>🌾</span> <strong data-i18n="shopFilterCrop">Filter by Crop</strong>
+                </label>
+                <select id="shopCropFilterSelect" class="form-select">
+                  <option value="all" data-i18n="shopAllCrops">🌟 All Crops (அனைத்து பயிர்கள்)</option>
+                  <option value="paddy">🌾 Paddy / Rice (நெல்)</option>
+                  <option value="groundnut">🥜 Groundnut / Peanut (நிலக்கடலை)</option>
+                  <option value="corn">🌽 Corn / Maize (மக்காச்சோளம்)</option>
+                  <option value="cashew">🌰 Cashew Tree (முந்திரி)</option>
+                  <option value="jackfruit">🍈 Jackfruit Tree (பலாப்பழம்)</option>
+                  <option value="cotton">🌱 Cotton (பருத்தி)</option>
+                  <option value="sugarcane">🎋 Sugarcane (கரும்பு)</option>
+                  <option value="banana">🍌 Banana (வாழை)</option>
+                  <option value="tomato">🍅 Tomato (தக்காளி)</option>
+                  <option value="chilli">🌶️ Chilli (மிளகாய்)</option>
+                  <option value="coconut">🥥 Coconut Palm (தென்னை)</option>
+                  <option value="turmeric">🟡 Turmeric (மஞ்சள்)</option>
+                </select>
+              </div>
+
+              <!-- 2. Select Problem / Need Filter -->
+              <div class="shop-filter-group">
+                <label for="shopProblemFilterSelect">
+                  <span>🔍</span> <strong data-i18n="shopFilterProblem">Filter by Problem / Need</strong>
+                </label>
+                <select id="shopProblemFilterSelect" class="form-select">
+                  <option value="all" data-i18n="shopAllProblems">🔍 All Problems & Needs (அனைத்தும்)</option>
+                  <option value="seed_establishment" data-i18n="problemSeedEstablishment">🌱 Seed Growth & Root Establishment (விதை நேர்த்தி)</option>
+                  <option value="slow_growth" data-i18n="problemSlowGrowth">🌿 Slow Growth & Stunted Plants (மந்தமான வளர்ச்சி)</option>
+                  <option value="yellow_leaves" data-i18n="problemYellowLeaves">🍂 Yellowing Leaves & Deficiencies (மஞ்சள் இலை & ஊட்டச்சத்து)</option>
+                  <option value="insect_attack" data-i18n="problemInsectAttack">🐛 Insect Attack & Caterpillars (பூச்சி & புழு)</option>
+                  <option value="fungal_disease" data-i18n="problemFungalDisease">🍃 Fungal Spots, Blast & Rots (இலைப்புள்ளி & அழுகல்)</option>
+                  <option value="tonic_supplements" data-i18n="problemTonicSupplements">💧 Foliar Tonic, Stickers & Micronutrients (டானிக் & ஒட்டும் திரவம்)</option>
+                </select>
+              </div>
+
+              <!-- 3. Free Text Search Box -->
+              <div class="shop-filter-group shop-search-group">
+                <label for="shopSearchInput">
+                  <span>🔎</span> <strong>Search</strong>
+                </label>
+                <div class="shop-search-box-wrapper">
+                  <input type="text" id="shopSearchInput" class="form-input" placeholder="Search by product, brand, chemical or problem..." data-i18n-placeholder="shopSearchPlaceholder">
+                  <button type="button" id="resetShopFiltersBtn" class="btn-shop-reset" data-i18n="btnResetShopFilters">Reset</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Product Category Tabs / Pills -->
+          <div class="shop-category-pills-container" role="tablist" aria-label="Product Categories">
+            <button type="button" class="shop-category-pill active" data-category="all" role="tab" aria-selected="true">
+              <span data-i18n="catAll">🌟 All Products</span>
+            </button>
+            <button type="button" class="shop-category-pill" data-category="seed_treatment" role="tab" aria-selected="false">
+              <span data-i18n="catSeedTreatment">🌱 Seed Treatment</span>
+            </button>
+            <button type="button" class="shop-category-pill" data-category="growth_nutrition" role="tab" aria-selected="false">
+              <span data-i18n="catGrowthNutrition">🌿 Crop Growth & Nutrition</span>
+            </button>
+            <button type="button" class="shop-category-pill" data-category="pest_control" role="tab" aria-selected="false">
+              <span data-i18n="catPestControl">🐛 Pest Control</span>
+            </button>
+            <button type="button" class="shop-category-pill" data-category="disease_management" role="tab" aria-selected="false">
+              <span data-i18n="catDiseaseManagement">🍃 Disease Management</span>
+            </button>
+            <button type="button" class="shop-category-pill" data-category="tonics_supplements" role="tab" aria-selected="false">
+              <span data-i18n="catTonicsSupplements">💧 Tonics & Supplements</span>
+            </button>
+          </div>
+
+          <!-- Filter Summary & Results Counter -->
+          <div class="shop-status-summary-bar">
+            <div id="shopResultsCountTag" class="shop-count-tag">
+              <span data-i18n="shopShowingCount">Showing products</span>: <strong id="shopCountNum">15</strong>
+            </div>
+            <div id="shopActiveFilterBadge" class="shop-active-filter-badge" style="display:none;"></div>
+          </div>
+
+          <!-- Dynamic Products Grid -->
+          <div id="shopProductsGrid" class="shop-products-grid">
+            <!-- Rendered dynamically by CropApp.renderShopProducts() -->
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Scanning Modal with Laser Animation -->
+  <div id="scanOverlayModal" class="scan-overlay-modal" role="dialog" aria-modal="true" aria-label="Analyzing image">
+    <div class="scan-modal-card">
+      <div class="scanner-animation-target">
+        <span>🌿</span>
+        <div class="laser-scan-line"></div>
+      </div>
+      <h3 style="font-size: 1.3rem; font-weight: 800; color: var(--primary);" data-i18n="analyzingImage">Analyzing crop visual features...</h3>
+      <div class="scan-progress-bar-container">
+        <div id="scanProgressBar" class="scan-progress-bar-fill"></div>
+      </div>
+      <div id="scanProgressStatus" class="scan-status-text" data-i18n="identifyingSpecies">Verifying crop species & growth stage...</div>
+    </div>
+  </div>
+
+  <!-- EMAIL PRESCRIPTION NOTIFICATION MODAL -->
+  <div id="emailNotificationModal" class="email-modal-overlay" role="dialog" aria-modal="true" aria-label="Email Notification Card">
+    <div class="email-modal-card">
+      <div class="email-card-header">
+        <h3 style="font-size: 1.15rem; font-weight: 800;" data-i18n="emailModalTitle">Farmer Digital Email Advisory Report</h3>
+        <button type="button" id="closeEmailModalBtn" class="modal-close-btn">✖</button>
+      </div>
+      <div class="email-card-body">
+        
+        <div class="email-recipient-row">
+          <span>✉️ <strong>To:</strong></span>
+          <input type="email" id="emailRecipientInput" class="form-input" style="flex:1;" placeholder="farmer@gmail.com">
+        </div>
+
+        <!-- Preview Card inside Email -->
+        <div class="email-preview-envelope">
+          <div class="envelope-header">
+            <span>🌱 TNAU OFFICIAL PRESCRIPTION SLIP</span>
+            <span id="emailDateTag">Today</span>
+          </div>
+
+          <div style="padding: 16px;">
+            <div class="email-pesticide-preview-box">
+              <img id="emailCropThumb" src="assets/samples/paddy_blast.svg" alt="Crop Image">
+              <div>
+                <h4 id="emailCropTitle" style="font-size: 1.05rem; font-weight: 800; color: var(--primary);">Paddy - Rice Blast</h4>
+                <p id="emailTreatmentName" style="font-size: 0.9rem; font-weight: 700; color: #0284c7;">Beam (Tricyclazole 75% WP)</p>
+                <div style="font-size: 0.95rem; font-weight: 800; color: #b45309; margin-top: 4px;">
+                  💰 <span id="emailRateTag">Rate: ₹190 (Total: ₹190 for 1 Acre)</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="email-calc-summary">
+              <div>💧 <strong>Water:</strong> <span id="emailWaterTag">200 Litres</span></div>
+              <div>🧪 <strong>Dosage:</strong> <span id="emailDosageTag">120 g</span></div>
+              <div>🪣 <strong>Mixing:</strong> <span id="emailMixingTag">0.6 g / Litre (10g / 16L Tank)</span></div>
+            </div>
+
+            <div id="emailNutrientTag" style="font-size: 0.85rem; color: #065f46; font-weight: 700; margin-top: 8px;">
+              🌾 Nutrient: Spray 19:19:19 @ 1 kg/acre for grain filling.
+            </div>
+          </div>
+        </div>
+
+        <div id="emailStatusMsg" class="email-status-banner" style="display:none;"></div>
+
+        <div style="margin-top: 20px; display: flex; gap: 10px;">
+          <button type="button" id="confirmSendEmailBtn" class="btn-primary">
+            <span>✉️</span> <span data-i18n="btnSendNow">Send to Email ID Now</span>
+          </button>
+          <button type="button" id="cancelEmailModalBtn" class="btn-secondary" style="width: auto;">
+            <span data-i18n="btnCloseModal">Close</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- PRODUCT DETAIL & USAGE MODAL -->
+  <div id="productDetailModal" class="product-modal-overlay" role="dialog" aria-modal="true" aria-label="Product Detailed Information" style="display:none;">
+    <div class="product-modal-card">
+      <div class="product-modal-header">
+        <div>
+          <span id="modalProductCategoryTag" class="product-category-badge">Category</span>
+          <h3 id="modalProductName" class="product-modal-title">Product Name</h3>
+        </div>
+        <button type="button" id="closeProductModalBtn" class="modal-close-btn" aria-label="Close Product Details">✖</button>
+      </div>
+
+      <div class="product-modal-body">
+        
+        <!-- Commercial Brands & Technical Name -->
+        <div class="modal-info-section">
+          <strong data-i18n="modalBrandAndTechnical">Active Chemical & Verified Brands:</strong>
+          <div id="modalProductBrands" class="modal-highlight-box"></div>
+        </div>
+
+        <!-- Suitable Crops & Problems Tags -->
+        <div class="modal-info-section">
+          <strong data-i18n="cardSuitableFor">Suitable For:</strong>
+          <p id="modalSuitableFor" class="modal-text"></p>
+        </div>
+
+        <!-- Main Use Description (English) -->
+        <div class="modal-info-section">
+          <strong data-i18n="cardMainUse">What it is used for:</strong>
+          <p id="modalMainUse" class="modal-text"></p>
+        </div>
+
+        <!-- Easy Tamil Explanation Highlight Box -->
+        <div class="modal-tamil-explanation-box">
+          <div class="tamil-box-header">
+            <span>🗣️</span> <strong data-i18n="cardTamilExplanation">தமிழ் எளிய விளக்கம்:</strong>
+          </div>
+          <p id="modalTamilExplanation" class="modal-tamil-text"></p>
+        </div>
+
+        <!-- Crop Stage & Dosage Guidelines Grid -->
+        <div class="modal-spec-grid">
+          <div class="modal-spec-item">
+            <span class="spec-icon">🌱</span>
+            <div>
+              <small data-i18n="cardCropStage">Recommended Crop Stage</small>
+              <strong id="modalCropStage">-</strong>
+            </div>
+          </div>
+          <div class="modal-spec-item">
+            <span class="spec-icon">🧪</span>
+            <div>
+              <small data-i18n="cardDosage">Standard Label Dosage</small>
+              <strong id="modalDosageGuideline">-</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- Application Method & 16L Sprayer Tank Calculation -->
+        <div class="modal-info-section">
+          <strong data-i18n="modalHowToApply">Application Method & Tank Mixing:</strong>
+          <p id="modalHowToUse" class="modal-text"></p>
+        </div>
+
+        <!-- Safety & PPE Notice -->
+        <div class="modal-safety-box">
+          <div class="safety-box-header">
+            <span>🛡️</span> <strong data-i18n="modalSafetyStorage">Safety & Precaution Guidelines:</strong>
+          </div>
+          <p id="modalSafetyText" class="safety-box-text"></p>
+        </div>
+
+        <!-- Pack Size & Approx Price -->
+        <div class="modal-price-row">
+          <div>
+            <small data-i18n="modalPackPrice">Package Size & Approx Rate:</small>
+            <div id="modalPackPriceText" class="modal-price-text"></div>
+          </div>
+        </div>
+
+        <!-- Official Standard Notice -->
+        <div class="modal-official-notice">
+          <span>📜</span> <span data-i18n="modalLabelStandardNotice">Always read and strictly follow the container label instructions. For exact field dosage, consult the Kisan Helpline or local Agricultural Extension Officer.</span>
+        </div>
+
+        <!-- Modal Actions -->
+        <div class="modal-actions-row">
+          <a href="tel:18001801551" class="btn-primary" style="text-decoration:none; display:inline-flex; align-items:center; justify-content:center; gap:8px;">
+            <span>📞</span> <span data-i18n="btnAskExpert">Ask Kisan Expert</span>
+          </a>
+          <button type="button" id="closeProductModalBottomBtn" class="btn-secondary" style="width:auto;">
+            <span data-i18n="modalCloseBtn">Close Guide</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toastContainer" class="toast-container" aria-live="polite"></div>
+
+  <!-- Floating Instant WhatsApp Speed-Dial FAB -->
+  <a id="floatingWhatsAppBtn" href="https://api.whatsapp.com/send?text=🌱%20Smart%20Agriculture%20Crop%20Scanner%20Advisory" target="_blank" class="floating-help-btn" aria-label="Quick WhatsApp Share & Agri Help">
+    <span>💬</span>
+  </a>
+
+  <!-- Application Footer -->
+  <footer class="app-footer">
+    <div class="container footer-content">
+      <p data-i18n="footerDisclaim">
+        Agricultural recommendations strictly follow Tamil Nadu Agricultural University (TNAU) and ICAR agronomic standards. Always wear protective gear when handling chemicals.
+      </p>
+      <div data-i18n="footerCopyright">
+        © 2026 Smart Agriculture Crop Scanner. Built for Farmers.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Core Scripts -->
+  <script src="js/cropData.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/scanner.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

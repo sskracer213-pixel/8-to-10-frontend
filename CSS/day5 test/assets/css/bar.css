@@ -1,0 +1,50 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body{
+    font-family: Arial, sans-serif;
+}
+
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: navy;
+    padding: 15px 30px;
+}
+
+
+.logo h2{
+    color: white;
+}
+
+
+.menu{
+    display: flex;
+    list-style: none;
+}
+
+.menu li{
+    margin-left: 25px;
+}
+
+
+.menu li a{
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    padding: 8px 12px;
+}
+
+
+.menu li a:hover{
+    background-color: white;
+    color: navy;
+    border-radius: 5px;
+}

@@ -1,0 +1,34 @@
+ 
+ <h1> Rest & Spread Paramete </h1>
+
+ <script>
+
+// rest 
+//  which collect all the value in single array
+//  which works in  function parameter
+// result in array
+
+function total(...numbers) {
+    let sum = 0;
+
+    for (let number of numbers) {
+        sum += number;
+    }
+
+    return sum;
+}
+
+console.log(total(10, 20, 30, 40));
+  
+
+// spread
+// which expand the all the values
+// mostly all values  used in array/object
+
+const numbers = [10, 20, 30];
+
+const newNumbers = [5, ...numbers, 40]; 
+
+console.log(newNumbers);
+
+ </script>

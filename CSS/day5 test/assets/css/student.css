@@ -1,0 +1,69 @@
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+
+body{
+    background:#f4f4f4;
+}
+
+.header{
+    background:#1e3a8a;
+    color:white;
+    padding:20px;
+    display:flex;              
+    justify-content:space-between;
+    align-items:center;
+}
+
+
+.header a{
+    color:white;
+    text-decoration:none;
+    margin-left:20px;
+    font-weight:bold;
+}
+
+.header a:hover{
+    color:yellow;
+}
+
+
+#student,
+#subjects,
+#attendance{
+    margin:20px;
+}
+
+
+h2{
+    display:block;
+    background:#2563eb;
+    color:white;
+    padding:10px;
+    margin-bottom:10px;
+}
+
+
+.card{
+    background:white;
+    width:500px;
+    padding:20px;
+    border:2px solid #333;
+    margin-top:10px;
+    border-radius:10px;
+}
+
+
+.card p,
+.card li{
+    margin:10px 0;
+}
+
+ul{
+    padding-left:20px;
+}

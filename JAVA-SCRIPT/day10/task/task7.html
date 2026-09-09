@@ -1,0 +1,44 @@
+ <h1> Promise that resolves</h1>
+
+ <script>
+
+
+function loadData() {
+
+    return new Promise((resolve) => {
+
+        setTimeout(() => {
+
+            resolve("Data Loaded");
+
+        }, 2000);
+
+    });
+}
+
+loadData().then((data) => {
+    console.log(data);
+});
+
+
+// async/await
+
+
+function loadData() {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve("Data Loaded");
+        }, 2000);
+    });
+}
+
+async function getData() {
+    const data = await loadData();
+    console.log(data);
+}
+
+getData();
+
+
+
+ </script>

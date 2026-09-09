@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" width="100%" height="100%">
+  <defs>
+    <linearGradient id="gnHealthyBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f1f8e9" />
+      <stop offset="100%" stop-color="#c8e6c9" />
+    </linearGradient>
+    <linearGradient id="lushLeaf" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#81c784" />
+      <stop offset="60%" stop-color="#388e3c" />
+      <stop offset="100%" stop-color="#1b5e20" />
+    </linearGradient>
+    <linearGradient id="flowerPetal" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffee58" />
+      <stop offset="100%" stop-color="#fbc02d" />
+    </linearGradient>
+  </defs>
+
+  <rect width="600" height="450" fill="url(#gnHealthyBg)" />
+
+  <!-- Soil Layer -->
+  <path d="M0,380 Q300,360 600,380 L600,450 L0,450 Z" fill="#6d4c41"/>
+  <path d="M0,395 Q300,380 600,395 L600,450 L0,450 Z" fill="#4e342e"/>
+
+  <!-- Main Groundnut Branch Stem -->
+  <path d="M300,390 C290,280 270,200 240,140" stroke="#558b2f" stroke-width="8" fill="none" stroke-linecap="round"/>
+  <path d="M280,260 C320,230 380,200 420,160" stroke="#558b2f" stroke-width="6" fill="none" stroke-linecap="round"/>
+
+  <!-- Healthy Pegs (Gynophores) extending downwards into soil -->
+  <path d="M270,290 C265,330 255,370 250,410" stroke="#c0ca33" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <path d="M295,300 C300,340 310,375 320,415" stroke="#c0ca33" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <!-- Underground developing peanut pods -->
+  <g transform="translate(250, 420) rotate(-15)">
+    <path d="M-15,0 C-15,-8 0,-6 10,-4 C20,-2 25,-8 35,0 C25,8 20,4 10,4 C0,4 -15,8 -15,0 Z" fill="#d7ccc8" stroke="#8d6e63" stroke-width="1.5"/>
+  </g>
+  <g transform="translate(320, 425) rotate(20)">
+    <path d="M-12,0 C-12,-7 0,-5 8,-3 C16,-1 20,-7 30,0 C20,7 16,3 8,3 C0,3 -12,7 -12,0 Z" fill="#d7ccc8" stroke="#8d6e63" stroke-width="1.5"/>
+  </g>
+
+  <!-- Lush Quadrifoliate Leaflets -->
+  <g transform="translate(180, 110) rotate(-35)">
+    <ellipse cx="0" cy="0" rx="65" ry="38" fill="url(#lushLeaf)"/>
+    <path d="M-65,0 L65,0" stroke="#aed581" stroke-width="1.5"/>
+  </g>
+  <g transform="translate(290, 100) rotate(30)">
+    <ellipse cx="0" cy="0" rx="70" ry="42" fill="url(#lushLeaf)"/>
+    <path d="M-70,0 L70,0" stroke="#aed581" stroke-width="1.5"/>
+  </g>
+  <g transform="translate(150, 190) rotate(-60)">
+    <ellipse cx="0" cy="0" rx="60" ry="36" fill="url(#lushLeaf)"/>
+    <path d="M-60,0 L60,0" stroke="#aed581" stroke-width="1.5"/>
+  </g>
+  <g transform="translate(330, 180) rotate(45)">
+    <ellipse cx="0" cy="0" rx="64" ry="38" fill="url(#lushLeaf)"/>
+    <path d="M-64,0 L64,0" stroke="#aed581" stroke-width="1.5"/>
+  </g>
+
+  <!-- Bright Yellow Groundnut Pea-like Flowers -->
+  <g transform="translate(265, 270) scale(0.9)">
+    <path d="M0,0 C-15,-20 0,-30 0,-30 C0,-30 15,-20 0,0 Z" fill="url(#flowerPetal)" stroke="#f57f17" stroke-width="1"/>
+    <ellipse cx="-6" cy="-8" rx="8" ry="5" fill="#fbc02d" transform="rotate(-30 -6 -8)"/>
+    <ellipse cx="6" cy="-8" rx="8" ry="5" fill="#fbc02d" transform="rotate(30 6 -8)"/>
+    <ellipse cx="0" cy="-5" rx="5" ry="3" fill="#ff6f00"/>
+  </g>
+
+  <g transform="translate(300, 240) scale(0.75)">
+    <path d="M0,0 C-15,-20 0,-30 0,-30 C0,-30 15,-20 0,0 Z" fill="url(#flowerPetal)" stroke="#f57f17" stroke-width="1"/>
+    <ellipse cx="-6" cy="-8" rx="8" ry="5" fill="#fbc02d" transform="rotate(-30 -6 -8)"/>
+    <ellipse cx="6" cy="-8" rx="8" ry="5" fill="#fbc02d" transform="rotate(30 6 -8)"/>
+  </g>
+
+  <!-- Health Badge Overlay -->
+  <rect x="20" y="20" width="320" height="42" rx="8" fill="#2e7d32" fill-opacity="0.9" />
+  <text x="35" y="47" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#ffffff">🥜 Groundnut: Healthy (Pegging Stage)</text>
+</svg>

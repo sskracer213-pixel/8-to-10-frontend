@@ -1,0 +1,1704 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DevGalaxy - 60 Days Coding Journey</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts Preconnect & Stylesheets -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap">
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Poppins", sans-serif;
+            background: #030712;
+            color: white;
+            overflow-x: hidden;
+        }
+
+
+        /* =========================
+           GALAXY BACKGROUND
+        ========================== */
+
+        .galaxy {
+            position: fixed;
+            inset: 0;
+            z-index: -5;
+            background:
+                radial-gradient(
+                    circle at 50% 50%,
+                    #172554 0%,
+                    #0f172a 30%,
+                    #030712 70%
+                );
+        }
+
+        .stars {
+            position: fixed;
+            inset: 0;
+            z-index: -4;
+            background-image:
+                radial-gradient(
+                    white 1px,
+                    transparent 1px
+                ),
+                radial-gradient(
+                    #38bdf8 1px,
+                    transparent 1px
+                );
+            background-size:
+                90px 90px,
+                150px 150px;
+            background-position:
+                10px 20px,
+                50px 80px;
+            opacity: .35;
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================== */
+
+        .navbar-custom {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(3,7,18,.75);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,.08);
+        }
+
+        .logo {
+            font-family: "Orbitron";
+            letter-spacing: 3px;
+        }
+
+
+        /* =========================
+           HERO
+        ========================== */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 20px 70px;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 950px;
+        }
+
+        .mini-title {
+            color: #38bdf8;
+            font-family: "Orbitron";
+            letter-spacing: 6px;
+            font-size: 13px;
+        }
+
+        .main-title {
+            font-family: "Orbitron";
+            font-size: clamp(45px, 8vw, 95px);
+            font-weight: 800;
+            line-height: 1;
+            margin-top: 25px;
+            background:
+                linear-gradient(
+                    90deg,
+                    #22d3ee,
+                    #60a5fa,
+                    #a78bfa,
+                    #f472b6,
+                    #22d3ee
+                );
+            background-size: 300%;
+            -webkit-background-clip: text;
+            color: transparent;
+            animation: gradient 7s linear infinite;
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0%;
+            }
+            100% {
+                background-position: 300%;
+            }
+        }
+
+        .hero-text {
+            color: #94a3b8;
+            max-width: 750px;
+            margin: 30px auto;
+            line-height: 1.9;
+        }
+
+
+        /* =========================
+           CORE
+        ========================== */
+
+        .core {
+            width: 180px;
+            height: 180px;
+            margin: 50px auto;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background:
+                radial-gradient(
+                    circle,
+                    #38bdf8,
+                    #2563eb 35%,
+                    #172554 60%,
+                    #020617 70%
+                );
+            border: 2px solid #38bdf8;
+            box-shadow:
+                0 0 30px #0ea5e9,
+                0 0 80px rgba(37,99,235,.7),
+                inset 0 0 30px #60a5fa;
+            animation: pulse 3s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.08);
+            }
+        }
+
+        .core span {
+            font-family: "Orbitron";
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+
+        /* =========================
+           SECTION
+        ========================== */
+
+        .tech-section {
+            padding: 100px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-family: "Orbitron";
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #64748b;
+            margin-bottom: 70px;
+        }
+
+
+        /* =========================
+           TECHNOLOGY CARD
+        ========================== */
+
+        .tech-card {
+            position: relative;
+            min-height: 500px;
+            padding: 35px;
+            border-radius: 30px;
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(15,23,42,.95),
+                    rgba(15,23,42,.55)
+                );
+            border: 1px solid rgba(255,255,255,.1);
+            overflow: hidden;
+            transition: .5s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .tech-card::before {
+            content: "";
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            top: -90px;
+            right: -90px;
+            background: var(--color);
+            filter: blur(70px);
+            opacity: .35;
+        }
+
+        .tech-card:hover {
+            transform: translateY(-12px);
+            border-color: var(--color);
+            box-shadow:
+                0 20px 60px rgba(0,0,0,.5),
+                0 0 30px var(--glow);
+        }
+
+
+        /* =========================
+           ICON & HEADINGS
+        ========================== */
+
+        .tech-icon {
+            width: 75px;
+            height: 75px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 35px;
+            background: var(--bg);
+            border: 1px solid var(--color);
+            box-shadow: 0 0 25px var(--glow);
+        }
+
+        .tech-name {
+            font-family: "Orbitron";
+            font-size: 25px;
+            margin-top: 25px;
+            color: var(--color);
+        }
+
+        .tech-description {
+            color: #94a3b8;
+            font-size: 14px;
+            line-height: 1.8;
+            margin-top: 12px;
+        }
+
+
+        /* =========================
+           DAY GRID
+        ========================== */
+
+        .days {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            margin-top: 25px;
+        }
+
+        .day {
+            border: 1px solid #334155;
+            background: rgba(15,23,42,.8);
+            color: #cbd5e1;
+            border-radius: 12px;
+            padding: 10px 5px;
+            font-size: 11px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: .3s;
+            text-align: center;
+        }
+
+        .day:hover {
+            background: var(--color);
+            color: #020617;
+            border-color: var(--color);
+            box-shadow: 0 0 15px var(--glow);
+            transform: translateY(-3px);
+        }
+
+
+        /* =========================
+           PROGRESS
+        ========================== */
+
+        .progress-box {
+            max-width: 1000px;
+            margin: 100px auto 0;
+            padding: 45px;
+            border-radius: 30px;
+            background: rgba(15,23,42,.75);
+            border: 1px solid rgba(56,189,248,.2);
+            backdrop-filter: blur(15px);
+        }
+
+        .progress-line {
+            height: 12px;
+            background: #1e293b;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+
+        .progress-fill {
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+            background:
+                linear-gradient(
+                    90deg,
+                    #06b6d4,
+                    #3b82f6,
+                    #8b5cf6,
+                    #ec4899
+                );
+            box-shadow: 0 0 20px #38bdf8;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        footer {
+            border-top: 1px solid rgba(255,255,255,.08);
+            padding: 40px;
+            text-align: center;
+            color: #64748b;
+        }
+
+
+        /* =========================
+           POPUP / MODALS
+        ========================== */
+
+        .popup {
+            position: fixed;
+            inset: 0;
+            background: rgba(2,6,23,.85);
+            backdrop-filter: blur(10px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+            padding: 20px;
+        }
+
+        .popup.active {
+            display: flex;
+        }
+
+        .popup-box {
+            width: min(650px, 95%);
+            max-height: 85vh;
+            overflow-y: auto;
+            padding: 40px;
+            border-radius: 30px;
+            background:
+                linear-gradient(
+                    145deg,
+                    #0f172a,
+                    #020617
+                );
+            border: 1px solid #38bdf8;
+            box-shadow: 0 0 50px rgba(14,165,233,.3);
+        }
+
+        .popup-box::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .popup-box::-webkit-scrollbar-thumb {
+            background: rgba(56,189,248,.3);
+            border-radius: 10px;
+        }
+
+        .task-btn {
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            color: #e2e8f0;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .task-btn:hover {
+            background: #0ea5e9;
+            border-color: #38bdf8;
+            color: #020617;
+            transform: translateX(4px);
+            box-shadow: 0 0 20px rgba(14, 165, 233, 0.4);
+        }
+
+        .task-btn .task-badge {
+            background: rgba(2, 6, 23, 0.6);
+            color: #38bdf8;
+            font-size: 11px;
+            padding: 4px 10px;
+            border-radius: 20px;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .task-btn:hover .task-badge {
+            background: #020617;
+            color: #ffffff;
+        }
+
+
+        /* =========================
+           MOBILE RESPONSIVENESS
+        ========================== */
+
+        @media(max-width:768px) {
+            .main-title {
+                font-size: 48px;
+            }
+
+            .section-title {
+                font-size: 30px;
+            }
+
+            .core {
+                width: 140px;
+                height: 140px;
+            }
+
+            .tech-card {
+                min-height: auto;
+            }
+
+            .days {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .popup-box {
+                padding: 25px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <div class="galaxy"></div>
+    <div class="stars"></div>
+
+
+    <!-- =========================
+         NAVBAR
+    ========================== -->
+
+    <nav class="navbar-custom">
+        <div class="container-fluid px-4 py-3">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="logo text-info fw-bold">
+                    DEV<span class="text-white">GALAXY</span>
+                </div>
+                <div class="text-success small fw-semibold">
+                    ● SYSTEM ONLINE
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+
+    <!-- =========================
+         HERO SECTION
+    ========================== -->
+
+    <section class="hero">
+        <div class="hero-content">
+
+            <div class="mini-title">
+                WELCOME TO THE DEVELOPER UNIVERSE
+            </div>
+
+            <h1 class="main-title">
+                CODE<br>GALAXY
+            </h1>
+
+            <p class="hero-text" id="heroDescription">
+                Master powerful web technologies through an immersive, structured coding journey.
+                Learn HTML, CSS, Bootstrap, Tailwind CSS, JavaScript, and React with daily hands-on missions.
+            </p>
+
+            <div class="core">
+                <span id="heroCoreText">
+                    60<br>
+                    DAYS<br>
+                    CODE
+                </span>
+            </div>
+
+            <button
+                onclick="startJourney()"
+                class="btn btn-info px-5 py-3 rounded-pill fw-bold text-dark shadow-lg">
+                🚀 START JOURNEY
+            </button>
+
+        </div>
+    </section>
+
+
+
+    <!-- =========================
+         TECHNOLOGIES SECTION
+    ========================== -->
+
+    <section class="tech-section">
+        <div class="container">
+
+            <h2 class="section-title">
+                YOUR CODING UNIVERSE
+            </h2>
+
+            <p class="section-subtitle" id="techSubtitle">
+                Loading coding missions...
+            </p>
+
+            <!-- DYNAMIC TECHNOLOGY CARDS CONTAINER -->
+            <div id="techCardsContainer" class="row g-4">
+                <!-- Cards and Days are dynamically rendered from courseData -->
+            </div>
+
+
+            <!-- =========================
+                 PROGRESS BOX
+            ========================== -->
+
+            <div class="progress-box">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <small class="text-secondary tracking-widest uppercase">
+                            COMPLETE CODING JOURNEY
+                        </small>
+                        <h3 class="font-monospace mt-2 mb-0" id="progressHeading">
+                            60 DAYS • 300 MISSIONS
+                        </h3>
+                    </div>
+
+                    <div class="text-info fs-2 fw-bold font-monospace" id="progressCount">
+                        60
+                    </div>
+                </div>
+
+                <div class="progress-line">
+                    <div class="progress-fill"></div>
+                </div>
+
+                <p class="text-secondary mt-4 mb-0" id="progressBreakdown">
+                    Loading breakdown...
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+        <div class="logo fs-5 mb-2">
+            DEVGALAXY
+        </div>
+
+        <p class="mt-2 mb-2 text-slate-400 small" id="footerTechList">
+            HTML • CSS • BOOTSTRAP • TAILWIND • JAVASCRIPT • REACT
+        </p>
+
+        <small class="text-slate-500" id="footerTagline">
+            60 DAYS • 300 MISSIONS • ONE DEVELOPER 🚀
+        </small>
+    </footer>
+
+
+
+
+    <!-- =========================
+         TASK MENU POPUP
+    ========================== -->
+
+    <div id="taskMenu" class="popup">
+        <div class="popup-box">
+            <div class="d-flex justify-content-between align-items-center border-b border-slate-700 pb-3">
+                <h3 id="taskMenuTitle" class="font-monospace text-info fs-4 m-0"></h3>
+                <button onclick="closeTaskMenu()" class="btn text-white fs-3 leading-none p-0 border-0">×</button>
+            </div>
+
+            <p class="text-secondary mt-3 mb-3 small">
+                Select a mission to launch the code file:
+            </p>
+
+            <div id="taskButtons" class="d-grid gap-2">
+                <!-- Task buttons are dynamically generated from courseData -->
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- =========================
+         GENERAL POPUP
+    ========================== -->
+
+    <div id="popup" class="popup">
+        <div class="popup-box text-center">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h3 id="popupTitle" class="font-monospace text-info fs-4 m-0"></h3>
+                <button onclick="closePopup()" class="btn text-white fs-3 leading-none p-0 border-0">×</button>
+            </div>
+
+            <p id="popupText" class="text-secondary my-4"></p>
+
+            <button
+                onclick="closePopup()"
+                class="btn btn-info rounded-pill px-5 py-2 fw-bold text-dark">
+                MISSION ACCEPTED ✓
+            </button>
+        </div>
+    </div>
+
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT LOGIC
+    ====================================================== -->
+
+    <script>
+
+        /* =====================================================
+           COURSE DATA — EDIT ONLY THIS SECTION
+           Add / Remove Technologies, Days and Tasks Here
+        ===================================================== */
+
+        /**
+         * 💡 HOW TO EDIT:
+         * 
+         * 1. TO ADD A TASK:
+         *    Find the technology and day, then add an object to the `tasks` array:
+         *    {
+         *        id: 6,
+         *        title: "TASK 06",
+         *        name: "My New Task Name",
+         *        file: "React/day1/task6.html"
+         *    }
+         * 
+         * 2. TO REMOVE A TASK:
+         *    Simply delete the task object `{ ... }` from the `tasks` array.
+         * 
+         * 3. TO CHANGE A TASK NAME OR FILE PATH:
+         *    Change `name: "New Name"` or `file: "path/to/file.html"`.
+         * 
+         * 4. TO ADD A NEW DAY:
+         *    Add a new day property inside the technology's `days` object:
+         *    day11: {
+         *        title: "React DAY 11",
+         *        tasks: [ ... ]
+         *    }
+         * 
+         * 5. TO REMOVE A DAY:
+         *    Delete the day key (e.g. `day5: { ... }`).
+         * 
+         * 6. TO ADD A NEW TECHNOLOGY (e.g. Java, Python, Node.js, TypeScript):
+         *    Add a new key to `courseData` with name, icon, description, color, glow, bg, and days.
+         * 
+         * 7. TO REMOVE A TECHNOLOGY:
+         *    Delete or comment out the entire technology key.
+         */
+
+        const courseData = {
+
+            // ===================================================
+            // HTML (10 DAYS — 5 TASKS EACH)
+            // ===================================================
+            HTML: {
+                name: "HTML",
+                icon: "🌐",
+                description: "Build the structure of the web. Learn HTML elements, forms, tables, multimedia, semantic tags and projects.",
+                color: "#f97316",
+                glow: "rgba(249, 115, 22, 0.5)",
+                bg: "rgba(249, 115, 22, 0.12)",
+                days: {
+                    day1: {
+                        title: "HTML DAY 01",
+                        tasks: [
+                            { id: 1, title: "TASK 01", name: "Money", file: "../HTML/day1/index.html" },
+                            { id: 2, title: "TASK 02", name: "Trees", file: "../HTML/day2/index.html" },
+                        ]
+                    },
+                    day2: {
+                        title: "HTML DAY 02",
+                        tasks: [
+                            { id: 1, title: "TASK 01", name: "IMAGES", file: "../HTML/day11/task1.html" },
+                           { id: 2, title: "TASK 02", name: "AUDIO PLAYER", file: "../HTML/day11/task2.html" },
+                           { id: 3, title: "TASK 03", name: "VEDIO", file: "../HTML/day11/task3.html" },
+                           { id: 4, title: "TASK 04", name: "IMAGES", file: "../HTML/day11/task4.html" },
+                        ]
+                    },
+                    day3: {
+                        title: "HTML DAY 03",
+                        tasks: [
+                            { id: 1, title: "TASK 01", name: "Company", file: "../HTML/day3/company.html" },
+                            { id: 2, title: "TASK 02", name: "Profile", file: "../HTML/day3/profile.html" },
+
+                        ]
+                    },
+                    day4: {
+                        title: "HTML DAY 04",
+                        tasks: [
+                            { id: 1, title: "TASK 01", name: "Block level", file: "../HTML/day4/blocklevel.html" },
+                            { id: 2, title: "TASK 02", name: "Formating", file: "../HTML/day4/formating.htmL" },
+                            { id: 3, title: "TASK 03", name: "Demo", file: "../HTML/day4/html demo.html" },
+                            { id: 4, title: "TASK 04", name: "Inline", file: "../HTML/day4/inline.html" },
+                            { id: 5, title: "TASK 05", name: "Intractive", file: "../HTML/day4/intractive.html" }
+                        ]
+                    },
+                    day5: {
+                        title: "HTML DAY 05",
+                        tasks: [
+                            { id: 1, title: "TASK 01", name: "WIKIPEDIA", file: "../HTML/day5/task1.html" },
+                            { id: 2, title: "TASK 02", name: "WIKIPEDIA", file: "../HTML/day5/task2.html" },
+                            { id: 3, title: "TASK 03", name: "WIKIPEDIA", file: "../HTML/day5/task3.html" },
+                            { id: 4, title: "TASK 04", name: "WIKIPEDIA", file: "../HTML/day5/task4.html" },
+                            { id: 5, title: "TASK 05", name: "WIKIPEDIA", file: "../HTML/day5/task5.html" }
+                        ]
+                    },
+                    day6: {
+                        title: "HTML DAY 06",
+                        tasks: [
+                            { id: 1, title: "TASK 01", name: "Useful Websites", file: "../HTML/day6/task1.html" },
+                            { id: 2, title: "TASK 02", name: "Open Links in New Tab", file: "../HTML/day6/task2.html" },
+                            { id: 3, title: "TASK 03", name: "Student Profile", file: "../HTML/day6/task3.html" },
+                            { id: 4, title: "TASK 04", name: "Image Gallery", file: "../HTML/day6/task4.html" },
+                            { id: 5, title: "TASK 05", name: "surya group of institutions (college)", file: "../HTML/day6/task5.html" }
+                        ]
+                    },
+                    day7: {
+                        title: "HTML DAY 07",
+                        tasks: [
+                            { id: 1, title: "TASK 01", name: "Top IT Companies in India", file: "../HTML/day7/task1.html" },
+                            { id: 2, title: "TASK 02", name: "Indian Constitution", file: "../HTML/day7/task2.html" },
+
+                        ]
+                    },
+                    day8: {
+                        title: "HTML DAY 08",
+                        tasks: [
+                            { id: 1, title: "TASK 01", name: "Contact Form", file: "../HTML/day8/Contact.html" },
+                            { id: 2, title: "TASK 02", name: "Feedback Form", file: "../HTML/day8/feedback.html" },
+                            { id: 3, title: "TASK 03", name: "Job Application Form", file: "../HTML/day8/job.html" },
+                            { id: 4, title: "TASK 04", name: "Login Form", file: "../HTML/day8/login.html" },
+                            { id: 5, title: "TASK 05", name: "Registration Form", file: "../HTML/day8/register.html" }
+                        ]
+                    },
+                    day9: {
+                        title: "HTML DAY 09",
+                        tasks: [
+                            { id: 1, title: "TASK 01", name: "SLA Institute", file: "../HTML/day9/task1.html" },
+                            { id: 2, title: "TASK 02", name: "ABC Software Company", file: "../HTML/day9/task2.html" },
+                            { id: 3, title: "TASK 03", name: "Apollo Hospital", file: "../HTML/day9/task3.html" },
+                            { id: 4, title: "TASK 04", name: "Engineering College Admission Portal", file: "../HTML/day9/task4.html" },
+                            { id: 5, title: "TASK 05", name: "Electronics Shop Inventory System", file: "../HTML/day9/task5.html" }
+                        ]
+                    },
+                    day10: {
+                        title: "HTML DAY 10",
+                        tasks: [
+                            { id: 1, title: "TASK 01", name: "WIKIPEDIA", file: "../HTML/day10/task1.html" },
+                            { id: 2, title: "TASK 02", name: "ZOHO", file: "../HTML/day10/task2.html" },
+                            { id: 3, title: "TASK 03", name: " SANTHOSH KUMAR.S", file: "../HTML/day10/task3.html" },
+                            { id: 4, title: "TASK 04", name: "SURYA ENGINEERING COLLEGE", file: "../HTML/day10/task4.html" },
+                            { id: 5, title: "TASK 05", name: "SGS Travel Agency", file: "../HTML/day10/task5.html" }
+                        ]
+                    }
+                }
+            },
+                 
+            // ===================================================
+            // CSS (10 DAYS — 5 TASKS EACH)
+            // ===================================================
+            CSS: {
+                name: "CSS",
+                icon: "🎨",
+                description: "Transform HTML into beautiful interfaces using colors, typography, spacing, Flexbox, Grid and animations.",
+                color: "#3b82f6",
+                glow: "rgba(59, 130, 246, 0.5)",
+                bg: "rgba(59, 130, 246, 0.12)",
+                days: {
+                    day1: {
+                        title: "CSS DAY 01",
+                        tasks: [
+                            { id: 1, title: "CHALLENGE TASK 01", name: "Five Colored Boxes", file: "../CSS/DAY1/challange.html" },
+                            { id: 2, title: "TASK 02", name: "PERSONAL PROFILE", file: "../CSS/DAY1/task1.html" },
+                            { id: 3, title: "TASK 03", name: "Zoho Corporation", file: "../CSS/DAY1/task2.html" },
+                            { id: 4, title: "TASK 04", name: "Student ID Card", file: "../CSS/DAY1/task3.html" },
+                            { id: 5, title: "TASK 05", name: "Engineering Departments", file: "../CSS/DAY1/task4.html" },
+                            { id: 6, title: "TASK 06", name: "My Favorite Things", file: "../CSS/DAY1/task5.html" }
+                        ]
+                    },
+                    day2: {
+                        title: "CSS DAY 02",
+                        tasks: [
+                            { id: 1, title: "TASK 01", name: "Students profile card", file: "../CSS/day2/task1.html" },
+                            { id: 2, title: "TASK 02", name: "IT Company Details", file: "../CSS/day2/task2.html" },
+                            { id: 3, title: "TASK 03", name: "ENGINEERING COLLEGE DEPARTMENTS", file: "../CSS/day2/task3.html" },
+                            { id: 4, title: "TASK 04", name: "Favorite Movies", file: "../CSS/day2/task4.html" },
+                            { id: 5, title: "TASK 05", name: "Hospital Information", file: "../CSS/day2/task5.html" },
+                            { id: 6, title: "TASK 06", name: "Chennai IT Companies", file: "../CSS/day2/task6.html" }
+                        ]
+                    },
+                    day3: {
+                        title: "CSS DAY 03",
+                        tasks: [
+                            { id: 1, title: "TASK 01", name: "Student profile card", file: "../CSS/day3/task1.html" },
+                            { id: 2, title: "TASK 02", name: "Product card", file: "../CSS/day3/task2.html" },
+                            { id: 3, title: "TASK 03", name: "Employye card", file: "../CSS/day3/task3.html" },
+                            { id: 4, title: "TASK 04", name: "News article box", file: "../CSS/day3/task4.html" },
+                            { id: 5, title: "TASK 05", name: "Simple webpage", file: "../CSS/day3/task5.html" },
+                            { id: 6, title: " CHALLENGE TASK 06", name: "CSS Box Model", file: "../CSS/day3/challange.html" }
+                        ]
+                    },
+                    day4: {
+                        title: "CSS DAY 04",
+                        tasks: [
+                            { id: 1, title: "TASK 01", name: "Inline to block", file: "../CSS/day4/task1.html" },
+                            { id: 2, title: "TASK 02", name: "Flex center", file: "../CSS/day4/task2.html" },
+                            { id: 3, title: "TASK 03", name: "Display and Flex Properties", file: "../CSS/day4/task3.html" },
+                            { id: 4, title: "TASK 04", name: "Display vs visibility", file: "../CSS/day4/task4.html" },
+                            { id: 5, title: "TASK 05", name: "Hide cards", file: "../CSS/day4/task5.html" }
+                        ]
+                    },
+                    day5: {
+                        title: "CSS DAY 05",
+                        tasks: [
+                            { id: 1, title: "TASK 01", name: "Student Dashboard", file: "../CSS/day5 test/task1.html" },
+                            { id: 2, title: "TASK 02", name: "Product Card Layout", file: "../CSS/day5 test/task2.html" },
+                            { id: 3, title: "TASK 03", name: "Responsive navigation bar", file: "../CSS/day5 test/task3.html" },
+                            { id: 4, title: "TASK 04", name: "Employee Cards", file: "../CSS/day5 test/task4.html" },
+                            { id: 5, title: "TASK 05", name: "My Portfolio", file: "../CSS/day5 test/task5.html" },
+                            { id: 6, title: "TASK 06", name: "Flex navbar and card ", file: "../CSS/day5/task5.html" }
+                        ]
+                    },
+                    day6: {
+                        title: "CSS DAY 06",
+                        tasks: [
+                            { id: 1, title: "TASK 01", name: "Customer Support Page", file: "../CSS/day6/task1.html" },
+                            { id: 2, title: "TASK 02", name: "Sticky navigation bar", file: "../CSS/day6/task2.html" },
+                            { id: 3, title: "TASK 03", name: "Shopping Cart Notification", file: "../CSS/day6/task3.html" },
+                            { id: 4, title: "TASK 04", name: "Relative Position Demonstration", file: "../CSS/day6/task4.html" },
+                            { id: 5, title: "TASK 05", name: "Complete Position Comparison", file: "../CSS/day6/task5.html" }
+                        ]
+                    },
+                    day7: {
+                        title: "CSS DAY 07",
+                        tasks: [
+                            { id: 1, title: "TASK 01", name: "Image Gallery", file: "../CSS/day7/task1.html" },
+                            { id: 2, title: "TASK 02", name: "Student Dashboard", file: "../CSS/day7/task2.html" },
+                            { id: 3, title: "TASK 03", name: "Product Grid", file: "../CSS/day7/task3.html" },
+                            { id: 4, title: "TASK 04", name: "Company Services", file: "../CSS/day7/task4.html" },
+                            
+                        ]
+                    },
+                    day8: {
+                        title: "CSS DAY 08",
+                        tasks: [
+                            { id: 1, title: "TASK 01", name: "Button Hover Effect", file: "../CSS/day8/task1.html" },
+                            { id: 2, title: "TASK 02", name: "Student Registration Form", file: "../CSS/day8/task2.html" },
+                            { id: 3, title: "TASK 03", name: "Student List", file: "../CSS/day8/task3.html" },
+                            { id: 4, title: "TASK 04", name: "PSEUDO ELEMENT", file: "../CSS/day8/task4.html" },
+                            { id: 5, title: "TASK 05", name: "Paragraph Styling", file: "../CSS/day8/task5.html" }
+                        ]
+                    },
+                    day9: {
+                        title: "CSS DAY 09",
+                        tasks: [
+                            { id: 1, title: "TASK 01", name: "Button Hover Animation", file: "../CSS/day9/task1.html" },
+                            { id: 2, title: "TASK 02", name: "Image Gallery Zoom Effect", file: "../CSS/day9/task2.html" },
+                            { id: 3, title: "TASK 03", name: "Product Cards", file: "../CSS/day9/task3.html" },
+                            { id: 4, title: "TASK 04", name: "Company Logo Rotation", file: "../CSS/day9/task4.html" },
+                            { id: 5, title: "TASK 05", name: "Student Profile Cards", file: "../CSS/day9/task5.html" }
+                        ]
+                    },
+                    day10: {
+                        title: "CSS DAY 10",
+                        tasks: [
+                            { id: 1, title: "TASK 01", name: "Student Details", file: "../CSS/day10/task1.html" },
+                            { id: 2, title: "TASK 02", name: "Our Products", file: "../CSS/day10/task2.html" },
+                            { id: 3, title: "TASK 03", name: "Our Team", file: "../CSS/day10/task3.html" },
+                            { id: 4, title: "TASK 04", name: "Our Services", file: "../CSS/day10/task4.html" },
+                            { id: 5, title: "TASK 05", name: "My Portfolio", file: "../CSS/day10/task5.html" },
+                            { id: 1, title: "CHALLENGE TASK 01", name: "E-commerece home page", file: "../CSS/day10/challange.html" }
+                        ]
+                    },
+                      day11: {
+                        title: "ARTICLE",
+                        tasks: [
+                            { id: 1, title: "TASK 01", name: "HTML & CSS Article", file: "../CSS/article/article.html" },
+                          
+                        ]
+                    }
+
+                }
+
+            },
+
+            // ===================================================
+            // BOOTSTRAP (10 DAYS — 5 TASKS EACH)
+            // ===================================================
+            Bootstrap: {
+                name: "BOOTSTRAP",
+                icon: "🅱️",
+                description: "Build responsive websites quickly using Bootstrap containers, grids, buttons, cards and components.",
+                color: "#8b5cf6",
+                glow: "rgba(139, 92, 246, 0.5)",
+                bg: "rgba(139, 92, 246, 0.12)",
+                days: {
+                    day1: {
+                        title: "Bootstrap DAY 01",
+                        tasks: [
+                            { id: 1, title: "TASK 01", name: "Bootstrap containneer", file: "../BOOTSTRAP/day1/task1.html" },
+                            { id: 2, title: "TASK 02", name: "COLOUM LAYOUT", file: "../BOOTSTRAP/day1/task2.html" },
+                            { id: 3, title: "TASK 03", name: "COLOUMNS", file: "../BOOTSTRAP/day1/task3.html" }
+                        
+                        ]
+                    },
+                    day2: {
+                        title: "Bootstrap DAY 02",
+                        tasks: [
+                            { id: 1, title: "TASK 01", name: "Simple bootstrap navbar", file: "../BOOTSTRAP/day2/task1.html" },
+                            { id: 2, title: "TASK 02", name: "Bootstrap card", file: "../BOOTSTRAP/day2/task2.html" },
+                            { id: 3, title: "TASK 03", name: "Bootstrap image coursal", file: "../BOOTSTRAP/day2/task3.html" },
+                            { id: 4, title: "TASK 04", name: "Bootstrap from", file: "../BOOTSTRAP/day2/task4.html" },
+                            { id: 5, title: "TASK 05", name: "simple Bootstrap", file: "../BOOTSTRAP/day2/task5.html" }
+                        ]
+                    },
+                    
+                }
+            },
+
+            // ===================================================
+            // TAILWIND CSS (10 DAYS — 5 TASKS EACH)
+            // ===================================================
+            Tailwind: {
+                name: "TAILWIND CSS",
+                icon: "🌊",
+                description: "Create modern interfaces using utility classes, responsive breakpoints, gradients, shadows and hover effects.",
+                color: "#06b6d4",
+                glow: "rgba(6, 182, 212, 0.5)",
+                bg: "rgba(6, 182, 212, 0.12)",
+                days: {
+                    day1: {
+                        title: "Tailwind DAY 01",
+                        tasks: [
+                            { id: 1, title: "TASK 01", name: "Welcome to Tailwind CSS", file: "../TAILWIND/day1/task1.html" },
+                            { id: 2, title: "TASK 02", name: "This is a Bootstrap Box", file: "../TAILWIND/day1/task2.html" },
+                            { id: 3, title: "TASK 03", name: "Tailwind box", file: "../TAILWIND/day1/task3.html" },
+                            { id: 4, title: "TASK 04", name: "two box", file: "../TAILWIND/day1/task4.html" },
+                            { id: 5, title: "TASK 05", name: "hover", file: "../TAILWIND/day1/task5.html" }
+                        ]
+                    },
+                    day2: {
+                        title: "Tailwind DAY 02",
+                        tasks: [
+                            { id: 1, title: "TASK 01", name: "Article", file: "../TAILWIND/day2/index.html" },
+
+                        ]
+
+                        
+                    },
+
+                       day3: {
+                        title: "ARTICLE",
+                        tasks: [
+                            { id: 1, title: "TASK 01", name: "ARTICLE", file: "../TAILWIND/article/article.html" },
+
+                        ]
+
+                        
+                    },
+                }
+            },
+
+            // ===================================================
+            // JAVASCRIPT (10 DAYS — 5 TASKS EACH)
+            // ===================================================
+            JavaScript: {
+                name: "JAVASCRIPT",
+                icon: "⚡",
+                description: "Bring your website to life. Learn variables, data types, operators, conditions, loops, functions, DOM, events and interactive projects.",
+                color: "#facc15",
+                glow: "rgba(250, 204, 21, 0.5)",
+                bg: "rgba(250, 204, 21, 0.12)",
+                days: {
+                    day1: {
+                        title: "JavaScript DAY 01",
+                        tasks: [
+                            { id: 1, title: "TASK 01", name: "CONST", file: "../JAVA-SCRIPT/day1/const.js" },
+                            { id: 2, title: "TASK 02", name: "LET", file: "../JAVA-SCRIPT/day1/let.js" },
+                            { id: 3, title: "TASK 03", name: "VAR", file: "../JAVA-SCRIPT/day1/var.js" },
+
+                        ]
+                    },
+                    day2: {
+                        title: "JavaScript DAY 02",
+                        tasks: [
+                            { id: 1, title: "TASK 01", name: "student deatil", file: "../JAVA-SCRIPT/day2/task1.html" },
+                            { id: 2, title: "TASK 02", name: "DATA TYPES", file: "../JAVA-SCRIPT/day2/task2.html" },
+                            { id: 3, title: "TASK 03", name: "Variable Reassignment", file: "../JAVA-SCRIPT/day2/task3.html" },
+                            { id: 4, title: "TASK 04", name: "const Practice", file: "../JAVA-SCRIPT/day2/task4.html" },
+
+                        ]
+                    },
+                    day3: {
+                        title: "JavaScript DAY 03",
+                        tasks: [
+                            { id: 1, title: "TASK 01", name: "BASIC CALCULATION", file: "../JAVA-SCRIPT/day3/task1.html" },
+                            { id: 2, title: "TASK 02", name: "ASSIGNMENT OPERATORS", file: "../JAVA-SCRIPT/day3/task2.html" },
+                            { id: 3, title: "TASK 03", name: "COMPARISON", file: "../JAVA-SCRIPT/day3/task3.html" },
+                            { id: 4, title: "TASK 04", name: "LOGICAL OPERATORS", file: "../JAVA-SCRIPT/day3/task4.html" },
+                            { id: 5, title: "TASK 05", name: "INCREMENT & DECREMENT", file: "../JAVA-SCRIPT/day3/task5.html" }
+                        ]
+                    },
+                    day4: {
+                        title: "JavaScript DAY 04",
+                        tasks: [
+                            { id: 1, title: "TASK 01", name: "AGE CHECK", file: "../JAVA-SCRIPT/day4/task1.html" },
+                            { id: 2, title: "TASK 02", name: "EVEN OR ODD", file: "../JAVA-SCRIPT/day4/task2 .html" },
+                            { id: 3, title: "TASK 03", name: "MARK GRADE", file: "../JAVA-SCRIPT/day4/task3.html" },
+                            { id: 4, title: "TASK 04", name: "LOGIN CHECK", file: "../JAVA-SCRIPT/day4/task4.html" },
+                            { id: 5, title: "TASK 05", name: "DAY CHECK", file: "../JAVA-SCRIPT/day4/task5.html" }
+                        ]
+                    },
+                    day5: {
+                        title: "JavaScript DAY 05",
+                        tasks: [
+                            { id: 1, title: "TASK 01", name: "PRINT NUMBERS", file: "../JAVA-SCRIPT/day5/task1.html" },
+                            { id: 2, title: "TASK 02", name: "EVEN NUMBERS", file: "../JAVA-SCRIPT/day5/task2.html" },
+                            { id: 3, title: "TASK 03", name: "ODD NUMBERS", file: "../JAVA-SCRIPT/day5/task3.html" },
+                            { id: 4, title: "TASK 04", name: "MULTIPLICATION TABLE", file: "../JAVA-SCRIPT/day5/task4.html" },
+                            { id: 5, title: "TASK 05", name: "SUM OF NUMBERS", file: "../JAVA-SCRIPT/day5/task5.html" },
+                            { id: 6, title: "TASK 06", name: "print the Number", file: "../JAVA-SCRIPT/day5/task6.html" },
+                            { id: 7, title: " PRATICE TASK ", name: "for-loop", file: "../JAVA-SCRIPT/day5-pratice/pratice.html" }
+                        ]
+                    },
+                    day6: {
+                        title: "JavaScript DAY 06",
+                        tasks: [
+                            { id: 1, title: "TASK 01", name: "Print Numbers", file: "../JAVA-SCRIPT/day6/task1.html" },
+                            { id: 2, title: "TASK 02", name: "Even Numbers", file: "../JAVA-SCRIPT/day6/task2.html" },
+                            { id: 3, title: "TASK 03", name: "Odd Numbers", file: "../JAVA-SCRIPT/day6/task3.html" },
+                            { id: 4, title: "TASK 04", name: "sum", file: "../JAVA-SCRIPT/day6/task4.html" },
+                            { id: 5, title: "TASK 05", name: "Even Sum", file: "../JAVA-SCRIPT/day6/task5.html" },
+                            { id: 6, title: "TASK 06", name: "Count", file: "../JAVA-SCRIPT/day6/task6.html" },
+                            { id: 7, title: "TASK 07", name: "Find a Number", file: "../JAVA-SCRIPT/day6/task7.html" },
+                            { id: 8, title: "TASK 08", name: "Reverse Number", file: "../JAVA-SCRIPT/day6/task8.html" },
+                            { id: 9, title: "TASK 09", name: "Reverse String", file: "../JAVA-SCRIPT/day6/task9.html" },
+                            { id: 10, title: "TASK 10", name: "Find Character", file: "../JAVA-SCRIPT/day6/task10.html" }
+                            
+                        ]
+                    },
+                    day7: {
+                        title: "JavaScript DAY 07",
+                        tasks: [
+                            { id: 1, title: "TASK 01", name: "Array Access", file: "../JAVA-SCRIPT/day7/task1.html" },
+                            { id: 2, title: "TASK 02", name: "Object Access", file: "../JAVA-SCRIPT/day7/task2.html" },
+                            { id: 3, title: "TASK 03", name: "Array of Objects", file: "../JAVA-SCRIPT/day7/task3.html" },
+                            { id: 4, title: "TASK 04", name: "Find a Student", file: "../JAVA-SCRIPT/day7/task4.html" },
+                            { id: 5, title: "TASK 05", name: "Salary Filter", file: "../JAVA-SCRIPT/day7/task5.html" },
+                            { id: 6, title: "TASK 06", name: "TYPING WORK", file: "../JAVA-SCRIPT/day7/typing works/array.js" },
+                            { id: 7, title: "TASK 07", name: "TYPING WORK", file: "../JAVA-SCRIPT/day7/typing works/object.js" }
+                        ]
+                    },
+                    day8: {
+                        title: "JavaScript DAY 08",
+                        tasks: [
+                            { id: 1, title: "TASK 01", name: "Array of 5 numbers", file: "../JAVA-SCRIPT/day8/task1.html" },
+                            { id: 2, title: "TASK 02", name: "Array of 5 student names", file: "../JAVA-SCRIPT/day8/task2.html" },
+                            { id: 3, title: "TASK 03", name: "An Array of even numbers", file: "../JAVA-SCRIPT/day8/task3.html" },
+                            { id: 4, title: "TASK 04", name: "Print the names of student", file: "../JAVA-SCRIPT/day8/task4.html" },
+                            { id: 5, title: "TASK 05", name: "Arrow function", file: "../JAVA-SCRIPT/day8/task5.html" },
+                            { id: 6, title: "TASK 06", name: "Arrow function", file: "../JAVA-SCRIPT/day8/task6.html" },
+                            { id: 7, title: "TASK 07", name: "Anonymous Functions", file: "../JAVA-SCRIPT/day8/anonymous functions .js" },
+                            { id: 8, title: "TASK 08", name: "Arrow Function", file: "../JAVA-SCRIPT/day8/arrow function.js" },
+                            { id: 9, title: "TASK 09", name: "Function Declaration", file: "../JAVA-SCRIPT/day8/function declaration.js" }
+                           
+                        ]
+                    },
+                    day9: {
+                        title: "JavaScript DAY 09",
+                        tasks: [
+                            { id: 1, title: "TASK 01", name: "Function + Parameters", file: "../JAVA-SCRIPT/day9/task1.html" },
+                            { id: 2, title: "TASK 02", name: "Function + for Loop", file: "../JAVA-SCRIPT/day9/task2.html" },
+                            { id: 3, title: "TASK 03", name: "Arrow Function", file: "../JAVA-SCRIPT/day9/task3.html" },
+                            { id: 4, title: "TASK 04", name: "Scope", file: "../JAVA-SCRIPT/day9/task4.html" },
+                            { id: 5, title: "TASK 05", name: "Hoisting", file: "../JAVA-SCRIPT/day9/task5.html" }
+                        ]
+                    },
+                    day10: {
+                        title: "JavaScript DAY 10",
+                        tasks: [
+                            { id: 1, title: "TASK 01", name: "var let const", file: "../JAVA-SCRIPT/day10/task/task1.html" },
+                            { id: 2, title: "TASK 02", name: "Implict & Explict", file: "../JAVA-SCRIPT/day10/task/task2.html" },
+                            { id: 3, title: "TASK 03", name: "Array & Object Destructuring", file: "../JAVA -SCRIPT/day10/task/task3.html" },
+                            { id: 4, title: "TASK 04", name: "Rest & Spread Paramete", file: "../JAVA-SCRIPT/day10/task/task4.html" },
+                            { id: 5, title: "TASK 05", name: "function template literal", file: "../JAVA-SCRIPT/day10/task/task5.html" },
+                            { id: 6, title: "TASK 06", name: "student objects and display", file: "../JAVA-SCRIPT/day10/task/task6.html" },
+                            { id: 7, title: "TASK 07", name: "Promise that resolves", file: "../JAVA-SCRIPT/day10/task/task7.html" },
+                            { id: 8, title: "TASK 08", name: "Object", file: "../JAVA-SCRIPT/day10/task/task8.html" },
+                            { id: 9, title: "TASK 09", name: "ES6+ array methods", file: "../JAVA-SCRIPT/day10/task/task9.html" },
+                            { id: 10,title: "TASK 10", name: "ES5 code into modern ES6+", file: "../JAVA-SCRIPT/day10/task/task10.html" }
+                        ]
+                    },
+                     day11: {
+                        title: "JavaScript DAY 11",
+                        tasks: [
+                            { id: 1, title: "TASK 01", name: "Simple Callback Function", file: "../JAVA-SCRIPT/day11/task1.html" },
+                            { id: 2, title: "TASK 02", name: "Simple Closure Counter", file: "../JAVA-SCRIPT/day11/task2.html" },
+                            { id: 3, title: "TASK 03", name: "Push and Pop", file: "../JAVA-SCRIPT/day11/task3.html" },
+                            { id: 4, title: "TASK 04", name: "Shift and Unshift", file: "../JAVA-SCRIPT/day11/task4.html" },
+                            { id: 5, title: "TASK 05", name: "Manual Push Without push", file: "../JAVA-SCRIPT/day11/task5.html" },
+                            { id: 5, title: "TASK 05", name: "Array Methods Until concat", file: "../JAVA-SCRIPT/day11/task6.html" }
+                        ]
+                    },
+                      day12: {
+                        title: "JavaScript DAY 12",
+                        tasks: [
+                            { id: 1, title: "TASK 01", name: "PUSH", file: "../JAVA-SCRIPT/day12/task1.html" },
+                            { id: 2, title: "TASK 02", name: "POP", file: "../JAVA-SCRIPT/day12/task2.html" },
+                            { id: 3, title: "TASK 03", name: "Shift & Unshifts", file: "../JAVA-SCRIPT/day12/task3.html" },
+                            { id: 4, title: "TASK 04", name: "FOR each", file: "../JAVA-SCRIPT/day12/task4.html" },
+                            { id: 5, title: "TASK 05", name: "MAP", file: "../JAVA-SCRIPT/day12/task5.html" }
+                        ]
+                    }, 
+                    
+                      day13: {
+                        title: "JavaScript DAY 13",
+                        tasks: [
+                            { id: 1, title: "TASK 01", name: "DOM Selectors & Content Change", file: "../JAVA-SCRIPT/day13/task1.html" },
+                            { id: 2, title: "TASK 02", name: "Button Click Event", file: "../JAVA-SCRIPT/day13/task2.html" }
+
+                        ]
+                    },
+
+                      day14: {
+                        title: "JavaScript DAY 14",
+                        tasks: [
+                            { id: 1, title: "TASK 01", name: " Show / Hide Content", file: "../JAVA-SCRIPT/day14/task1.html" },
+                            { id: 2, title: "TASK 02", name: " Color Toggle", file: "../JAVA-SCRIPT/day14/task2.html" },
+                            { id: 3, title: "TASK 03", name: " Smooth Card Toggle", file: "../JAVA-SCRIPT/day14/task3.html" }
+
+                        ]
+                    },
+
+                      day15: {
+                        title: "JavaScript DAY 15",
+                        tasks: [
+                            { id: 1, title: "TASK 01", name: "", file: "" },
+                            { id: 2, title: "TASK 02", name: "", file: "" },
+                            { id: 3, title: "TASK 03", name: "", file: "" },
+                            { id: 4, title: "TASK 04", name: "", file: "" },
+                            { id: 5, title: "TASK 05", name: "", file: "" }
+                        ]
+                    },
+
+
+                      day16: {
+                        title: "JavaScript DAY 16",
+                        tasks: [
+                            { id: 1, title: "TASK 01", name: "", file: "" },
+                            { id: 2, title: "TASK 02", name: "", file: "" },
+                            { id: 3, title: "TASK 03", name: "", file: "" },
+                            { id: 4, title: "TASK 04", name: "", file: "" },
+                            { id: 5, title: "TASK 05", name: "", file: "" }
+                        ]
+                    },
+
+
+                      day17: {
+                        title: "JavaScript DAY 17",
+                        tasks: [
+                            { id: 1, title: "TASK 01", name: "", file: "" },
+                            { id: 2, title: "TASK 02", name: "", file: "" },
+                            { id: 3, title: "TASK 03", name: "", file: "" },
+                            { id: 4, title: "TASK 04", name: "", file: "" },
+                            { id: 5, title: "TASK 05", name: "", file: "" }
+                        ]
+                    },
+
+                      day18: {
+                        title: "JavaScript DAY 18",
+                        tasks: [
+                            { id: 1, title: "TASK 01", name: "", file: "" },
+                            { id: 2, title: "TASK 02", name: "", file: "" },
+                            { id: 3, title: "TASK 03", name: "", file: "" },
+                            { id: 4, title: "TASK 04", name: "", file: "" },
+                            { id: 5, title: "TASK 05", name: "", file: "" }
+                        ]
+                    },
+
+                      day19: {
+                        title: "JavaScript DAY 19",
+                        tasks: [
+                            { id: 1, title: "TASK 01", name: "", file: "" },
+                            { id: 2, title: "TASK 02", name: "", file: "" },
+                            { id: 3, title: "TASK 03", name: "", file: "" },
+                            { id: 4, title: "TASK 04", name: "", file: "" },
+                            { id: 5, title: "TASK 05", name: "", file: "" }
+                        ]
+                    }
+
+                }
+            },
+
+            // ===================================================
+            // REACT (10 DAYS — 5 TASKS EACH)
+            // ===================================================
+            React: {
+                name: "REACT",
+                icon: "⚛️",
+                description: "Build modern, component-driven user interfaces and single page applications with React, JSX and Hooks.",
+                color: "#61dafb",
+                glow: "rgba(97, 218, 251, 0.5)",
+                bg: "rgba(97, 218, 251, 0.12)",
+                days: {
+                    day1: {
+                        title: "React DAY 01",
+                        tasks: [
+                            { id: 1, title: "TASK 01", name: "React Setup & CDN Boilerplate", file: "React/day1/task1.html" },
+                            { id: 2, title: "TASK 02", name: "JSX Syntax & Embedded Expressions", file: "React/day1/task2.html" },
+                            { id: 3, title: "TASK 03", name: "Rendering Elements & React Fragments", file: "React/day1/task3.html" },
+                            { id: 4, title: "TASK 04", name: "Functional Components Fundamentals", file: "React/day1/task4.html" },
+                            { id: 5, title: "TASK 05", name: "Component Nesting & Layout Structure", file: "React/day1/task5.html" }
+                        ]
+                    },
+                    day2: {
+                        title: "React DAY 02",
+                        tasks: [
+                            { id: 1, title: "TASK 01", name: "Passing & Accessing Component Props", file: "React/day2/task1.html" },
+                            { id: 2, title: "TASK 02", name: "Props Destructuring & Default Props", file: "React/day2/task2.html" },
+                            { id: 3, title: "TASK 03", name: "Props Children & Wrapper Components", file: "React/day2/task3.html" },
+                            { id: 4, title: "TASK 04", name: "Rendering Dynamic Data with Props", file: "React/day2/task4.html" },
+                            { id: 5, title: "TASK 05", name: "User Profile Card Component", file: "React/day2/task5.html" }
+                        ]
+                    },
+                    day3: {
+                        title: "React DAY 03",
+                        tasks: [
+                            { id: 1, title: "TASK 01", name: "useState Hook Fundamentals", file: "React/day3/task1.html" },
+                            { id: 2, title: "TASK 02", name: "Interactive Counter Application", file: "React/day3/task2.html" },
+                            { id: 3, title: "TASK 03", name: "Managing Object State with useState", file: "React/day3/task3.html" },
+                            { id: 4, title: "TASK 04", name: "Boolean Toggle State (Show / Hide)", file: "React/day3/task4.html" },
+                            { id: 5, title: "TASK 05", name: "Dark Mode Theme Switcher Component", file: "React/day3/task5.html" }
+                        ]
+                    },
+                    day4: {
+                        title: "React DAY 04",
+                        tasks: [
+                            { id: 1, title: "TASK 01", name: "Event Handling in React (onClick, onChange)", file: "React/day4/task1.html" },
+                            { id: 2, title: "TASK 02", name: "Controlled Input Components", file: "React/day4/task2.html" },
+                            { id: 3, title: "TASK 03", name: "Form Submission & onSubmit Event", file: "React/day4/task3.html" },
+                            { id: 4, title: "TASK 04", name: "Handling Multiple Form Inputs", file: "React/day4/task4.html" },
+                            { id: 5, title: "TASK 05", name: "Registration Form with Validation", file: "React/day4/task5.html" }
+                        ]
+                    },
+                    day5: {
+                        title: "React DAY 05",
+                        tasks: [
+                            { id: 1, title: "TASK 01", name: "Conditional Rendering (Ternary & Logical &&)", file: "React/day5/task1.html" },
+                            { id: 2, title: "TASK 02", name: "Rendering Lists with Array.map()", file: "React/day5/task2.html" },
+                            { id: 3, title: "TASK 03", name: "Understanding Keys in React Lists", file: "React/day5/task3.html" },
+                            { id: 4, title: "TASK 04", name: "Filtering & Sorting Array Lists", file: "React/day5/task4.html" },
+                            { id: 5, title: "TASK 05", name: "Dynamic Filterable Product Catalog", file: "React/day5/task5.html" }
+                        ]
+                    },
+                    day6: {
+                        title: "React DAY 06",
+                        tasks: [
+                            { id: 1, title: "TASK 01", name: "useEffect Hook & Dependency Array", file: "React/day6/task1.html" },
+                            { id: 2, title: "TASK 02", name: "Fetching Data from API in useEffect", file: "React/day6/task2.html" },
+                            { id: 3, title: "TASK 03", name: "Loading Spinners & Error Handling UI", file: "React/day6/task3.html" },
+                            { id: 4, title: "TASK 04", name: "Timers & Cleanup Functions in useEffect", file: "React/day6/task4.html" },
+                            { id: 5, title: "TASK 05", name: "Live Weather Dashboard with API", file: "React/day6/task5.html" }
+                        ]
+                    },
+                    day7: {
+                        title: "React DAY 07",
+                        tasks: [
+                            { id: 1, title: "TASK 01", name: "useRef Hook for DOM Node Access", file: "React/day7/task1.html" },
+                            { id: 2, title: "TASK 02", name: "Storing Mutable Values with useRef", file: "React/day7/task2.html" },
+                            { id: 3, title: "TASK 03", name: "useMemo Hook for Expensive Calculations", file: "React/day7/task3.html" },
+                            { id: 4, title: "TASK 04", name: "useCallback Hook for Function Caching", file: "React/day7/task4.html" },
+                            { id: 5, title: "TASK 05", name: "Optimized Search Filter Application", file: "React/day7/task5.html" }
+                        ]
+                    },
+                    day8: {
+                        title: "React DAY 08",
+                        tasks: [
+                            { id: 1, title: "TASK 01", name: "Context API: createContext & Provider", file: "React/day8/task1.html" },
+                            { id: 2, title: "TASK 02", name: "useContext Hook State Consumption", file: "React/day8/task2.html" },
+                            { id: 3, title: "TASK 03", name: "Global Theme Context (Light/Dark)", file: "React/day8/task3.html" },
+                            { id: 4, title: "TASK 04", name: "User Authentication Context", file: "React/day8/task4.html" },
+                            { id: 5, title: "TASK 05", name: "Global Shopping Cart State App", file: "React/day8/task5.html" }
+                        ]
+                    },
+                    day9: {
+                        title: "React DAY 09",
+                        tasks: [
+                            { id: 1, title: "TASK 01", name: "Building Custom useFetch Hook", file: "React/day9/task1.html" },
+                            { id: 2, title: "TASK 02", name: "Building Custom useLocalStorage Hook", file: "React/day9/task2.html" },
+                            { id: 3, title: "TASK 03", name: "React Router Setup & Link Navigation", file: "React/day9/task3.html" },
+                            { id: 4, title: "TASK 04", name: "Dynamic URL Routes & useParams Hook", file: "React/day9/task4.html" },
+                            { id: 5, title: "TASK 05", name: "Multi-page Single Page App (SPA)", file: "React/day9/task5.html" }
+                        ]
+                    },
+                    day10: {
+                        title: "React DAY 10",
+                        tasks: [
+                            { id: 1, title: "TASK 01", name: "Full-Featured Todo App with LocalStorage", file: "React/day10/task1.html" },
+                            { id: 2, title: "TASK 02", name: "Movie Search Database with REST API", file: "React/day10/task2.html" },
+                            { id: 3, title: "TASK 03", name: "E-Commerce Store UI with Cart State", file: "React/day10/task3.html" },
+                            { id: 4, title: "TASK 04", name: "Interactive Quiz Application", file: "React/day10/task4.html" },
+                            { id: 5, title: "TASK 05", name: "React Capstone Portfolio Project", file: "React/day10/task5.html" }
+                        ]
+                    }
+                }
+            }
+
+        };
+
+
+
+        /* =====================================================
+           CORE RENDERING & LOGIC FUNCTIONS
+        ===================================================== */
+
+        /**
+         * Renders all technology cards into #techCardsContainer dynamically
+         */
+        function renderTechnologies() {
+            const container = document.getElementById("techCardsContainer");
+            if (!container) return;
+
+            container.innerHTML = "";
+
+            const techKeys = Object.keys(courseData);
+
+            techKeys.forEach(techKey => {
+                const tech = courseData[techKey];
+                const colDiv = document.createElement("div");
+                colDiv.className = "col-lg-6";
+
+                colDiv.innerHTML = `
+                    <div class="tech-card" style="--color:${tech.color}; --glow:${tech.glow}; --bg:${tech.bg};">
+                        <div>
+                            <div class="tech-icon">${tech.icon}</div>
+                            <div class="tech-name">${tech.name}</div>
+                            <p class="tech-description">${tech.description}</p>
+                        </div>
+                        <div class="days" id="days-${techKey}"></div>
+                    </div>
+                `;
+
+                container.appendChild(colDiv);
+
+                // Render the day buttons for this technology
+                renderDays(techKey, tech);
+            });
+        }
+
+        /**
+         * Generates the day buttons dynamically for a specific technology
+         */
+        function renderDays(techKey, techData) {
+            const daysContainer = document.getElementById(`days-${techKey}`);
+            if (!daysContainer || !techData.days) return;
+
+            daysContainer.innerHTML = "";
+
+            const dayKeys = Object.keys(techData.days);
+
+            dayKeys.forEach((dayKey, index) => {
+                const button = document.createElement("button");
+                button.className = "day";
+                button.style.setProperty("--color", techData.color);
+                button.style.setProperty("--glow", techData.glow);
+
+                // Format day button label: DAY 01, DAY 02, etc.
+                const dayNumber = String(index + 1).padStart(2, "0");
+                button.innerText = `DAY ${dayNumber}`;
+
+                button.onclick = function () {
+                    openTaskMenu(techKey, dayKey);
+                };
+
+                daysContainer.appendChild(button);
+            });
+        }
+
+        /**
+         * Opens the Task Menu Popup for a chosen technology and day
+         */
+        function openTaskMenu(techKey, dayKey) {
+            const tech = courseData[techKey];
+            if (!tech) {
+                console.error(`Technology "${techKey}" not found in courseData.`);
+                return;
+            }
+
+            const dayData = tech.days ? tech.days[dayKey] : null;
+            if (!dayData) {
+                console.error(`Day "${dayKey}" not found under technology "${techKey}".`);
+                return;
+            }
+
+            // Set Popup Title
+            const titleElem = document.getElementById("taskMenuTitle");
+            if (titleElem) {
+                titleElem.innerText = dayData.title || `${tech.name} ${dayKey.toUpperCase()}`;
+            }
+
+            // Render Task Buttons for this day
+            renderTasks(dayData.tasks || [], techKey, dayKey);
+
+            // Show Popup
+            const menu = document.getElementById("taskMenu");
+            if (menu) {
+                menu.classList.add("active");
+            }
+        }
+
+        /**
+         * Renders the individual task buttons inside the task modal
+         */
+        function renderTasks(tasks, techKey, dayKey) {
+            const taskButtons = document.getElementById("taskButtons");
+            if (!taskButtons) return;
+
+            taskButtons.innerHTML = "";
+
+            if (!tasks || tasks.length === 0) {
+                const emptyMsg = document.createElement("div");
+                emptyMsg.className = "text-center text-secondary py-4 small";
+                emptyMsg.innerText = "No tasks currently available for this day.";
+                taskButtons.appendChild(emptyMsg);
+                return;
+            }
+
+            tasks.forEach((task, index) => {
+                const button = document.createElement("button");
+                button.className = "task-btn btn rounded-4 py-3 px-4 fw-bold w-100 mb-2";
+
+                const taskNum = task.title || `TASK ${String(task.id || index + 1).padStart(2, "0")}`;
+                const taskName = task.name ? ` — ${task.name}` : "";
+
+                button.innerHTML = `
+                    <span class="text-start pe-2">${taskNum}${taskName}</span>
+                    <span class="task-badge">OPEN ➔</span>
+                `;
+
+                button.onclick = function () {
+                    openTask(task.file);
+                };
+
+                taskButtons.appendChild(button);
+            });
+        }
+
+        /**
+         * Navigates to the selected task file
+         */
+        function openTask(filePath) {
+            if (!filePath) {
+                alert("Task file path is not specified.");
+                return;
+            }
+            window.location.href = filePath;
+        }
+
+        /**
+         * Closes the Task Menu Modal
+         */
+        function closeTaskMenu() {
+            const menu = document.getElementById("taskMenu");
+            if (menu) {
+                menu.classList.remove("active");
+            }
+        }
+
+        /**
+         * Calculates and dynamically updates all journey progress stats across the page
+         */
+        function updateProgress() {
+            const techKeys = Object.keys(courseData);
+            const techCount = techKeys.length;
+
+            let totalDays = 0;
+            let totalTasks = 0;
+            const breakdownItems = [];
+            const footerTechs = [];
+
+            techKeys.forEach(key => {
+                const tech = courseData[key];
+                const dayKeys = Object.keys(tech.days || {});
+                const dayCount = dayKeys.length;
+                totalDays += dayCount;
+
+                footerTechs.push(tech.name);
+                breakdownItems.push(`${tech.name} ${dayCount} Days`);
+
+                dayKeys.forEach(dKey => {
+                    const taskList = tech.days[dKey].tasks || [];
+                    totalTasks += taskList.length;
+                });
+            });
+
+            // Update Hero Core Counter
+            const heroCore = document.getElementById("heroCoreText");
+            if (heroCore) {
+                heroCore.innerHTML = `${totalDays}<br>DAYS<br>CODE`;
+            }
+
+            // Update Tech Section Subtitle
+            const techSubtitle = document.getElementById("techSubtitle");
+            if (techSubtitle) {
+                techSubtitle.innerText = `${techCount} Technologies • ${totalDays} Days • ${totalTasks} Coding Missions`;
+            }
+
+            // Update Progress Box
+            const progressHeading = document.getElementById("progressHeading");
+            if (progressHeading) {
+                progressHeading.innerText = `${totalDays} DAYS • ${totalTasks} MISSIONS`;
+            }
+
+            const progressCount = document.getElementById("progressCount");
+            if (progressCount) {
+                progressCount.innerText = String(totalDays);
+            }
+
+            const progressBreakdown = document.getElementById("progressBreakdown");
+            if (progressBreakdown) {
+                progressBreakdown.innerText = breakdownItems.join(" • ");
+            }
+
+            // Update Footer
+            const footerTechList = document.getElementById("footerTechList");
+            if (footerTechList) {
+                footerTechList.innerText = footerTechs.join(" • ");
+            }
+
+            const footerTagline = document.getElementById("footerTagline");
+            if (footerTagline) {
+                footerTagline.innerText = `${totalDays} DAYS • ${totalTasks} MISSIONS • ONE DEVELOPER 🚀`;
+            }
+        }
+
+        /**
+         * General modal popups
+         */
+        function showDay(title, content) {
+            const popupTitle = document.getElementById("popupTitle");
+            const popupText = document.getElementById("popupText");
+            const popup = document.getElementById("popup");
+
+            if (popupTitle) popupTitle.innerText = title;
+            if (popupText) popupText.innerText = content;
+            if (popup) popup.classList.add("active");
+        }
+
+        function closePopup() {
+            const popup = document.getElementById("popup");
+            if (popup) popup.classList.remove("active");
+        }
+
+        function startJourney() {
+            const section = document.querySelector(".tech-section");
+            if (section) {
+                section.scrollIntoView({ behavior: "smooth" });
+            }
+        }
+
+        // Close popups on backdrop click
+        document.getElementById("taskMenu")?.addEventListener("click", function(event) {
+            if (event.target === this) {
+                closeTaskMenu();
+            }
+        });
+
+        document.getElementById("popup")?.addEventListener("click", function(event) {
+            if (event.target === this) {
+                closePopup();
+            }
+        });
+
+        // Initialize on DOM Ready
+        window.addEventListener("DOMContentLoaded", function () {
+            renderTechnologies();
+            updateProgress();
+        });
+
+        /* =========================================================================
+           QUICK REFERENCE GUIDE: WHERE & HOW TO ADD A NEW TASK
+           =========================================================================
+           1. Scroll up to `const courseData = { ... }`
+           2. Find your desired Technology (e.g. HTML, React, CSS)
+           3. Locate the Day (e.g. day1, day2)
+           4. Add your new task object to the `tasks` array:
+
+           // ADD NEW TASK HERE:
+           day1: {
+               title: "React DAY 01",
+               tasks: [
+                   {
+                       id: 6,
+                       title: "TASK 06",
+                       name: "My New Task",
+                       file: "React/day1/task6.html"
+                   }
+               ]
+           }
+           ========================================================================= */
+
+    </script>
+
+</body>
+
+</html>

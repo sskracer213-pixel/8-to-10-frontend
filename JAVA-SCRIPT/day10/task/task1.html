@@ -1,0 +1,44 @@
+ <h1>var let const</h1>
+
+
+ <script>
+
+// 1. var - Redeclaration and Reassignment
+var a = 10;
+var a = 20;     // Redeclaration allowed
+a = 30;         // Reassignment allowed
+
+console.log(a); // 30
+
+
+// 2. let - Reassignment
+
+let b = 10;
+// let b = 20;  // Redeclaration NOT allowed
+b = 20;         // Reassignment allowed
+
+console.log(b); // 20
+
+
+// 3. const - No Reassignment
+const c = 10;
+// const c = 20; // Redeclaration NOT allowed
+// c = 30;       // Reassignment NOT allowed
+
+console.log(c); // 10
+
+
+// 4. Block Scope
+{
+    var x = 100;
+    let y = 200;
+    const z = 300;
+}
+
+console.log(x); // 100
+// console.log(y); // Error
+// console.log(z); // Error
+
+
+
+ </script>

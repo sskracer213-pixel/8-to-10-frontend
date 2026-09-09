@@ -1,0 +1,40 @@
+ *{padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+html{
+    scroll-behavior: smooth;
+
+}
+body{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+}
+a{text-decoration: none;}
+
+body{
+    background-color:lightblue;
+    
+}
+.id-card{
+    width: 350px;
+    height: 450px;
+    padding: 20px;
+    margin: 50px auto;
+    border: 3px solid navy;
+    background-color: white;
+    text-align: center;
+}
+
+.id-card img{
+    border: 2px solid green;
+}
+
+h2{
+    color: darkblue;
+}
+
+p{
+    font-size: 18px;
+    color: black;
+}

@@ -1,0 +1,40 @@
+ *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, sans-serif;
+    background:#f4f4f4;
+}
+
+header{
+    background:#0077cc;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+.content{
+    padding:30px;
+    line-height:2;
+}
+
+
+.whatsapp-btn{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    background:#25D366;
+    color:white;
+    padding:15px 25px;
+    border-radius:30px;
+    font-size:18px;
+    font-weight:bold;
+    box-shadow:0 4px 10px rgba(0,0,0,0.3);
+}
+
+.whatsapp>btn{
+    background:#1ebe5d;
+}
