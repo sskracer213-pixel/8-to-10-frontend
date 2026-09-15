@@ -1,0 +1,34 @@
+
+1. What is React?
+
+ React is a JavaScript library developed by Meta. It is used to build interactive and dynamic user interfaces. React applications are built using small, reusable components.
+
+2. Is React a library or framework?
+
+ React is a library, not a framework. It mainly focuses on the UI (User Interface). We can use other libraries with React for routing, API calls, state management, etc.
+
+3. What is a Component?
+
+A component is a small, independent, and reusable part of a React application. It contains the UI and its related logic.
+Example: Navbar, Button, Login Form, Product Card.
+
+4. Why are Components important?
+
+Components help us reuse code, reduce duplicate code, and keep the application clean and organized. If we create a Button component once, we can use it in many places.
+
+5. What is JSX?
+
+JSX stands for JavaScript XML. It allows us to write HTML-like syntax inside JavaScript. JSX makes React code easier to read and write.
+
+const element = <h1>Hello React</h1>;
+6. What is Virtual DOM?
+
+Virtual DOM is a lightweight representation of the Real DOM maintained by React. When something changes, React creates a new Virtual DOM and compares it with the previous one. This helps React update only the necessary parts.
+
+7. What is Real DOM?
+
+Real DOM is the actual DOM structure of a webpage maintained by the browser. It represents HTML elements such as <div>, <h1>, <button>, etc. Changes to the Real DOM can require browser rendering work.
+
+8. What is Reconciliation?
+
+ Reconciliation is the process where React compares the previous Virtual DOM with the new Virtual DOM. React identifies what has changed and updates the required parts of the Real DOM instead of updating everything

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 2 Project - E-Commerce Store & Cart</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #f43f5e;
+            --primary-glow: rgba(244, 63, 94, 0.4);
+            --bg-dark: #090d16;
+            --card-bg: rgba(15, 23, 42, 0.8);
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-dark);
+            color: #f1f5f9;
+        }
+        .orbitron { font-family: 'Orbitron', sans-serif; }
+        .back-nav {
+            position: fixed;
+            top: 15px;
+            left: 20px;
+            z-index: 1000;
+            background: rgba(15, 23, 42, 0.85);
+            border: 1px solid rgba(244, 63, 94, 0.4);
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+            transition: 0.3s;
+        }
+        .back-nav:hover {
+            background: var(--primary);
+            color: #090d16;
+        }
+        .product-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 18px;
+            padding: 20px;
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+        }
+        .product-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px var(--primary-glow);
+        }
+        .product-img {
+            font-size: 60px;
+            text-align: center;
+            padding: 20px 0;
+            background: rgba(255,255,255,0.03);
+            border-radius: 14px;
+            margin-bottom: 15px;
+        }
+        .cart-sidebar {
+            background: #0f172a;
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            padding: 25px;
+            overflow-y: auto;
+        }
+        .btn-add {
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 10px;
+            font-weight: 600;
+            width: 100%;
+            transition: 0.3s;
+        }
+        .btn-add:hover {
+            background: #e11d48;
+            box-shadow: 0 0 15px var(--primary-glow);
+        }
+    </style>
+</head>
+<body>
+
+    <a href="../../index.html" class="back-nav">← Back to DevGalaxy</a>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- MAIN SHOP SECTION -->
+            <div class="col-lg-8 p-4 pt-5 mt-4">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div>
+                        <h2 class="orbitron text-white mb-1">Cyber Gadgets Store</h2>
+                        <p class="text-secondary small">Day 02 Project • JavaScript Dynamic Product & Cart Store</p>
+                    </div>
+                    <span class="badge bg-danger fs-6 px-3 py-2 rounded-pill">DAY 02</span>
+                </div>
+
+                <div class="row g-4" id="productList">
+                    <!-- Dynamic Products -->
+                </div>
+            </div>
+
+            <!-- CART SIDEBAR -->
+            <div class="col-lg-4 cart-sidebar">
+                <h4 class="orbitron text-white mb-4 d-flex justify-content-between align-items-center">
+                    <span>🛒 Your Cart</span>
+                    <span id="cartCountBadge" class="badge bg-danger rounded-pill">0</span>
+                </h4>
+                
+                <div id="cartItemsList" class="mb-4">
+                    <p class="text-secondary text-center my-5">Your cart is currently empty.</p>
+                </div>
+
+                <div class="border-top border-secondary border-opacity-25 pt-3">
+                    <div class="d-flex justify-content-between fs-5 fw-bold mb-3">
+                        <span>Total:</span>
+                        <span id="cartTotalPrice" class="text-danger">$0.00</span>
+                    </div>
+                    <button onclick="checkout()" class="btn btn-add w-100 py-3">Proceed to Checkout 🚀</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const products = [
+            { id: 1, name: "Cyberpunk Mechanical Keyboard", price: 129, icon: "⌨️", desc: "RGB Backlit, Hot-swappable switches" },
+            { id: 2, name: "Wireless Gaming Mouse", price: 79, icon: "🖱️", desc: "26,000 DPI sensor with ultra-low latency" },
+            { id: 3, name: "Spatial Audio Headset", price: 199, icon: "🎧", desc: "Active Noise Cancellation & 40h battery" },
+            { id: 4, name: "Ultra-wide Curved Monitor", price: 449, icon: "🖥️", desc: "144Hz 4K IPS display for creators" },
+            { id: 5, name: "Ergonomic Desk Mat", price: 35, icon: "🛡️", desc: "Waterproof microfiber texture" },
+            { id: 6, name: "Smart Ambient Lightbar", price: 59, icon: "💡", desc: "Syncs with screen audio and game colors" }
+        ];
+
+        let cart = [];
+
+        function renderProducts() {
+            const container = document.getElementById("productList");
+            container.innerHTML = products.map(p => `
+                <div class="col-md-6 col-xl-4">
+                    <div class="product-card">
+                        <div>
+                            <div class="product-img">${p.icon}</div>
+                            <h5 class="orbitron text-white fs-6 mb-1">${p.name}</h5>
+                            <p class="text-secondary small mb-3">${p.desc}</p>
+                        </div>
+                        <div>
+                            <div class="fs-5 fw-bold text-white mb-3">$${p.price}.00</div>
+                            <button onclick="addToCart(${p.id})" class="btn btn-add">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            `).join("");
+        }
+
+        function addToCart(id) {
+            const product = products.find(p => p.id === id);
+            const existing = cart.find(item => item.id === id);
+            if (existing) {
+                existing.qty++;
+            } else {
+                cart.push({ ...product, qty: 1 });
+            }
+            renderCart();
+        }
+
+        function removeFromCart(id) {
+            cart = cart.filter(item => item.id !== id);
+            renderCart();
+        }
+
+        function renderCart() {
+            const list = document.getElementById("cartItemsList");
+            const totalElem = document.getElementById("cartTotalPrice");
+            const badge = document.getElementById("cartCountBadge");
+
+            const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
+            badge.innerText = totalQty;
+
+            if (cart.length === 0) {
+                list.innerHTML = '<p class="text-secondary text-center my-5">Your cart is currently empty.</p>';
+                totalElem.innerText = '$0.00';
+                return;
+            }
+
+            let total = 0;
+            list.innerHTML = cart.map(item => {
+                const subtotal = item.price * item.qty;
+                total += subtotal;
+                return `
+                    <div class="d-flex justify-content-between align-items-center mb-3 bg-dark bg-opacity-50 p-2 rounded-3 border border-secondary border-opacity-25">
+                        <div>
+                            <div class="fw-semibold text-white small">${item.name}</div>
+                            <div class="text-secondary small">$${item.price} × ${item.qty} = <span class="text-danger">$${subtotal}</span></div>
+                        </div>
+                        <button onclick="removeFromCart(${item.id})" class="btn btn-sm btn-outline-danger py-0 px-2 rounded">✕</button>
+                    </div>
+                `;
+            }).join("");
+
+            totalElem.innerText = `$${total.toFixed(2)}`;
+        }
+
+        function checkout() {
+            if (cart.length === 0) {
+                alert("Your cart is empty!");
+                return;
+            }
+            alert("🎉 Order placed successfully! Thank you for testing Day 2 Project.");
+            cart = [];
+            renderCart();
+        }
+
+        renderProducts();
+    </script>
+</body>
+</html>

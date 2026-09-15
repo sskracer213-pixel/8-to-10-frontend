@@ -17,11 +17,18 @@ class CropApp {
       mobile: '',
       email: '',
       landArea: 1.0,
-      crop: 'auto'
+      crop: 'auto',
+      das: 45
     };
 
     this.currentView = 'farmer-form';
-    this.activeScannerTab = 'camera';
+    this.activeScannerTab = 'camera'; // 'camera', 'upload', 'video'
+    this.selectedDAS = 45;
+    this.selectedCropStage = 'auto';
+    this.typedSymptoms = '';
+    this.uploadedVideoFile = null;
+    this.uploadedVideoUrl = null;
+
     this.currentScanData = null;
     this.selectedCalendarCrop = 'paddy';
     this.selectedCalendarStageIndex = 0;
@@ -35,6 +42,7 @@ class CropApp {
     // Crop Growth & Plant Protection Shop State
     this.activeShopCategory = 'all';
     this.activeShopCrop = 'all';
+    this.activeShopStage = 'all';
     this.activeShopProblem = 'all';
     this.shopSearchQuery = '';
   }
@@ -44,6 +52,8 @@ class CropApp {
     this.loadScanHistory();
     this.loadNotifications();
     this.applySunlightMode(this.isSunlightMode);
+    this.updateCropStageDropdowns(this.farmerData.crop);
+    this.syncDAS(this.selectedDAS, 'init');
     this.bindEvents();
     this.initShop();
 
@@ -116,14 +126,87 @@ class CropApp {
     const emailInput = document.getElementById('farmerEmail');
     const landInput = document.getElementById('landArea');
     const cropSelect = document.getElementById('primaryCrop');
+    const dasInput = document.getElementById('farmerDAS');
 
     if (nameInput && this.farmerData.name) nameInput.value = this.farmerData.name;
     if (mobileInput && this.farmerData.mobile) mobileInput.value = this.farmerData.mobile;
     if (emailInput && this.farmerData.email) emailInput.value = this.farmerData.email;
     if (landInput && this.farmerData.landArea) landInput.value = this.farmerData.landArea;
     if (cropSelect && this.farmerData.crop) cropSelect.value = this.farmerData.crop;
+    if (dasInput && this.farmerData.das) {
+      this.selectedDAS = parseInt(this.farmerData.das) || 45;
+      dasInput.value = this.selectedDAS;
+    }
 
     this.highlightAcreageChip(this.farmerData.landArea);
+    this.updateCropStageDropdowns(this.farmerData.crop);
+    this.syncDAS(this.selectedDAS, 'populate');
+  }
+
+  updateCropStageDropdowns(cropKey) {
+    const key = (cropKey && cropKey !== 'auto' && CROP_DATABASE[cropKey]) ? cropKey : 'paddy';
+    const stages = window.getStagesForCrop ? window.getStagesForCrop(key) : [];
+    const isTa = window.i18n.currentLang === 'ta';
+
+    const selects = [
+      document.getElementById('farmerCropStage'),
+      document.getElementById('scannerStageSelect')
+    ];
+
+    selects.forEach(select => {
+      if (!select) return;
+      const currentVal = select.value;
+      select.innerHTML = `
+        <option value="auto">${isTa ? 'தானியங்கி கண்டறிதல் (DAS / படம் மூலம்)' : 'Auto Detect from DAS / Visuals'}</option>
+        ${stages.map(st => `
+          <option value="${st.id}">
+            ${isTa ? st.name_ta : st.name_en} ${st.days ? '(' + st.days + ')' : ''}
+          </option>
+        `).join('')}
+      `;
+      if (currentVal && stages.some(s => s.id === currentVal)) {
+        select.value = currentVal;
+      } else {
+        select.value = 'auto';
+      }
+    });
+  }
+
+  syncDAS(days, source = 'code') {
+    const parsedDays = Math.max(0, parseInt(days) || 0);
+    this.selectedDAS = parsedDays;
+
+    const farmerDASInput = document.getElementById('farmerDAS');
+    const scannerDASInput = document.getElementById('scannerDASInput');
+
+    if (farmerDASInput && farmerDASInput.value != parsedDays) farmerDASInput.value = parsedDays;
+    if (scannerDASInput && scannerDASInput.value != parsedDays) scannerDASInput.value = parsedDays;
+
+    // Highlight quick DAS chips
+    document.querySelectorAll('.das-chip').forEach(chip => {
+      const val = parseInt(chip.dataset.das);
+      if (val === parsedDays) {
+        chip.classList.add('active');
+      } else {
+        chip.classList.remove('active');
+      }
+    });
+
+    // Auto determine stage from DAS if stage is set to 'auto' or we are syncing
+    const cropKey = (this.farmerData.crop && this.farmerData.crop !== 'auto') ? this.farmerData.crop : 'paddy';
+    if (window.getCropStageByDAS) {
+      const autoStage = window.getCropStageByDAS(cropKey, parsedDays);
+      if (autoStage) {
+        const farmerSelect = document.getElementById('farmerCropStage');
+        const scannerSelect = document.getElementById('scannerStageSelect');
+        if (farmerSelect && (this.selectedCropStage === 'auto' || source !== 'stageSelect')) {
+          farmerSelect.value = autoStage;
+        }
+        if (scannerSelect && (this.selectedCropStage === 'auto' || source !== 'stageSelect')) {
+          scannerSelect.value = autoStage;
+        }
+      }
+    }
   }
 
   updateDashboardCard() {
@@ -275,7 +358,10 @@ class CropApp {
       issueName: isTa ? adv.issue.name_ta : adv.issue.name_en,
       isHealthy: adv.isHealthy,
       acres: adv.acres,
-      imageSrc: scanResult.imageSrc
+      daysAfterSowing: scanResult.daysAfterSowing || this.selectedDAS,
+      mediaType: scanResult.mediaType || 'photo',
+      imageSrc: scanResult.imageSrc,
+      videoSrc: scanResult.videoSrc
     };
 
     this.scanHistory.unshift(historyItem);
@@ -306,7 +392,7 @@ class CropApp {
         </div>
         <div class="history-details">
           <div class="history-title">${item.cropName} - ${item.issueName}</div>
-          <div class="history-meta">📅 ${item.date} | 📏 ${item.acres} Acres</div>
+          <div class="history-meta">📅 ${item.date} | 📏 ${item.acres} Acres | ⏱️ ${item.daysAfterSowing || 45} DAS</div>
         </div>
         <button type="button" class="btn-history-load" data-id="${item.id}">
           ${window.i18n.getText('btnViewHistoryItem')}
@@ -332,7 +418,11 @@ class CropApp {
   }
 
   loadHistoryItemIntoAdvisory(item) {
-    const advisory = calculateCropAdvisory(item.cropKey, item.stageKey, item.issueKey, item.acres);
+    const advisory = calculateCropAdvisory(item.cropKey, item.stageKey, item.issueKey, item.acres, {
+      daysAfterSowing: item.daysAfterSowing,
+      mediaType: item.mediaType
+    });
+
     this.currentScanData = {
       status: 'SUCCESS',
       cropKey: item.cropKey,
@@ -340,6 +430,9 @@ class CropApp {
       issueKey: item.issueKey,
       confidence: 0.98,
       imageSrc: item.imageSrc,
+      videoSrc: item.videoSrc,
+      mediaType: item.mediaType || 'photo',
+      daysAfterSowing: item.daysAfterSowing,
       advisory
     };
 
@@ -360,6 +453,7 @@ class CropApp {
         this.updateVoiceLangButtonUI();
         this.setCurrentDate();
         this.loadNotifications();
+        this.updateCropStageDropdowns(this.farmerData.crop);
         this.reRenderActiveViews();
       });
     }
@@ -408,7 +502,7 @@ class CropApp {
     }
 
     // Quick Acreage Chips
-    document.querySelectorAll('.area-chip').forEach(chip => {
+    document.querySelectorAll('.area-chip:not(.das-chip)').forEach(chip => {
       chip.addEventListener('click', (e) => {
         const acres = parseFloat(e.currentTarget.dataset.acres);
         const landInput = document.getElementById('landArea');
@@ -429,13 +523,91 @@ class CropApp {
       });
     }
 
-    // Scanner Tab Switchers
+    // Primary Crop Change
+    const cropSelect = document.getElementById('primaryCrop');
+    if (cropSelect) {
+      cropSelect.addEventListener('change', (e) => {
+        this.farmerData.crop = e.target.value;
+        this.updateCropStageDropdowns(this.farmerData.crop);
+        this.syncDAS(this.selectedDAS, 'cropChange');
+      });
+    }
+
+    // DAS Inputs & Quick Chips
+    const farmerDASInput = document.getElementById('farmerDAS');
+    const scannerDASInput = document.getElementById('scannerDASInput');
+    if (farmerDASInput) {
+      farmerDASInput.addEventListener('input', (e) => this.syncDAS(e.target.value, 'farmerDAS'));
+    }
+    if (scannerDASInput) {
+      scannerDASInput.addEventListener('input', (e) => this.syncDAS(e.target.value, 'scannerDAS'));
+    }
+
+    document.querySelectorAll('.das-chip').forEach(chip => {
+      chip.addEventListener('click', (e) => {
+        const days = parseInt(e.currentTarget.dataset.das) || 45;
+        this.syncDAS(days, 'dasChip');
+      });
+    });
+
+    // Stage Selectors Sync
+    const farmerCropStage = document.getElementById('farmerCropStage');
+    const scannerStageSelect = document.getElementById('scannerStageSelect');
+
+    if (farmerCropStage) {
+      farmerCropStage.addEventListener('change', (e) => {
+        this.selectedCropStage = e.target.value;
+        if (scannerStageSelect) scannerStageSelect.value = e.target.value;
+      });
+    }
+    if (scannerStageSelect) {
+      scannerStageSelect.addEventListener('change', (e) => {
+        this.selectedCropStage = e.target.value;
+        if (farmerCropStage) farmerCropStage.value = e.target.value;
+      });
+    }
+
+    // Symptoms Input & Quick Chips
+    const symptomsInput = document.getElementById('cropSymptomsInput');
+    if (symptomsInput) {
+      symptomsInput.addEventListener('input', (e) => {
+        this.typedSymptoms = e.target.value.trim();
+      });
+    }
+
+    document.querySelectorAll('.symptom-tag-chip').forEach(chip => {
+      chip.addEventListener('click', (e) => {
+        const tagKey = e.currentTarget.dataset.tag;
+        const isTa = window.i18n.currentLang === 'ta';
+        const tagMap = {
+          blast: isTa ? 'இலைகளில் கண் வடிவ புள்ளிகள் (குலை நோய்)' : 'Spindle shaped blast spots on leaves',
+          stem_borer: isTa ? 'தண்டு துளைப்பான் நடுக்குருத்து காய்ந்து போதல் (Dead Heart)' : 'Stem borer dead heart central whorl drying',
+          fall_armyworm: isTa ? 'இலைகளில் துளைகள் & படைப்புழு தாக்குதல்' : 'Fall armyworm shot holes and caterpillar attack',
+          yellowing: isTa ? 'இலைகள் மஞ்சள் நிறமாக மாறுதல் & சத்து பற்றாக்குறை' : 'Yellowing leaves and micronutrient deficiency',
+          stunted: isTa ? 'பயிர் வளர்ச்சி குன்றி மந்தமாக இருத்தல்' : 'Stunted slow vegetative growth',
+          healthy: isTa ? 'பயிர் பசுமையாக நல்ல ஆரோக்கியத்துடன் உள்ளது' : 'Healthy green vigorous crop foliage'
+        };
+
+        const appendText = tagMap[tagKey] || e.currentTarget.textContent.trim();
+        if (symptomsInput) {
+          if (symptomsInput.value.trim()) {
+            symptomsInput.value += `, ${appendText}`;
+          } else {
+            symptomsInput.value = appendText;
+          }
+          this.typedSymptoms = symptomsInput.value.trim();
+        }
+      });
+    });
+
+    // Scanner Tab Switchers (Camera, Photo, Video)
     const tabCamera = document.getElementById('tabCameraBtn');
     const tabUpload = document.getElementById('tabUploadBtn');
-    if (tabCamera && tabUpload) {
-      tabCamera.addEventListener('click', () => this.switchScannerTab('camera'));
-      tabUpload.addEventListener('click', () => this.switchScannerTab('upload'));
-    }
+    const tabVideo = document.getElementById('tabVideoBtn');
+
+    if (tabCamera) tabCamera.addEventListener('click', () => this.switchScannerTab('camera'));
+    if (tabUpload) tabUpload.addEventListener('click', () => this.switchScannerTab('upload'));
+    if (tabVideo) tabVideo.addEventListener('click', () => this.switchScannerTab('video'));
 
     // Camera Controls
     const startCamBtn = document.getElementById('startCameraBtn');
@@ -448,7 +620,7 @@ class CropApp {
     if (switchCamBtn) switchCamBtn.addEventListener('click', () => this.handleSwitchCamera());
     if (retakeCamBtn) retakeCamBtn.addEventListener('click', () => this.handleRetakePhoto());
 
-    // File Upload Handler
+    // File Upload Handler (Photo)
     const fileInput = document.getElementById('cropPhotoInput');
     const dropZone = document.getElementById('uploadDropZone');
     const selectFileBtn = document.getElementById('selectFileBtn');
@@ -485,6 +657,51 @@ class CropApp {
           this.handleFileSelected(e.dataTransfer.files[0]);
         }
       });
+    }
+
+    // Video Upload Handler
+    const videoInput = document.getElementById('cropVideoInput');
+    const videoDropZone = document.getElementById('videoDropZone');
+    const selectVideoBtn = document.getElementById('selectVideoBtn');
+
+    if (selectVideoBtn && videoInput) {
+      selectVideoBtn.addEventListener('click', () => videoInput.click());
+    }
+
+    if (videoInput) {
+      videoInput.addEventListener('change', (e) => {
+        if (e.target.files && e.target.files[0]) {
+          this.handleVideoSelected(e.target.files[0]);
+        }
+      });
+    }
+
+    if (videoDropZone) {
+      ['dragenter', 'dragover'].forEach(eventName => {
+        videoDropZone.addEventListener(eventName, (e) => {
+          e.preventDefault();
+          videoDropZone.classList.add('drag-over');
+        });
+      });
+
+      ['dragleave', 'drop'].forEach(eventName => {
+        videoDropZone.addEventListener(eventName, (e) => {
+          e.preventDefault();
+          videoDropZone.classList.remove('drag-over');
+        });
+      });
+
+      videoDropZone.addEventListener('drop', (e) => {
+        if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+          this.handleVideoSelected(e.dataTransfer.files[0]);
+        }
+      });
+    }
+
+    // Analyze Media Button
+    const analyzeMediaBtn = document.getElementById('analyzeMediaBtn');
+    if (analyzeMediaBtn) {
+      analyzeMediaBtn.addEventListener('click', () => this.handleAnalyzeMediaClick());
     }
 
     // Realistic Testing Samples
@@ -626,7 +843,12 @@ class CropApp {
             this.currentScanData.cropKey,
             this.currentScanData.stageKey,
             this.currentScanData.issueKey,
-            newArea
+            newArea,
+            {
+              daysAfterSowing: this.selectedDAS,
+              cropSymptomsText: this.typedSymptoms,
+              mediaType: this.currentScanData.mediaType || 'photo'
+            }
           );
           this.renderAdvisoryCard(this.currentScanData);
           this.showToast(`✅ Recalculated for ${newArea} Acres`, 'success');
@@ -657,13 +879,15 @@ class CropApp {
     const emailInput = document.getElementById('farmerEmail');
     const landInput = document.getElementById('landArea');
     const cropSelect = document.getElementById('primaryCrop');
+    const dasInput = document.getElementById('farmerDAS');
 
     this.farmerData = {
       name: nameInput ? nameInput.value.trim() : '',
       mobile: mobileInput ? mobileInput.value.trim() : '',
       email: emailInput ? emailInput.value.trim() : '',
       landArea: landInput ? (parseFloat(landInput.value) || 1.0) : 1.0,
-      crop: cropSelect ? cropSelect.value : 'auto'
+      crop: cropSelect ? cropSelect.value : 'auto',
+      das: dasInput ? (parseInt(dasInput.value) || 45) : 45
     };
 
     this.saveFarmerData();
@@ -732,20 +956,25 @@ class CropApp {
     this.activeScannerTab = tab;
     const tabCam = document.getElementById('tabCameraBtn');
     const tabUp = document.getElementById('tabUploadBtn');
+    const tabVid = document.getElementById('tabVideoBtn');
     const camView = document.getElementById('cameraViewContainer');
     const upView = document.getElementById('uploadViewContainer');
+    const vidView = document.getElementById('videoViewContainer');
+
+    [tabCam, tabUp, tabVid].forEach(btn => btn && btn.classList.remove('active'));
+    [camView, upView, vidView].forEach(view => view && view.classList.remove('active'));
 
     if (tab === 'camera') {
-      tabCam.classList.add('active');
-      tabUp.classList.remove('active');
-      camView.classList.add('active');
-      upView.classList.remove('active');
+      if (tabCam) tabCam.classList.add('active');
+      if (camView) camView.classList.add('active');
       this.openCameraStream();
-    } else {
-      tabCam.classList.remove('active');
-      tabUp.classList.add('active');
-      camView.classList.remove('active');
-      upView.classList.add('active');
+    } else if (tab === 'upload') {
+      if (tabUp) tabUp.classList.add('active');
+      if (upView) upView.classList.add('active');
+      window.cropScanner.stopCamera();
+    } else if (tab === 'video') {
+      if (tabVid) tabVid.classList.add('active');
+      if (vidView) vidView.classList.add('active');
       window.cropScanner.stopCamera();
     }
   }
@@ -757,16 +986,16 @@ class CropApp {
     const startCamBtn = document.getElementById('startCameraBtn');
 
     try {
-      placeholder.style.display = 'none';
-      video.style.display = 'block';
+      if (placeholder) placeholder.style.display = 'none';
+      if (video) video.style.display = 'block';
       await window.cropScanner.startCamera(video);
-      camActionControls.style.display = 'flex';
-      startCamBtn.style.display = 'none';
+      if (camActionControls) camActionControls.style.display = 'flex';
+      if (startCamBtn) startCamBtn.style.display = 'none';
     } catch (err) {
-      placeholder.style.display = 'flex';
-      video.style.display = 'none';
-      camActionControls.style.display = 'none';
-      startCamBtn.style.display = 'inline-flex';
+      if (placeholder) placeholder.style.display = 'flex';
+      if (video) video.style.display = 'none';
+      if (camActionControls) camActionControls.style.display = 'none';
+      if (startCamBtn) startCamBtn.style.display = 'inline-flex';
     }
   }
 
@@ -784,18 +1013,26 @@ class CropApp {
     const previewImg = document.getElementById('capturedPhotoPreview');
     const photoDataUrl = window.cropScanner.capturePhoto(video);
 
-    previewImg.src = photoDataUrl;
-    previewImg.style.display = 'block';
-    video.style.display = 'none';
+    if (previewImg) {
+      previewImg.src = photoDataUrl;
+      previewImg.style.display = 'block';
+    }
+    if (video) video.style.display = 'none';
 
-    document.getElementById('capturePhotoBtn').style.display = 'none';
-    document.getElementById('switchCameraBtn').style.display = 'none';
-    document.getElementById('retakePhotoBtn').style.display = 'inline-flex';
+    document.getElementById('capturePhotoBtn')?.style && (document.getElementById('capturePhotoBtn').style.display = 'none');
+    document.getElementById('switchCameraBtn')?.style && (document.getElementById('switchCameraBtn').style.display = 'none');
+    document.getElementById('retakePhotoBtn')?.style && (document.getElementById('retakePhotoBtn').style.display = 'inline-flex');
+
+    const stageVal = (this.selectedCropStage && this.selectedCropStage !== 'auto') ? this.selectedCropStage : null;
 
     this.runScanAnalysis({
       imageSrc: photoDataUrl,
       preferredCrop: this.farmerData.crop,
-      landAreaAcres: this.farmerData.landArea
+      landAreaAcres: this.farmerData.landArea,
+      daysAfterSowing: this.selectedDAS,
+      cropStageManual: stageVal,
+      cropSymptomsText: this.typedSymptoms,
+      mediaType: 'photo'
     });
   }
 
@@ -803,12 +1040,12 @@ class CropApp {
     const video = document.getElementById('cameraFeed');
     const previewImg = document.getElementById('capturedPhotoPreview');
 
-    previewImg.style.display = 'none';
-    video.style.display = 'block';
+    if (previewImg) previewImg.style.display = 'none';
+    if (video) video.style.display = 'block';
 
-    document.getElementById('capturePhotoBtn').style.display = 'inline-flex';
-    document.getElementById('switchCameraBtn').style.display = 'inline-flex';
-    document.getElementById('retakePhotoBtn').style.display = 'none';
+    document.getElementById('capturePhotoBtn')?.style && (document.getElementById('capturePhotoBtn').style.display = 'inline-flex');
+    document.getElementById('switchCameraBtn')?.style && (document.getElementById('switchCameraBtn').style.display = 'inline-flex');
+    document.getElementById('retakePhotoBtn')?.style && (document.getElementById('retakePhotoBtn').style.display = 'none');
   }
 
   handleFileSelected(file) {
@@ -821,24 +1058,107 @@ class CropApp {
     reader.onload = (e) => {
       const imageSrc = e.target.result;
       const preview = document.getElementById('uploadPhotoPreview');
-      preview.src = imageSrc;
-      preview.style.display = 'block';
+      if (preview) {
+        preview.src = imageSrc;
+        preview.style.display = 'block';
+      }
+
+      const stageVal = (this.selectedCropStage && this.selectedCropStage !== 'auto') ? this.selectedCropStage : null;
 
       this.runScanAnalysis({
         imageSrc: imageSrc,
         preferredCrop: this.farmerData.crop,
-        landAreaAcres: this.farmerData.landArea
+        landAreaAcres: this.farmerData.landArea,
+        daysAfterSowing: this.selectedDAS,
+        cropStageManual: stageVal,
+        cropSymptomsText: this.typedSymptoms,
+        mediaType: 'photo'
       });
     };
     reader.readAsDataURL(file);
   }
 
+  handleVideoSelected(file) {
+    if (!file.type.startsWith('video/') && !file.name.match(/\.(mp4|webm|mov|3gp)$/i)) {
+      alert("Please select a valid video file (MP4, WebM, MOV, 3GP).");
+      return;
+    }
+
+    if (this.uploadedVideoUrl) {
+      try { URL.revokeObjectURL(this.uploadedVideoUrl); } catch (e) {}
+    }
+
+    this.uploadedVideoFile = file;
+    this.uploadedVideoUrl = URL.createObjectURL(file);
+
+    const previewVideo = document.getElementById('uploadVideoPreview');
+    if (previewVideo) {
+      previewVideo.src = this.uploadedVideoUrl;
+      previewVideo.style.display = 'block';
+      previewVideo.load();
+    }
+
+    window.cropScanner.setVideoSource(this.uploadedVideoUrl);
+    const isTa = window.i18n.currentLang === 'ta';
+    this.showToast(isTa ? "🎥 பயிர் வீடியோ பதிவேற்றப்பட்டது. ஆய்வு செய்ய தயாராக உள்ளது." : "🎥 Video clip uploaded & ready for analysis.", 'success');
+  }
+
+  handleAnalyzeMediaClick() {
+    const stageVal = (this.selectedCropStage && this.selectedCropStage !== 'auto') 
+      ? this.selectedCropStage 
+      : document.getElementById('scannerStageSelect')?.value;
+
+    const manualStage = (stageVal && stageVal !== 'auto') ? stageVal : null;
+
+    const scanPayload = {
+      preferredCrop: this.farmerData.crop,
+      landAreaAcres: this.farmerData.landArea,
+      daysAfterSowing: this.selectedDAS,
+      cropStageManual: manualStage,
+      cropSymptomsText: this.typedSymptoms
+    };
+
+    if (this.activeScannerTab === 'video') {
+      scanPayload.mediaType = 'video';
+      scanPayload.videoSrc = this.uploadedVideoUrl;
+      scanPayload.imageSrc = 'assets/samples/paddy_blast.svg';
+    } else if (this.activeScannerTab === 'upload') {
+      const uploadPreview = document.getElementById('uploadPhotoPreview');
+      scanPayload.mediaType = 'photo';
+      scanPayload.imageSrc = (uploadPreview && uploadPreview.src) ? uploadPreview.src : 'assets/samples/paddy_blast.svg';
+    } else {
+      // Live Camera
+      const capturedPreview = document.getElementById('capturedPhotoPreview');
+      if (capturedPreview && capturedPreview.style.display !== 'none' && capturedPreview.src) {
+        scanPayload.mediaType = 'photo';
+        scanPayload.imageSrc = capturedPreview.src;
+      } else {
+        const video = document.getElementById('cameraFeed');
+        if (video && video.srcObject) {
+          const capturedData = window.cropScanner.capturePhoto(video);
+          scanPayload.mediaType = 'photo';
+          scanPayload.imageSrc = capturedData;
+        } else {
+          scanPayload.mediaType = 'photo';
+          scanPayload.imageSrc = 'assets/samples/paddy_blast.svg';
+        }
+      }
+    }
+
+    this.runScanAnalysis(scanPayload);
+  }
+
   processSampleScan(sampleKey, sampleImg) {
+    const stageVal = (this.selectedCropStage && this.selectedCropStage !== 'auto') ? this.selectedCropStage : null;
     this.runScanAnalysis({
       imageSrc: sampleImg,
       sampleKey: sampleKey,
       preferredCrop: this.farmerData.crop,
-      landAreaAcres: this.farmerData.landArea
+      landAreaAcres: this.farmerData.landArea,
+      daysAfterSowing: this.selectedDAS,
+      cropStageManual: stageVal,
+      cropSymptomsText: this.typedSymptoms,
+      mediaType: 'photo'
     });
   }
 
@@ -847,7 +1167,7 @@ class CropApp {
     const statusText = document.getElementById('scanProgressStatus');
     const progressBar = document.getElementById('scanProgressBar');
 
-    overlay.classList.add('active');
+    if (overlay) overlay.classList.add('active');
 
     try {
       const result = await window.cropScanner.analyzeCropImage(scanOptions, (step, msg) => {
@@ -855,7 +1175,7 @@ class CropApp {
         if (progressBar) progressBar.style.width = `${step * 25}%`;
       });
 
-      overlay.classList.remove('active');
+      if (overlay) overlay.classList.remove('active');
       this.currentScanData = result;
 
       if (result.status === 'UNCERTAIN') {
@@ -867,9 +1187,9 @@ class CropApp {
         this.switchView('result');
       }
     } catch (err) {
-      overlay.classList.remove('active');
+      if (overlay) overlay.classList.remove('active');
       console.error("Scan error:", err);
-      alert("Error processing image. Please try again.");
+      alert("Error processing media. Please try again.");
     }
   }
 
@@ -900,9 +1220,35 @@ class CropApp {
 
     this.setCurrentDate();
 
-    // 1. Photo preview & AI confidence
+    // 1. Photo / Video preview & AI confidence
     const resultImg = document.getElementById('resultCropImage');
-    if (resultImg && result.imageSrc) resultImg.src = result.imageSrc;
+    const resultVid = document.getElementById('resultCropVideo');
+    const mediaBadge = document.getElementById('resMediaTypeBadge');
+
+    if (result.mediaType === 'video' && result.videoSrc) {
+      if (resultImg) resultImg.style.display = 'none';
+      if (resultVid) {
+        resultVid.style.display = 'block';
+        resultVid.src = result.videoSrc;
+      }
+      if (mediaBadge) {
+        mediaBadge.textContent = isTa ? '🎥 வீடியோ பகுப்பாய்வு' : '🎥 Video Clip Analysis';
+        mediaBadge.className = 'media-type-pill media-video';
+      }
+    } else {
+      if (resultVid) {
+        resultVid.style.display = 'none';
+        try { resultVid.pause(); } catch (e) {}
+      }
+      if (resultImg) {
+        resultImg.style.display = 'block';
+        resultImg.src = result.imageSrc || 'assets/samples/paddy_blast.svg';
+      }
+      if (mediaBadge) {
+        mediaBadge.textContent = isTa ? '📸 புகைப்பட பகுப்பாய்வு' : '📸 Photo Analysis';
+        mediaBadge.className = 'media-type-pill media-photo';
+      }
+    }
 
     const confidenceVal = document.getElementById('aiConfidenceVal');
     if (confidenceVal) {
@@ -924,23 +1270,66 @@ class CropApp {
       }
     }
 
-    // 3. Farmer Name & Land Area
+    // 3. Farmer Name, Land Area, DAS
     const farmerNameEl = document.getElementById('resFarmerNameVal');
     const landAreaEl = document.getElementById('resLandAreaVal');
+    const resDASVal = document.getElementById('resDASVal');
     const resultLandAreaInput = document.getElementById('resultLandAreaInput');
 
     if (farmerNameEl) farmerNameEl.textContent = this.farmerData.name || (isTa ? 'விவசாயி' : 'Farmer');
     if (landAreaEl) landAreaEl.textContent = `${adv.acres} ${isTa ? 'ஏக்கர்' : 'Acres'}`;
+    if (resDASVal) {
+      const dasNum = result.daysAfterSowing || this.selectedDAS;
+      resDASVal.textContent = `${dasNum} ${isTa ? 'நாட்கள் (பயிர் வயது)' : 'Days (DAS)'}`;
+    }
     if (resultLandAreaInput) resultLandAreaInput.value = adv.acres;
 
     // 4. Crop, Growth Stage, & Problem
-    document.getElementById('resCropVal').textContent = isTa ? crop.name_ta : crop.name_en;
-    document.getElementById('resStageVal').textContent = isTa ? stage.name_ta : stage.name_en;
+    const cropEl = document.getElementById('resCropVal');
+    const stageEl = document.getElementById('resStageVal');
+    if (cropEl) cropEl.textContent = isTa ? crop.name_ta : crop.name_en;
+    if (stageEl) {
+      stageEl.textContent = `${isTa ? stage.name_ta : stage.name_en} ${stage.days ? '(' + stage.days + ')' : ''}`;
+    }
 
     const problemVal = document.getElementById('resProblemVal');
     const scientificVal = document.getElementById('resScientificVal');
     if (problemVal) problemVal.textContent = isTa ? issue.name_ta : issue.name_en;
     if (scientificVal) scientificVal.textContent = issue.scientificName ? `(${issue.scientificName})` : '';
+
+    // Farmer Observations summary row
+    const symptomsRow = document.getElementById('resSymptomsRow');
+    const symptomsVal = document.getElementById('resTypedSymptomsVal');
+    const sText = result.cropSymptomsText || this.typedSymptoms || (adv && adv.cropSymptomsText);
+    if (symptomsRow && symptomsVal) {
+      if (sText) {
+        symptomsRow.style.display = 'block';
+        symptomsVal.textContent = sText;
+      } else {
+        symptomsRow.style.display = 'none';
+      }
+    }
+
+    // Honest Precision Pesticide Guarantee comparison
+    const regularDealerEl = document.getElementById('resRegularDealerAdvice');
+    const precisionShopEl = document.getElementById('resPrecisionShopAdvice');
+    const moneySavedEl = document.getElementById('resMoneySavedVal');
+    const unwantedCountEl = document.getElementById('resUnwantedCountVal');
+
+    if (adv.honestComparison) {
+      if (regularDealerEl) {
+        regularDealerEl.textContent = isTa ? adv.honestComparison.regularDealer_ta : adv.honestComparison.regularDealer_en;
+      }
+      if (precisionShopEl) {
+        precisionShopEl.textContent = isTa ? adv.honestComparison.precisionShop_ta : adv.honestComparison.precisionShop_en;
+      }
+      if (moneySavedEl) {
+        moneySavedEl.textContent = isTa ? `₹${adv.honestComparison.moneySaved} மிச்சம் / ஏக்கர்` : `₹${adv.honestComparison.moneySaved} Saved / Acre`;
+      }
+      if (unwantedCountEl) {
+        unwantedCountEl.textContent = isTa ? `${adv.honestComparison.unwantedSpraysPrevented} தேவையற்ற தெளிப்புகள் தவிர்ப்பு` : `${adv.honestComparison.unwantedSpraysPrevented} Unneeded Sprays Prevented`;
+      }
+    }
 
     // 5. HERO Medicine Display vs Healthy Crop State
     const heroCard = document.getElementById('heroPesticideContainer');
@@ -1446,7 +1835,16 @@ class CropApp {
       });
     }
 
-    // 3. Problem Filter Dropdown
+    // 3. Stage / DAS Filter Dropdown
+    const stageFilterSelect = document.getElementById('shopStageFilterSelect');
+    if (stageFilterSelect) {
+      stageFilterSelect.addEventListener('change', (e) => {
+        this.activeShopStage = e.target.value;
+        this.renderShopProducts();
+      });
+    }
+
+    // 4. Problem Filter Dropdown
     const problemFilterSelect = document.getElementById('shopProblemFilterSelect');
     if (problemFilterSelect) {
       problemFilterSelect.addEventListener('change', (e) => {
@@ -1455,7 +1853,7 @@ class CropApp {
       });
     }
 
-    // 4. Search Input
+    // 5. Search Input
     const searchInput = document.getElementById('shopSearchInput');
     if (searchInput) {
       searchInput.addEventListener('input', (e) => {
@@ -1464,16 +1862,18 @@ class CropApp {
       });
     }
 
-    // 5. Reset Filters Button
+    // 6. Reset Filters Button
     const resetBtn = document.getElementById('resetShopFiltersBtn');
     if (resetBtn) {
       resetBtn.addEventListener('click', () => {
         this.activeShopCategory = 'all';
         this.activeShopCrop = 'all';
+        this.activeShopStage = 'all';
         this.activeShopProblem = 'all';
         this.shopSearchQuery = '';
 
         if (cropFilterSelect) cropFilterSelect.value = 'all';
+        if (stageFilterSelect) stageFilterSelect.value = 'all';
         if (problemFilterSelect) problemFilterSelect.value = 'all';
         if (searchInput) searchInput.value = '';
 
@@ -1491,7 +1891,7 @@ class CropApp {
       });
     }
 
-    // 6. Product Detail Modal Close Listeners
+    // 7. Product Detail Modal Close Listeners
     const closeProductModalBtn = document.getElementById('closeProductModalBtn');
     const closeProductModalBottomBtn = document.getElementById('closeProductModalBottomBtn');
     const productModal = document.getElementById('productDetailModal');
@@ -1532,13 +1932,33 @@ class CropApp {
         if (!matchesCrop) return false;
       }
 
-      // 3. Problem Filter
+      // 3. Stage / DAS Filter
+      if (this.activeShopStage !== 'all') {
+        const stage = this.activeShopStage.toLowerCase();
+        const stageStr = ((product.cropStage_en || '') + ' ' + (product.cropStage_ta || '') + ' ' + (product.suitableFor_en || '') + ' ' + (product.category || '')).toLowerCase();
+        
+        let matchesStage = false;
+        if (stage === 'nursery') {
+          matchesStage = stageStr.includes('seed') || stageStr.includes('nursery') || stageStr.includes('விதை') || stageStr.includes('நாற்றங்கால்') || product.category === 'seed_treatment';
+        } else if (stage === 'tillering') {
+          matchesStage = stageStr.includes('tillering') || stageStr.includes('vegetative') || stageStr.includes('branching') || stageStr.includes('தூர்') || stageStr.includes('வளர்ச்சி') || product.category === 'growth_nutrition';
+        } else if (stage === 'flowering') {
+          matchesStage = stageStr.includes('flowering') || stageStr.includes('booting') || stageStr.includes('pegging') || stageStr.includes('பூ') || stageStr.includes('கதிர்') || stageStr.includes('மொட்டு');
+        } else if (stage === 'fruiting') {
+          matchesStage = stageStr.includes('fruit') || stageStr.includes('grain') || stageStr.includes('boll') || stageStr.includes('filling') || stageStr.includes('காய்') || stageStr.includes('பிஞ்சு') || stageStr.includes('பருப்பு');
+        } else if (stage === 'maturity') {
+          matchesStage = stageStr.includes('harvest') || stageStr.includes('maturity') || stageStr.includes('அறுவடை') || stageStr.includes('முதிர்ச்சி');
+        }
+        if (!matchesStage && !stageStr.includes('all')) return false;
+      }
+
+      // 4. Problem Filter
       if (this.activeShopProblem !== 'all') {
         const matchesProblem = Array.isArray(product.suitableProblems) && product.suitableProblems.includes(this.activeShopProblem);
         if (!matchesProblem) return false;
       }
 
-      // 4. Free Text Search Filter
+      // 5. Free Text Search Filter
       if (this.shopSearchQuery) {
         const q = this.shopSearchQuery;
         const searchable = [
@@ -1582,6 +2002,16 @@ class CropApp {
         const cropName = cropObj ? (isTa ? cropObj.name_ta : cropObj.name_en) : this.activeShopCrop;
         activeFilters.push(`🌾 ${cropName}`);
       }
+      if (this.activeShopStage !== 'all') {
+        const stageMap = {
+          nursery: isTa ? "🌱 நாற்றங்கால் (0-25 DAS)" : "🌱 Nursery (0-25 DAS)",
+          tillering: isTa ? "🌿 தூர் / வளர்ச்சி (25-50 DAS)" : "🌿 Tillering (25-50 DAS)",
+          flowering: isTa ? "🌸 பூத்தல் & கதிர் (50-75 DAS)" : "🌸 Flowering (50-75 DAS)",
+          fruiting: isTa ? "🌾 காய் / மணி பிடித்தல் (75-95 DAS)" : "🌾 Fruiting (75-95 DAS)",
+          maturity: isTa ? "🚜 அறுவடை பருவம் (95+ DAS)" : "🚜 Harvest (95+ DAS)"
+        };
+        activeFilters.push(stageMap[this.activeShopStage] || this.activeShopStage);
+      }
       if (this.activeShopCategory !== 'all') {
         const catMap = {
           seed_treatment: isTa ? "🌱 விதை நேர்த்தி" : "🌱 Seed Treatment",
@@ -1613,8 +2043,8 @@ class CropApp {
           </h3>
           <p style="font-size: 0.9rem; color: var(--text-muted); max-width: 480px; margin: 0 auto 16px;">
             ${isTa 
-              ? 'தேர்ந்தெடுக்கப்பட்ட பயிர் அல்லது பிரச்சனைக்குரிய தயாரிப்புகள் கிடைக்கவில்லை. வடிகட்டியை மாற்றி முயற்சிக்கவும்.' 
-              : 'Try changing your crop or problem selection to browse other agricultural protection solutions.'}
+              ? 'தேர்ந்தெடுக்கப்பட்ட பயிர், பருவம் அல்லது பிரச்சனைக்குரிய தயாரிப்புகள் கிடைக்கவில்லை. வடிகட்டியை மாற்றி முயற்சிக்கவும்.' 
+              : 'Try changing your crop, growth stage or problem selection to browse other agricultural protection solutions.'}
           </p>
           <button type="button" class="btn-primary btn-reset-shop" style="width: auto;">
             ${window.i18n.getText('btnResetShopFilters')}

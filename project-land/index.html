@@ -175,13 +175,42 @@
                 </div>
               </div>
 
+              <!-- Days Since Sowing / Planting (DAS) -->
+              <div class="form-group">
+                <label for="farmerDAS">
+                  <span>📅</span> <strong data-i18n="labelDAS">Days Since Sowing / Planting (DAS)</strong>
+                </label>
+                <input type="number" id="farmerDAS" class="form-input" min="0" max="1500" value="45" placeholder="e.g. 45" data-i18n-placeholder="placeholderDAS">
+                <div class="quick-area-selector">
+                  <span data-i18n="quickSelectDAS">Quick Select Crop Age (DAS):</span>
+                  <div class="chips-container" id="dasQuickChipsContainer">
+                    <button type="button" class="area-chip das-chip" data-das="15">15 <span data-i18n="dasDaysUnit">Days</span></button>
+                    <button type="button" class="area-chip das-chip" data-das="30">30 <span data-i18n="dasDaysUnit">Days</span></button>
+                    <button type="button" class="area-chip das-chip active" data-das="45">45 <span data-i18n="dasDaysUnit">Days</span></button>
+                    <button type="button" class="area-chip das-chip" data-das="60">60 <span data-i18n="dasDaysUnit">Days</span></button>
+                    <button type="button" class="area-chip das-chip" data-das="75">75 <span data-i18n="dasDaysUnit">Days</span></button>
+                    <button type="button" class="area-chip das-chip" data-das="90">90 <span data-i18n="dasDaysUnit">Days</span></button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Crop Growth Stage Dropdown -->
+              <div class="form-group">
+                <label for="farmerCropStage">
+                  <span>🌱</span> <strong data-i18n="labelGrowthStage">Crop Growth Stage (Auto-synced with DAS)</strong>
+                </label>
+                <select id="farmerCropStage" class="form-select">
+                  <option value="auto" data-i18n="stageAutoSelect">Auto Detect from DAS / Visuals</option>
+                </select>
+              </div>
+
               <!-- Full 12 Major Crops Selection -->
               <div class="form-group">
                 <label for="primaryCrop">
                   <span>🌾</span> <span data-i18n="labelCrop">Select Primary Crop</span>
                 </label>
                 <select id="primaryCrop" class="form-select">
-                  <option value="auto" data-i18n="cropAutoDetect">Auto Detect from Photo</option>
+                  <option value="auto" data-i18n="cropAutoDetect">Auto Detect from Photo / Video</option>
                   <option value="paddy" data-i18n="cropPaddy">🌾 Paddy / Rice (நெல்)</option>
                   <option value="groundnut" data-i18n="cropGroundnut">🥜 Groundnut / Peanut (நிலக்கடலை)</option>
                   <option value="corn" data-i18n="cropCorn">🌽 Corn / Maize (மக்காச்சோளம்)</option>
@@ -219,24 +248,27 @@
       </section>
 
       <!-- ====================================================================
-           SECTION 2: Crop Scanner (Live Camera & Gallery Upload)
+           SECTION 2: Crop Scanner (Live Camera, Photo & Video Upload + Symptoms)
            ==================================================================== -->
       <section id="scannerSection" class="app-section" aria-labelledby="scannerHeading">
         <div class="content-card">
           <div class="card-header">
             <h2 id="scannerHeading">
-              <span>📷</span> <span data-i18n="scannerTitle">Crop Photo Scanner</span>
+              <span>📷</span> <span data-i18n="scannerTitle">Multi-Modal Crop Scanner & Diagnostic Counter</span>
             </h2>
-            <p data-i18n="scannerSubtitle">Take a real-time photo or upload an image of your crop leaf, stem, or field</p>
+            <p data-i18n="scannerSubtitle">Upload a real-time photo, video clip, or type symptoms with crop age (DAS) for precise stage diagnosis</p>
           </div>
 
           <!-- Scanner Mode Tabs -->
           <div class="scanner-tabs">
             <button type="button" id="tabCameraBtn" class="scanner-tab-btn active">
-              <span data-i18n="tabLiveCamera">📸 Take Live Photo</span>
+              <span data-i18n="tabLiveCamera">📸 Live Camera Photo</span>
             </button>
             <button type="button" id="tabUploadBtn" class="scanner-tab-btn">
               <span data-i18n="tabUploadPhoto">📁 Upload Photo</span>
+            </button>
+            <button type="button" id="tabVideoBtn" class="scanner-tab-btn">
+              <span data-i18n="tabUploadVideo">🎥 Upload Video / Field Clip</span>
             </button>
           </div>
 
@@ -281,6 +313,66 @@
               </button>
               <input type="file" id="cropPhotoInput" accept="image/*" style="display:none;">
               <img id="uploadPhotoPreview" class="upload-preview-img" alt="Uploaded Crop Image">
+            </div>
+          </div>
+
+          <!-- TAB 3: Video Upload Viewport -->
+          <div id="videoViewContainer" class="scanner-viewport-wrapper">
+            <div id="videoDropZone" class="upload-drop-zone video-drop-zone">
+              <div class="upload-icon">🎥</div>
+              <p data-i18n="videoInstruction">Upload a short field walkthrough video or close-up leaf video to inspect canopy, motion & symptoms thoroughly.</p>
+              <div class="upload-hint" data-i18n="videoHint">Supported formats: MP4, WebM, MOV, 3GP (Max 50MB)</div>
+              <button type="button" id="selectVideoBtn" class="btn-secondary">
+                <span>🎥</span> <span data-i18n="uploadVideoButtonText">Select Video Clip from Device</span>
+              </button>
+              <input type="file" id="cropVideoInput" accept="video/*" style="display:none;">
+              <video id="uploadVideoPreview" class="upload-preview-video" controls playsinline style="display:none;"></video>
+            </div>
+          </div>
+
+          <!-- Crop Age (DAS), Stage & Symptom Typing Box -->
+          <div class="scanner-symptoms-card">
+            <div class="symptoms-grid">
+              
+              <!-- DAS & Stage Selector in Scanner -->
+              <div class="symptoms-field-group">
+                <label for="scannerDASInput">
+                  <span>📅</span> <strong data-i18n="labelDAS">Days Since Sowing (DAS / Crop Age):</strong>
+                </label>
+                <div class="das-input-row">
+                  <input type="number" id="scannerDASInput" class="form-input" min="0" max="1500" value="45" placeholder="e.g. 45" style="max-width: 120px;">
+                  <select id="scannerStageSelect" class="form-select" style="flex: 1;">
+                    <option value="auto" data-i18n="stageAutoSelect">Auto Detect from DAS / Visuals</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Describe Symptoms Textarea -->
+              <div class="symptoms-field-group">
+                <label for="cropSymptomsInput">
+                  <span>📝</span> <strong data-i18n="labelSymptoms">Describe Symptoms & Field Observations (Optional / Type here):</strong>
+                </label>
+                <textarea id="cropSymptomsInput" class="form-textarea" rows="2" placeholder="Type your observation: e.g., Spindle spots on leaves, stem borer hole, caterpillar attack, yellowing, stunted growth..." data-i18n-placeholder="placeholderSymptoms"></textarea>
+                
+                <!-- Clickable Quick Symptom Tags -->
+                <div class="quick-symptoms-chips-bar">
+                  <span class="chips-label" data-i18n="quickSymptomChips">Quick Tags:</span>
+                  <button type="button" class="symptom-tag-chip" data-tag="blast" data-i18n="tagBlast">🍂 Blast / Leaf Spots</button>
+                  <button type="button" class="symptom-tag-chip" data-tag="stem_borer" data-i18n="tagBorer">🐛 Stem Borer / Dead Heart</button>
+                  <button type="button" class="symptom-tag-chip" data-tag="fall_armyworm" data-i18n="tagWorm">🐛 Armyworm / Caterpillars</button>
+                  <button type="button" class="symptom-tag-chip" data-tag="yellowing" data-i18n="tagYellow">🟡 Yellow Leaves / Deficiency</button>
+                  <button type="button" class="symptom-tag-chip" data-tag="stunted" data-i18n="tagStunted">🌱 Stunted / Slow Growth</button>
+                  <button type="button" class="symptom-tag-chip" data-tag="healthy" data-i18n="tagHealthy">🌿 Healthy Crop</button>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Analyze Media & Symptoms Action Button -->
+            <div style="margin-top: 14px; text-align: center;">
+              <button type="button" id="analyzeMediaBtn" class="btn-primary analyze-media-btn">
+                <span>🔬</span> <span data-i18n="btnAnalyzeNow">Analyze Media & Symptoms Now ➔</span>
+              </button>
             </div>
           </div>
 
@@ -345,7 +437,7 @@
               <span>⚡</span> <span data-i18n="badgeActionRequired">Treatment Action Required</span>
             </div>
             <div class="farmer-summary-tag">
-              👤 <span id="resFarmerNameVal">Farmer</span> | 📏 <span id="resLandAreaVal">1 Acre</span>
+              👤 <span id="resFarmerNameVal">Farmer</span> | 📏 <span id="resLandAreaVal">1 Acre</span> | 📅 <span id="resDASVal">45 Days (DAS)</span>
             </div>
           </div>
 
@@ -353,8 +445,10 @@
           <div class="result-hero-grid">
             <div class="result-img-box">
               <img id="resultCropImage" src="assets/samples/paddy_blast.svg" alt="Analyzed Crop Feature">
+              <video id="resultCropVideo" controls playsinline style="display:none; width:100%; height:100%; object-fit:cover; border-radius:var(--radius-md);"></video>
               <div class="ai-reticle-overlay"></div>
               <div class="ai-confidence-pill">🎯 <span id="aiConfidenceVal">98% Confident</span></div>
+              <div id="resMediaTypeBadge" class="media-type-pill">📸 Photo Analysis</div>
             </div>
             
             <div class="result-primary-info">
@@ -364,10 +458,10 @@
                 <span id="resCropVal" class="info-value-big">Paddy (Rice)</span>
               </div>
 
-              <!-- 2. Current Growth Stage -->
+              <!-- 2. Current Growth Stage & DAS -->
               <div class="info-row">
-                <span class="info-label" data-i18n="resGrowthStage">🌱 Growth Stage</span>
-                <span id="resStageVal" style="font-size: 1.15rem; font-weight: 800; color: var(--primary);">Panicle Initiation / Booting Stage</span>
+                <span class="info-label" data-i18n="resGrowthStage">🌱 Growth Stage & Age</span>
+                <span id="resStageVal" style="font-size: 1.15rem; font-weight: 800; color: var(--primary);">Panicle Initiation / Booting Stage (50-75 DAS)</span>
               </div>
 
               <!-- 3. Problem Detected -->
@@ -375,6 +469,52 @@
                 <span class="info-label" data-i18n="resProblem">🔍 Problem Detected</span>
                 <span id="resProblemVal" class="info-value-problem">Rice Blast (Leaf & Neck Blast)</span>
                 <span id="resScientificVal" class="scientific-name">(Magnaporthe oryzae)</span>
+              </div>
+
+              <!-- 4. Farmer Typed Symptoms & Observations (if provided) -->
+              <div id="resSymptomsRow" class="info-row symptoms-summary-row" style="display:none;">
+                <span class="info-label" data-i18n="resTypedSymptomsDisplay">📝 Farmer Observations:</span>
+                <span id="resTypedSymptomsVal" class="symptoms-text-tag">-</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ====================================================================
+               HONEST PRECISION PESTICIDE GUARANTEE & SHOP COMPARISON
+               ==================================================================== -->
+          <div class="precision-guarantee-card" id="precisionGuaranteeCard">
+            <div class="guarantee-header">
+              <div class="guarantee-badge">
+                <span>🛡️</span> <strong data-i18n="precisionGuaranteeTitle">Honest & Precision Pesticide Guarantee</strong>
+              </div>
+              <p data-i18n="precisionGuaranteeSubtitle">
+                We prescribe ONLY the exact target-specific remedy required. Zero unnecessary chemicals, zero wasted money.
+              </p>
+            </div>
+
+            <div class="comparison-grid">
+              <!-- ❌ Regular Pesticide Dealer Counter -->
+              <div class="comparison-col regular-dealer">
+                <div class="col-header">
+                  <span class="cross-icon">❌</span> <strong data-i18n="comparisonRegularTitle">Regular Chemical Shop Counter (Unwanted Upsell)</strong>
+                </div>
+                <div id="resRegularDealerAdvice" class="col-body">
+                  Pushes 3-4 bundled items: Cocktail insecticide + unneeded liquid bio-tonic + spreader sticker (~₹850 - ₹1200 / acre).
+                </div>
+              </div>
+
+              <!-- ✅ Our Precision Prescription -->
+              <div class="comparison-col precision-shop">
+                <div class="col-header">
+                  <span class="check-icon">✅</span> <strong data-i18n="comparisonPrecisionTitle">Our Precision Agronomic Prescription</strong>
+                </div>
+                <div id="resPrecisionShopAdvice" class="col-body">
+                  Recommends ONLY 1 certified target remedy (~₹190) + Organic alternative. Prevents soil poisoning and saves money!
+                </div>
+                <div class="savings-tag-row">
+                  <span class="savings-pill">💰 <strong id="resMoneySavedVal">₹650 Saved / Acre</strong></span>
+                  <span class="unwanted-pill">🚫 <strong id="resUnwantedCountVal">3 Unneeded Sprays Prevented</strong></span>
+                </div>
               </div>
             </div>
           </div>
@@ -787,7 +927,22 @@
                 </select>
               </div>
 
-              <!-- 2. Select Problem / Need Filter -->
+              <!-- 2. Select Growth Stage / DAS Filter -->
+              <div class="shop-filter-group">
+                <label for="shopStageFilterSelect">
+                  <span>🌱</span> <strong data-i18n="shopFilterStage">Filter by Growth Stage / DAS</strong>
+                </label>
+                <select id="shopStageFilterSelect" class="form-select">
+                  <option value="all" data-i18n="shopAllStages">🌟 All Stages & Ages (அனைத்து பருவங்கள்)</option>
+                  <option value="nursery">🌱 Nursery / Seed Treatment (0-25 DAS)</option>
+                  <option value="tillering">🌿 Vegetative & Tillering (25-50 DAS)</option>
+                  <option value="flowering">🌸 Flowering & Booting (50-75 DAS)</option>
+                  <option value="fruiting">🌾 Grain / Fruit Filling (75-95 DAS)</option>
+                  <option value="maturity">🚜 Maturity & Harvest (95+ DAS)</option>
+                </select>
+              </div>
+
+              <!-- 3. Select Problem / Need Filter -->
               <div class="shop-filter-group">
                 <label for="shopProblemFilterSelect">
                   <span>🔍</span> <strong data-i18n="shopFilterProblem">Filter by Problem / Need</strong>
@@ -803,7 +958,7 @@
                 </select>
               </div>
 
-              <!-- 3. Free Text Search Box -->
+              <!-- 4. Free Text Search Box -->
               <div class="shop-filter-group shop-search-group">
                 <label for="shopSearchInput">
                   <span>🔎</span> <strong>Search</strong>

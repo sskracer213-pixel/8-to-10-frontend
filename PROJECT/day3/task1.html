@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 3 Project - Task & Analytics Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #f43f5e;
+            --primary-glow: rgba(244, 63, 94, 0.4);
+            --bg-dark: #0b0f19;
+            --card-bg: rgba(17, 24, 39, 0.85);
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-dark);
+            color: #f1f5f9;
+        }
+        .orbitron { font-family: 'Orbitron', sans-serif; }
+        .back-nav {
+            position: fixed;
+            top: 15px;
+            left: 20px;
+            z-index: 1000;
+            background: rgba(15, 23, 42, 0.85);
+            border: 1px solid rgba(244, 63, 94, 0.4);
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+            transition: 0.3s;
+        }
+        .back-nav:hover {
+            background: var(--primary);
+            color: #0b0f19;
+        }
+        .stat-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 18px;
+            padding: 22px;
+            position: relative;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+        .stat-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-4px);
+        }
+        .task-item {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 14px 18px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: 0.2s;
+        }
+        .task-item.completed {
+            opacity: 0.5;
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+<body class="p-4 pt-5">
+
+    <a href="../../index.html" class="back-nav">← Back to DevGalaxy</a>
+
+    <div class="container mt-4">
+        <!-- HEADER -->
+        <div class="d-flex justify-content-between align-items-center mb-4 pb-2 border-bottom border-secondary border-opacity-25">
+            <div>
+                <h2 class="orbitron text-white mb-0">Project Tracker Dashboard</h2>
+                <small class="text-secondary">Day 03 Project • Full Interactive Task Manager & Metric Analytics</small>
+            </div>
+            <span class="badge bg-danger fs-6 px-3 py-2 rounded-pill">DAY 03</span>
+        </div>
+
+        <!-- STAT METRICS -->
+        <div class="row g-3 mb-4">
+            <div class="col-md-4">
+                <div class="stat-card">
+                    <small class="text-secondary fw-semibold">TOTAL TASKS</small>
+                    <div class="fs-2 orbitron text-white mt-1" id="totalTasksCount">0</div>
+                    <div class="text-info small mt-1">Active Projects</div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="stat-card">
+                    <small class="text-secondary fw-semibold">COMPLETED TASKS</small>
+                    <div class="fs-2 orbitron text-success mt-1" id="completedTasksCount">0</div>
+                    <div class="text-success small mt-1">Finished on time</div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="stat-card">
+                    <small class="text-secondary fw-semibold">COMPLETION RATE</small>
+                    <div class="fs-2 orbitron text-danger mt-1" id="completionRate">0%</div>
+                    <div class="text-secondary small mt-1">Progress calculation</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TASK MANAGER SECTION -->
+        <div class="row g-4">
+            <div class="col-lg-5">
+                <div class="stat-card">
+                    <h5 class="orbitron text-white mb-3">Add New Mission</h5>
+                    <div class="mb-3">
+                        <label class="text-secondary small mb-1">Task Title</label>
+                        <input type="text" id="taskInput" class="form-control bg-dark border-secondary text-white" placeholder="e.g. Build React component...">
+                    </div>
+                    <div class="mb-3">
+                        <label class="text-secondary small mb-1">Priority</label>
+                        <select id="priorityInput" class="form-select bg-dark border-secondary text-white">
+                            <option value="High">🔴 High Priority</option>
+                            <option value="Medium" selected>🟡 Medium Priority</option>
+                            <option value="Low">🟢 Low Priority</option>
+                        </select>
+                    </div>
+                    <button onclick="addTask()" class="btn btn-danger w-100 py-2 fw-semibold">Create Task +</button>
+                </div>
+            </div>
+
+            <div class="col-lg-7">
+                <div class="stat-card">
+                    <h5 class="orbitron text-white mb-3">Active Tasks List</h5>
+                    <div id="taskList">
+                        <!-- Injected tasks -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let tasks = [
+            { id: 1, text: "Design responsive navigation bar", priority: "High", completed: true },
+            { id: 2, text: "Integrate Weather API endpoints", priority: "Medium", completed: false },
+            { id: 3, text: "Optimize CSS animations & keyframes", priority: "Low", completed: false }
+        ];
+
+        function renderDashboard() {
+            const list = document.getElementById("taskList");
+            const totalCount = document.getElementById("totalTasksCount");
+            const completedCount = document.getElementById("completedTasksCount");
+            const rateElem = document.getElementById("completionRate");
+
+            const completed = tasks.filter(t => t.completed).length;
+            totalCount.innerText = tasks.length;
+            completedCount.innerText = completed;
+            rateElem.innerText = tasks.length > 0 ? Math.round((completed / tasks.length) * 100) + "%" : "0%";
+
+            if (tasks.length === 0) {
+                list.innerHTML = '<p class="text-secondary text-center py-4">No tasks found. Create one to get started!</p>';
+                return;
+            }
+
+            list.innerHTML = tasks.map(t => `
+                <div class="task-item ${t.completed ? 'completed' : ''}">
+                    <div class="d-flex align-items-center gap-3">
+                        <input type="checkbox" ${t.completed ? 'checked' : ''} onchange="toggleTask(${t.id})" class="form-check-input mt-0">
+                        <div>
+                            <span class="text-white">${t.text}</span>
+                            <span class="badge ${t.priority === 'High' ? 'bg-danger' : t.priority === 'Medium' ? 'bg-warning text-dark' : 'bg-success'} ms-2">${t.priority}</span>
+                        </div>
+                    </div>
+                    <button onclick="deleteTask(${t.id})" class="btn btn-sm btn-outline-secondary">✕</button>
+                </div>
+            `).join("");
+        }
+
+        function addTask() {
+            const input = document.getElementById("taskInput");
+            const priority = document.getElementById("priorityInput").value;
+            const text = input.value.trim();
+
+            if (!text) return;
+            tasks.push({ id: Date.now(), text, priority, completed: false });
+            input.value = "";
+            renderDashboard();
+        }
+
+        function toggleTask(id) {
+            tasks = tasks.map(t => t.id === id ? { ...t, completed: !t.completed } : t);
+            renderDashboard();
+        }
+
+        function deleteTask(id) {
+            tasks = tasks.filter(t => t.id !== id);
+            renderDashboard();
+        }
+
+        renderDashboard();
+    </script>
+</body>
+</html>
