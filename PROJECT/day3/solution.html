@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rebuilding Tomorrow | The Synthesis Solution | Chapter 03</title>
+  <meta name="description" content="The blueprint for an antifragile tomorrow: How humans, sovereign AI, systems craftsmanship, and cybersecurity converge into sustainable progress.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-theme="solution">
+
+  <!-- Interactive Background Canvas (Luminescent Synthesis / Aurora) -->
+  <canvas id="bg-canvas"></canvas>
+  <div class="scanline-overlay"></div>
+  <div class="glow-blob glow-blob-1" style="background: var(--emerald-core); opacity: 0.18;"></div>
+  <div class="glow-blob glow-blob-2" style="background: var(--blue-core); opacity: 0.18;"></div>
+
+  <!-- Persistent Top HUD Navigation -->
+  <nav class="site-nav">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand-logo">
+        <div class="logo-symbol" style="background: linear-gradient(135deg, var(--emerald-core), var(--blue-core)); color: #000; box-shadow: 0 0 16px var(--emerald-glow);">&lt;*&gt;</div>
+        <div class="logo-text">
+          THE WORLD AFTER IT
+          <span style="color: var(--emerald-core);">Human + AI Synthesis</span>
+        </div>
+      </a>
+
+      <div class="trilogy-stepper">
+        <a href="future.html" class="chapter-node">
+          <span class="chapter-num">01</span>
+          <span>EVOLUTION</span>
+        </a>
+        <a href="collapse.html" class="chapter-node">
+          <span class="chapter-num">02</span>
+          <span>COLLAPSE</span>
+        </a>
+        <a href="solution.html" class="chapter-node active">
+          <span class="chapter-num">03</span>
+          <span>REBUILDING</span>
+        </a>
+      </div>
+
+      <div class="nav-controls">
+        <button id="audio-toggle" class="audio-toggle" title="Toggle Ambient Audio">
+          <div class="audio-waves">
+            <span></span><span></span><span></span>
+          </div>
+          <span>AUDIO AMBIANCE</span>
+        </button>
+        <button id="menu-toggle" class="menu-toggle" aria-label="Open Menu">
+          <span>☰</span>
+        </button>
+      </div>
+    </div>
+    <div class="reading-progress-bar" style="background: linear-gradient(90deg, var(--emerald-core), var(--cyan-core), var(--blue-core));"></div>
+  </nav>
+
+  <!-- Mobile Drawer Modal -->
+  <div id="mobile-nav-modal" class="mobile-nav-modal">
+    <button id="mobile-nav-close" class="source-pill" style="align-self: flex-end; margin-bottom: 24px;">✕ CLOSE</button>
+    <div class="mobile-nav-links">
+      <a href="future.html" class="mobile-nav-item">Chapter 01: The Future of IT</a>
+      <a href="collapse.html" class="mobile-nav-item">Chapter 02: The Day Code Stopped</a>
+      <a href="solution.html" class="mobile-nav-item active">Chapter 03: Rebuilding Tomorrow</a>
+      <a href="#sources" class="mobile-nav-item" style="font-size: 1.1rem; color: var(--emerald-core);">Research &amp; Sources</a>
+    </div>
+  </div>
+
+  <div class="site-wrapper">
+
+    <!-- HERO SECTION -->
+    <header class="hero-section">
+      <div class="container hero-content">
+        <div class="hero-preheader">
+          <span class="tech-tag success"><span class="pulsing-dot"></span> CHAPTER 03 — THE SYNTHESIS BLUEPRINT</span>
+          <span class="tech-tag">ANTIFRAGILE CIVILIZATION</span>
+        </div>
+
+        <h1 class="hero-title">
+          Rebuilding <span class="gradient-text">Tomorrow.</span>
+        </h1>
+
+        <p class="hero-subtitle">
+          “The answer is not choosing humans OR technology. The answer is engineering systems where humans and technology make each other perpetually stronger, more creative, and antifragile.”
+        </p>
+
+        <!-- Synthesis Core Highlights -->
+        <div class="hero-stats-strip reveal-on-scroll">
+          <div class="hero-stat-card" style="border-color: rgba(0, 255, 157, 0.25);">
+            <div class="stat-value stat-counter" data-target="100" data-suffix="%">0</div>
+            <div class="stat-label">Human Judgment in the Loop</div>
+            <span class="source-pill" style="margin-top: 6px;">Responsible AI Charter</span>
+          </div>
+
+          <div class="hero-stat-card" style="border-color: rgba(0, 255, 157, 0.25);">
+            <div class="stat-value stat-counter" data-target="10" data-suffix="x">0</div>
+            <div class="stat-label">Productivity Multiplier</div>
+            <span class="source-pill" style="margin-top: 6px;">Stanford HAI Benchmarks</span>
+          </div>
+
+          <div class="hero-stat-card" style="border-color: rgba(0, 255, 157, 0.25);">
+            <div class="stat-value stat-counter" data-target="99.99" data-suffix="%">0</div>
+            <div class="stat-label">Offline Resilience Target</div>
+            <span class="source-pill" style="margin-top: 6px;">Fault-Tolerant Architecture</span>
+          </div>
+
+          <div class="hero-stat-card" style="border-color: rgba(0, 255, 157, 0.25);">
+            <div class="stat-value stat-counter" data-target="100" data-suffix="M+">0</div>
+            <div class="stat-label">Workers Reskilled by 2030</div>
+            <span class="source-pill" style="margin-top: 6px;">WEF Reskilling Revolution</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- SECTION 1: THE SYNTHESIS EQUATION ENGINE -->
+    <section class="page-section">
+      <div class="container">
+        <div class="section-header text-center reveal-on-scroll">
+          <span class="section-eyebrow" style="color: var(--emerald-core);">ARCHITECTURAL FORMULA</span>
+          <h2 class="section-title">The Antifragile Synthesis Engine</h2>
+          <p class="section-desc">
+            True resilience is not a single tool — it is a harmonic equation. Click any variable in the formula below to inspect how it secures tomorrow's digital society.
+          </p>
+        </div>
+
+        <div class="equation-engine-box reveal-on-scroll">
+          <!-- Interactive Equation Line -->
+          <div class="equation-elements-row">
+            <button class="eq-btn active" data-eq="human">HUMAN JUDGMENT</button>
+            <span class="eq-operator">+</span>
+            <button class="eq-btn" data-eq="ai">AI REASONING</button>
+            <span class="eq-operator">+</span>
+            <button class="eq-btn" data-eq="developer">DEV CRAFT</button>
+            <span class="eq-operator">+</span>
+            <button class="eq-btn" data-eq="data">SOVEREIGN DATA</button>
+            <span class="eq-operator">+</span>
+            <button class="eq-btn" data-eq="security">ZERO-TRUST</button>
+            <span class="eq-operator">+</span>
+            <button class="eq-btn" data-eq="ethics">ETHICAL GUARD</button>
+            <span class="eq-operator">=</span>
+            <span class="eq-result-badge">ANTIFRAGILE FUTURE</span>
+          </div>
+
+          <!-- Dynamic Component Detail Display -->
+          <div class="glass-card" style="background: rgba(4, 18, 26, 0.85); border-color: rgba(0, 255, 157, 0.3);">
+            <span class="tech-tag success" style="margin-bottom: 12px;">EQUATION PILLAR ANALYSIS</span>
+            <h3 id="eq-detail-title" style="font-size: 1.6rem; margin-bottom: 12px; color: var(--emerald-core);">Human Judgment &amp; Moral Governance</h3>
+            <p id="eq-detail-desc" style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.6; margin-bottom: 16px;">
+              Empathy, contextual intuition, ethical discernment, and long-range wisdom cannot be compressed into token probability distributions. Humans remain the ultimate anchors of intent and accountability.
+            </p>
+            <div style="background: rgba(0, 255, 157, 0.08); padding: 12px 16px; border-radius: var(--radius-sm); border: 1px solid rgba(0, 255, 157, 0.2); font-family: var(--font-mono); font-size: 0.85rem; color: #FFF;">
+              <strong>CORE IMPACT:</strong> <span id="eq-detail-metric">Zero-shot moral reasoning and strategic liability remain uniquely human.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: 7 BLUEPRINTS FOR TOMORROW -->
+    <section class="page-section" style="background: rgba(4, 15, 23, 0.6);">
+      <div class="container">
+        <div class="section-header reveal-on-scroll">
+          <span class="section-eyebrow" style="color: var(--emerald-core);">STRATEGIC INTERVENTIONS</span>
+          <h2 class="section-title">7 Blueprints to Rebuild the Future</h2>
+          <p class="section-desc">
+            To prevent societal collapse and unlock human potential, policy, education, and engineering must execute seven systemic transformations.
+          </p>
+        </div>
+
+        <div class="grid-3 reveal-on-scroll">
+          <div class="glass-card">
+            <span class="tech-tag success" style="margin-bottom: 12px;">01 • TALENT</span>
+            <h3>Continuous Reskilling</h3>
+            <p>Pivot the workforce from rote manual coding to data engineering, cybersecurity auditing, AI agent prompt-orchestration, and complex systems architecture.</p>
+          </div>
+
+          <div class="glass-card">
+            <span class="tech-tag success" style="margin-bottom: 12px;">02 • SYMBIOSIS</span>
+            <h3>Human + AI Symbiosis</h3>
+            <p>Automate 90% of routine cognitive toil (boilerplate, documentation, triage) while humans retain executive judgment, empathy, creative spark, and legal liability.</p>
+          </div>
+
+          <div class="glass-card">
+            <span class="tech-tag success" style="margin-bottom: 12px;">03 • INFRASTRUCTURE</span>
+            <h3>Sovereign Compute &amp; Grid</h3>
+            <p>Invest heavily in domestic GPU clusters (IndiaAI), indigenous semiconductor fabrication (ISM), clean green energy grids, and localized edge data centers.</p>
+          </div>
+
+          <div class="glass-card">
+            <span class="tech-tag success" style="margin-bottom: 12px;">04 • DEFENSE</span>
+            <h3>Cybersecurity by Design</h3>
+            <p>Replace legacy vulnerable code with memory-safe languages (Rust), post-quantum cryptography, hardware roots-of-trust, and continuous AI red-teaming.</p>
+          </div>
+
+          <div class="glass-card">
+            <span class="tech-tag success" style="margin-bottom: 12px;">05 • INDIGENOUS TECH</span>
+            <h3>Build Sovereign IP</h3>
+            <p>Foster deep-tech IP in foundational multilingual AI models (Bhashini), open silicon (Shakti RISC-V), enterprise SaaS, and decentralized public ledgers.</p>
+          </div>
+
+          <div class="glass-card">
+            <span class="tech-tag success" style="margin-bottom: 12px;">06 • ANTI-FRAGILITY</span>
+            <h3>Offline-First Resilience</h3>
+            <p>Critical public services (hospitals, banking, water, power) must feature graceful degradation, mesh networking, and offline operational modes.</p>
+          </div>
+        </div>
+
+        <!-- 7th Special Card (Wide) -->
+        <div class="glass-card reveal-on-scroll" style="margin-top: 24px; border-color: rgba(0, 255, 157, 0.35);">
+          <div class="grid-2" style="align-items: center;">
+            <div>
+              <span class="tech-tag success" style="margin-bottom: 12px;">07 • PEDAGOGY REVOLUTION</span>
+              <h3 style="font-size: 1.5rem; margin-bottom: 12px;">Education Must Transmute Beyond Memorization</h3>
+              <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">
+                The 19th-century industrial model of memorizing syntax rules and sitting for closed-book exams is obsolete. Universities and schools must transition to teaching <strong>first-principles thinking, AI fluency, creative experimentation, ethical governance, and cognitive adaptability</strong>.
+              </p>
+            </div>
+            <div style="background: rgba(0, 255, 157, 0.06); padding: 24px; border-radius: var(--radius-md); border: 1px solid rgba(0, 255, 157, 0.2);">
+              <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--emerald-core); margin-bottom: 8px;">THE NEW CORE CURRICULUM:</div>
+              <div style="font-size: 0.9rem; display: flex; flex-direction: column; gap: 6px; color: var(--text-bright);">
+                <span>✓ Systems Thinking &amp; Architectural Modeling</span>
+                <span>✓ Context Engineering &amp; Agent Choreography</span>
+                <span>✓ Algorithmic Ethics &amp; Bias Auditing</span>
+                <span>✓ High-Stakes Communication &amp; Product Strategy</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: THE DEVELOPER OF 2030 (INTERACTIVE HOLOGRAPHIC PROFILE) -->
+    <section class="page-section">
+      <div class="container">
+        <div class="section-header text-center reveal-on-scroll">
+          <span class="section-eyebrow" style="color: var(--emerald-core);">THE FUTURE PRACTITIONER</span>
+          <h2 class="section-title">The Archetype: Developer 2030</h2>
+          <p class="section-desc">
+            The developer of 2030 is no longer a "coder" in the traditional sense — they are an executive architect of intelligent systems.
+          </p>
+        </div>
+
+        <div class="dev-profile-card reveal-on-scroll">
+          <!-- Left: Holographic Badge -->
+          <div class="dev-avatar-box">
+            <div class="dev-hologram-circle">
+              <span>🧠</span>
+            </div>
+            <h3 style="font-size: 1.4rem; margin-bottom: 4px;">SYSTEMS ARCHITECT</h3>
+            <span class="tech-tag success">CLASS OF 2030</span>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 14px;">
+              Orchestrating 50+ autonomous AI micro-agents with deterministic security and human-centered design.
+            </p>
+          </div>
+
+          <!-- Right: 8 Core Capability Vectors -->
+          <div>
+            <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--emerald-core); margin-bottom: 16px; letter-spacing: 0.1em; text-transform: uppercase;">
+              Core Competency Matrix
+            </div>
+
+            <div class="grid-2" style="gap: 16px;">
+              <div class="glass-card" style="padding: 16px; background: rgba(0,0,0,0.3);">
+                <strong style="font-size: 0.95rem; color: var(--emerald-core); display: block; margin-bottom: 4px;">1. Problem Framing</strong>
+                <p style="font-size: 0.8rem; color: var(--text-muted);">Translating ambiguous business challenges into formal computational constraints.</p>
+              </div>
+
+              <div class="glass-card" style="padding: 16px; background: rgba(0,0,0,0.3);">
+                <strong style="font-size: 0.95rem; color: var(--emerald-core); display: block; margin-bottom: 4px;">2. AI Agent Conductor</strong>
+                <p style="font-size: 0.8rem; color: var(--text-muted);">Choreographing multi-model RAG pipelines, context windows, and tool execution.</p>
+              </div>
+
+              <div class="glass-card" style="padding: 16px; background: rgba(0,0,0,0.3);">
+                <strong style="font-size: 0.95rem; color: var(--emerald-core); display: block; margin-bottom: 4px;">3. System Resilience</strong>
+                <p style="font-size: 0.8rem; color: var(--text-muted);">Architecting distributed fault tolerance, chaos engineering, and offline fallbacks.</p>
+              </div>
+
+              <div class="glass-card" style="padding: 16px; background: rgba(0,0,0,0.3);">
+                <strong style="font-size: 0.95rem; color: var(--emerald-core); display: block; margin-bottom: 4px;">4. Zero-Trust Security</strong>
+                <p style="font-size: 0.8rem; color: var(--text-muted);">Embedding memory-safe constraints, API sandboxing, and adversarial red-teaming.</p>
+              </div>
+
+              <div class="glass-card" style="padding: 16px; background: rgba(0,0,0,0.3);">
+                <strong style="font-size: 0.95rem; color: var(--emerald-core); display: block; margin-bottom: 4px;">5. Product Empathy</strong>
+                <p style="font-size: 0.8rem; color: var(--text-muted);">Obsessing over human friction, cognitive ergonomics, and accessibility for billions.</p>
+              </div>
+
+              <div class="glass-card" style="padding: 16px; background: rgba(0,0,0,0.3);">
+                <strong style="font-size: 0.95rem; color: var(--emerald-core); display: block; margin-bottom: 4px;">6. Continuous Adaptation</strong>
+                <p style="font-size: 0.8rem; color: var(--text-muted);">Mastering weekly paradigm shifts in foundation models and algorithmic primitives.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: THE FINAL CHOICE (INTERACTIVE SPLIT SCREEN) -->
+    <section class="page-section" style="background: rgba(2, 6, 12, 0.9);">
+      <div class="container">
+        <div class="section-header text-center reveal-on-scroll">
+          <span class="section-eyebrow" style="color: var(--cyan-core);">THE DIVERGENT TIMELINES</span>
+          <h2 class="section-title">The Fork in the Road: Future A vs. Future B</h2>
+          <p class="section-desc">
+            Technology is not destiny; it is a mirror of policy and collective intent. Click either future to inspect the trajectory.
+          </p>
+        </div>
+
+        <div class="split-choice-container reveal-on-scroll">
+          <div class="split-choice-grid">
+            <!-- Left: Future A -->
+            <div class="future-side future-a" title="Click to inspect Future A">
+              <div>
+                <span class="tech-tag danger" style="margin-bottom: 12px;">TIMELINE ALPHA • PASSIVE COLLAPSE</span>
+                <h3 style="font-size: 1.8rem; color: var(--crimson-core); margin-bottom: 8px;">FUTURE A: Technology Replaces People</h3>
+                <p style="color: var(--text-muted); font-size: 0.92rem;">
+                  A world where AI is deployed exclusively for aggressive headcount reduction and centralized monopolistic rent-seeking.
+                </p>
+
+                <ul class="future-points-list">
+                  <li><span style="color: var(--crimson-core);">✖</span> Structural junior mass unemployment</li>
+                  <li><span style="color: var(--crimson-core);">✖</span> Monopolistic compute oligarchies</li>
+                  <li><span style="color: var(--crimson-core);">✖</span> Loss of deep human engineering skills</li>
+                  <li><span style="color: var(--crimson-core);">✖</span> Extreme systemic cyber fragility</li>
+                </ul>
+              </div>
+              <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--crimson-core);">
+                OUTCOME: HIGH FRAGILITY &amp; INEQUALITY
+              </div>
+            </div>
+
+            <!-- Right: Future B -->
+            <div class="future-side future-b" title="Click to inspect Future B">
+              <div>
+                <span class="tech-tag success" style="margin-bottom: 12px;">TIMELINE BETA • ANTIFRAGILE SYMBIOSIS</span>
+                <h3 style="font-size: 1.8rem; color: var(--emerald-core); margin-bottom: 8px;">FUTURE B: People Evolve With Technology</h3>
+                <p style="color: var(--text-muted); font-size: 0.92rem;">
+                  A world where AI augments human potential, opens sovereign public digital goods, and creates whole new industries in healthcare, science, and clean energy.
+                </p>
+
+                <ul class="future-points-list">
+                  <li><span style="color: var(--emerald-core);">✓</span> Mass creation of high-value architect roles</li>
+                  <li><span style="color: var(--emerald-core);">✓</span> Sovereign compute and open public rails</li>
+                  <li><span style="color: var(--emerald-core);">✓</span> 10x acceleration in scientific breakthroughs</li>
+                  <li><span style="color: var(--emerald-core);">✓</span> Resilient, self-healing digital infrastructure</li>
+                </ul>
+              </div>
+              <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--emerald-core);">
+                OUTCOME: EXPONENTIAL HUMAN PROSPERITY
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Choice Verdict Reveal Box -->
+        <div id="choice-verdict-box" class="glass-card" style="display: none; text-align: center; border-color: var(--emerald-core); padding: 24px; margin-top: 24px;">
+          <p id="choice-verdict-text" style="font-size: 1.15rem; line-height: 1.5; color: #FFF;"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: FINAL CINEMATIC EPILOGUE SCREEN -->
+    <section class="final-epilogue-section">
+      <div class="container container-narrow reveal-on-scroll">
+        <span class="tech-tag" style="margin-bottom: 24px;">THE CORE THESIS</span>
+        
+        <h2 class="epilogue-statement">
+          IT ISN'T ABOUT A WORLD WITHOUT IT.
+        </h2>
+
+        <h3 class="epilogue-resolution">
+          IT IS ABOUT BUILDING A WORLD THAT KNOWS HOW TO USE IT.
+        </h3>
+
+        <div style="font-family: var(--font-mono); font-size: 1.1rem; color: var(--text-muted); letter-spacing: 0.2em; margin: 32px 0;">
+          2026 ➔ 2030 ➔ BEYOND
+        </div>
+
+        <div>
+          <a href="index.html" class="cta-button" style="background: linear-gradient(135deg, var(--cyan-core), var(--emerald-core));">
+            <span>EXPLORE THE TRILOGY AGAIN ↺</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESEARCH & SOURCES WALL -->
+    <section id="sources" class="sources-section">
+      <div class="container">
+        <span class="section-eyebrow" style="color: var(--emerald-core);">SOVEREIGN POLICY &amp; HUMAN-AI SYNTHESIS</span>
+        <h3 style="font-size: 1.5rem; margin-bottom: 8px;">Research &amp; Policy Source Archive</h3>
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 24px;">
+          Policy frameworks, ethical guidelines, and sovereign compute strategies referenced in Chapter 03.
+        </p>
+
+        <div class="sources-grid">
+          <div class="source-item-card">
+            <span class="source-org" style="color: var(--emerald-core);">NITI AAYOG</span>
+            <div class="source-title">National Strategy for Artificial Intelligence (AIforAll) &amp; Responsible AI Principles</div>
+            <div class="source-meta">Govt of India 2024 • Ethical AI Frameworks for Emerging Economies</div>
+          </div>
+
+          <div class="source-item-card">
+            <span class="source-org" style="color: var(--emerald-core);">STANFORD HAI</span>
+            <div class="source-title">Artificial Intelligence Index Report: Human-AI Augmentation Benchmarks</div>
+            <div class="source-meta">Stanford University 2024 • Cognitive Productivity &amp; Developer Collaboration</div>
+          </div>
+
+          <div class="source-item-card">
+            <span class="source-org" style="color: var(--emerald-core);">GLOBAL PARTNERSHIP ON AI (GPAI)</span>
+            <div class="source-title">New Delhi Declaration on Trustworthy AI and Sovereign Digital Goods</div>
+            <div class="source-meta">Published 2023/2024 • Multilateral Open AI Governance</div>
+          </div>
+
+          <div class="source-item-card">
+            <span class="source-org" style="color: var(--emerald-core);">OECD AI POLICY OBSERVATORY</span>
+            <div class="source-title">Recommendation on Principles for Trustworthy and Robust AI Systems</div>
+            <div class="source-meta">OECD Guidelines 2024 • Risk Management &amp; Human-in-the-Loop Oversight</div>
+          </div>
+
+          <div class="source-item-card">
+            <span class="source-org" style="color: var(--emerald-core);">MEITY / CDAC</span>
+            <div class="source-title">National Supercomputing Mission (NSM) &amp; Indigenous Microprocessor (Shakti/Vega)</div>
+            <div class="source-meta">MeitY 2024 • Sovereign Hardware Root-of-Trust &amp; RISC-V Ecosystem</div>
+          </div>
+
+          <div class="source-item-card">
+            <span class="source-org" style="color: var(--emerald-core);">WORLD ECONOMIC FORUM</span>
+            <div class="source-title">The Reskilling Revolution: Preparing 1 Billion People for Tomorrow’s Economy</div>
+            <div class="source-meta">Published 2024 • Lifelong Learning &amp; Cognitive Upskilling Frameworks</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>
+          <strong>THE WORLD AFTER IT</strong> — Chapter 03 of 03 (The Trilogy Complete)
+        </div>
+        <div style="display: flex; gap: 16px;">
+          <a href="future.html" style="color: var(--emerald-core); text-decoration: none;">← Chapter 01: Evolution</a>
+          <a href="collapse.html" style="color: var(--emerald-core); text-decoration: none;">← Chapter 02: Collapse</a>
+        </div>
+        <div>
+          Keyboard: Press <kbd style="background:#222; padding:2px 6px; border-radius:4px;">←</kbd> Prev • <kbd style="background:#222; padding:2px 6px; border-radius:4px;">M</kbd> Audio
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

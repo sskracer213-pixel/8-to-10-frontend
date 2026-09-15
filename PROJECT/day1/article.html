@@ -1,0 +1,2266 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CYBERNEX ⚡ Next-Generation Cybersecurity & IT Solutions</title>
+    <meta name="description" content="Protect your digital world with intelligent security solutions, modern technology, and powerful defense strategies. Enterprise zero-trust cybersecurity by CYBERNEX.">
+    
+    <!-- Google Fonts: Space Grotesk, Outfit & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Tailwind CSS v3 CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Tailwind Custom Configuration -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        cyber: {
+                            bg: '#050811',
+                            deep: '#03050a',
+                            surface: '#0a0f1d',
+                            card: 'rgba(10, 16, 32, 0.75)',
+                            cardHover: 'rgba(14, 23, 46, 0.85)',
+                            border: 'rgba(0, 240, 255, 0.15)',
+                            borderHover: 'rgba(0, 240, 255, 0.4)',
+                        },
+                        neon: {
+                            cyan: '#00f0ff',
+                            green: '#00ff9d',
+                            emerald: '#10b981',
+                            purple: '#a855f7',
+                            violet: '#8b5cf6',
+                            blue: '#3b82f6',
+                            red: '#ff0055',
+                            amber: '#f59e0b'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Space Grotesk"', 'Outfit', 'sans-serif'],
+                        heading: ['"Space Grotesk"', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                    },
+                    boxShadow: {
+                        'neon-cyan': '0 0 25px rgba(0, 240, 255, 0.35)',
+                        'neon-green': '0 0 25px rgba(0, 255, 157, 0.35)',
+                        'neon-purple': '0 0 25px rgba(168, 85, 247, 0.35)',
+                        'neon-red': '0 0 25px rgba(255, 0, 85, 0.35)',
+                        'card-glow': '0 8px 32px 0 rgba(0, 240, 255, 0.08)',
+                        'card-glow-hover': '0 12px 40px 0 rgba(0, 255, 157, 0.18)',
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'radar-sweep': 'radarSweep 4s linear infinite',
+                        'scanline': 'scanline 8s linear infinite',
+                        'glow-pulse': 'glowPulse 3s ease-in-out infinite alternate',
+                        'spin-slow': 'spin 20s linear infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        radarSweep: {
+                            '0%': { transform: 'rotate(0deg)' },
+                            '100%': { transform: 'rotate(360deg)' },
+                        },
+                        scanline: {
+                            '0%': { transform: 'translateY(-100%)' },
+                            '100%': { transform: 'translateY(1000%)' },
+                        },
+                        glowPulse: {
+                            '0%': { opacity: '0.4', filter: 'drop-shadow(0 0 8px rgba(0, 240, 255, 0.4))' },
+                            '100%': { opacity: '0.8', filter: 'drop-shadow(0 0 20px rgba(0, 255, 157, 0.7))' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom High-Tech Cyber Aesthetic Styles */
+        body {
+            background-color: #050811;
+            color: #e2e8f0;
+            overflow-x: hidden;
+            font-family: 'Space Grotesk', sans-serif;
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(0, 240, 255, 0.07) 0%, transparent 60%),
+                radial-gradient(circle at 100% 50%, rgba(139, 92, 246, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 0% 100%, rgba(0, 255, 157, 0.05) 0%, transparent 50%);
+        }
+
+        /* Subtle Cyber Grid */
+        .cyber-grid {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(0, 240, 255, 0.04) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 240, 255, 0.04) 1px, transparent 1px);
+        }
+
+        /* Glassmorphism Classes */
+        .glass-panel {
+            background: rgba(10, 16, 32, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(0, 240, 255, 0.12);
+        }
+
+        .glass-panel-hover:hover {
+            background: rgba(14, 23, 46, 0.85);
+            border-color: rgba(0, 240, 255, 0.35);
+            box-shadow: 0 10px 30px -5px rgba(0, 240, 255, 0.15);
+        }
+
+        .glass-card-green:hover {
+            border-color: rgba(0, 255, 157, 0.4);
+            box-shadow: 0 10px 30px -5px rgba(0, 255, 157, 0.18);
+        }
+
+        /* Gradient Text Helper */
+        .text-gradient-neon {
+            background: linear-gradient(135deg, #00f0ff 0%, #00ff9d 50%, #38bdf8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .text-gradient-purple {
+            background: linear-gradient(135deg, #00f0ff 0%, #a855f7 50%, #ec4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #050811;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 4px;
+            border: 1px solid rgba(0, 240, 255, 0.2);
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00f0ff;
+        }
+
+        /* Blinking Terminal Cursor */
+        .cursor-blink {
+            display: inline-block;
+            width: 9px;
+            height: 17px;
+            background-color: #00ff9d;
+            vertical-align: middle;
+            animation: cursorBlink 0.9s infinite;
+        }
+
+        @keyframes cursorBlink {
+            0%, 49% { opacity: 1; }
+            50%, 100% { opacity: 0; }
+        }
+
+        /* Radar scan effect */
+        .radar-line {
+            background: conic-gradient(from 0deg, rgba(0, 255, 157, 0.4) 0deg, transparent 60deg, transparent 360deg);
+        }
+    </style>
+</head>
+<body class="bg-cyber-bg text-slate-200 antialiased selection:bg-neon-cyan/30 selection:text-neon-cyan">
+
+    <!-- Interactive Particle Background Canvas -->
+    <canvas id="particle-canvas" class="fixed inset-0 pointer-events-none z-0 opacity-40"></canvas>
+
+    <!-- Global Grid Texture Overlay -->
+    <div class="fixed inset-0 cyber-grid pointer-events-none z-0"></div>
+
+    <!-- Ambient Glowing Light Orbs -->
+    <div class="fixed top-[-10%] left-[-10%] w-[500px] h-[500px] rounded-full bg-cyan-500/10 blur-[120px] pointer-events-none z-0"></div>
+    <div class="fixed top-[40%] right-[-10%] w-[600px] h-[600px] rounded-full bg-violet-600/10 blur-[150px] pointer-events-none z-0"></div>
+    <div class="fixed bottom-[-10%] left-[20%] w-[500px] h-[500px] rounded-full bg-emerald-500/10 blur-[140px] pointer-events-none z-0"></div>
+
+    <!-- ========================================================================= -->
+    <!-- 2. NAVBAR                                                                 -->
+    <!-- ========================================================================= -->
+    <header class="sticky top-0 z-50 transition-all duration-300 backdrop-blur-xl bg-cyber-bg/85 border-b border-cyan-500/15" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Logo -->
+                <a href="#home" class="flex items-center gap-3 group">
+                    <div class="relative flex items-center justify-center w-10 h-10 rounded-lg bg-slate-900 border border-cyan-500/30 group-hover:border-neon-cyan group-hover:shadow-[0_0_15px_rgba(0,240,255,0.4)] transition-all duration-300">
+                        <span class="text-neon-cyan text-xl group-hover:scale-110 transition-transform duration-300">⚡</span>
+                        <span class="absolute -top-1 -right-1 w-2.5 h-2.5 bg-neon-green rounded-full animate-ping"></span>
+                        <span class="absolute -top-1 -right-1 w-2.5 h-2.5 bg-neon-green rounded-full"></span>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-mono text-xl font-bold tracking-wider text-white group-hover:text-neon-cyan transition-colors">
+                            CYBER<span class="text-neon-cyan">NEX</span>
+                        </span>
+                        <span class="font-mono text-[9px] text-slate-400 tracking-widest uppercase -mt-1">
+                            SecOps & IT Core
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden lg:flex items-center gap-1 xl:gap-2">
+                    <a href="#home" class="px-3 py-2 text-sm font-medium text-slate-300 hover:text-neon-cyan rounded-md transition-colors">Home</a>
+                    <a href="#about" class="px-3 py-2 text-sm font-medium text-slate-300 hover:text-neon-cyan rounded-md transition-colors">About</a>
+                    <a href="#services" class="px-3 py-2 text-sm font-medium text-slate-300 hover:text-neon-cyan rounded-md transition-colors">Services</a>
+                    <a href="#technologies" class="px-3 py-2 text-sm font-medium text-slate-300 hover:text-neon-cyan rounded-md transition-colors">Technologies</a>
+                    <a href="#dashboard-section" class="px-3 py-2 text-sm font-medium text-slate-300 hover:text-neon-cyan rounded-md transition-colors">Dashboard</a>
+                    <a href="#terminal-section" class="px-3 py-2 text-sm font-medium text-slate-300 hover:text-neon-cyan rounded-md transition-colors">Terminal</a>
+                    <a href="#projects" class="px-3 py-2 text-sm font-medium text-slate-300 hover:text-neon-cyan rounded-md transition-colors">Projects</a>
+                    <a href="#security" class="px-3 py-2 text-sm font-medium text-slate-300 hover:text-neon-cyan rounded-md transition-colors">Security</a>
+                    <a href="#contact" class="px-3 py-2 text-sm font-medium text-slate-300 hover:text-neon-cyan rounded-md transition-colors">Contact</a>
+                </nav>
+
+                <!-- Desktop Action Buttons -->
+                <div class="hidden md:flex items-center gap-3">
+                    <a href="#services" class="px-4 py-2 text-xs font-mono font-medium text-slate-300 hover:text-white border border-slate-700/80 hover:border-neon-cyan/60 rounded-lg backdrop-blur-md transition-all duration-300">
+                        Explore
+                    </a>
+                    <a href="#contact" class="relative group overflow-hidden px-5 py-2 text-xs font-mono font-bold tracking-wider text-slate-950 bg-gradient-to-r from-neon-cyan to-neon-green rounded-lg shadow-neon-cyan hover:shadow-neon-green transition-all duration-300 transform hover:-translate-y-0.5">
+                        <span class="relative z-10 flex items-center gap-1.5">
+                            Get Started <i class="fa-solid fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
+                        </span>
+                        <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button (Hamburger) -->
+                <div class="flex lg:hidden items-center gap-2">
+                    <button id="mobile-menu-btn" type="button" class="p-2.5 rounded-lg text-slate-400 hover:text-neon-cyan hover:bg-slate-900 border border-slate-800 focus:outline-none" aria-label="Toggle Navigation Menu">
+                        <i id="menu-icon" class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Slide-Down Drawer -->
+        <div id="mobile-menu" class="hidden lg:hidden border-b border-cyan-500/20 bg-cyber-bg/95 backdrop-blur-2xl px-6 py-6 transition-all">
+            <div class="flex flex-col space-y-3">
+                <a href="#home" class="mobile-link text-slate-300 hover:text-neon-cyan font-mono text-sm py-2 border-b border-slate-800">Home</a>
+                <a href="#about" class="mobile-link text-slate-300 hover:text-neon-cyan font-mono text-sm py-2 border-b border-slate-800">About</a>
+                <a href="#services" class="mobile-link text-slate-300 hover:text-neon-cyan font-mono text-sm py-2 border-b border-slate-800">Services</a>
+                <a href="#technologies" class="mobile-link text-slate-300 hover:text-neon-cyan font-mono text-sm py-2 border-b border-slate-800">Technologies</a>
+                <a href="#dashboard-section" class="mobile-link text-slate-300 hover:text-neon-cyan font-mono text-sm py-2 border-b border-slate-800">Security Dashboard</a>
+                <a href="#terminal-section" class="mobile-link text-slate-300 hover:text-neon-cyan font-mono text-sm py-2 border-b border-slate-800">CLI Terminal</a>
+                <a href="#projects" class="mobile-link text-slate-300 hover:text-neon-cyan font-mono text-sm py-2 border-b border-slate-800">Projects</a>
+                <a href="#security" class="mobile-link text-slate-300 hover:text-neon-cyan font-mono text-sm py-2 border-b border-slate-800">Security Process</a>
+                <a href="#contact" class="mobile-link text-slate-300 hover:text-neon-cyan font-mono text-sm py-2 border-b border-slate-800">Contact</a>
+                <div class="pt-4 flex flex-col gap-3">
+                    <a href="#services" class="mobile-link text-center py-2.5 text-xs font-mono text-slate-300 border border-slate-700 rounded-lg">Explore Solutions</a>
+                    <a href="#contact" class="mobile-link text-center py-2.5 text-xs font-mono font-bold text-slate-950 bg-gradient-to-r from-neon-cyan to-neon-green rounded-lg shadow-neon-cyan">Get Started Now</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="relative z-10">
+
+        <!-- ========================================================================= -->
+        <!-- 3. HERO SECTION                                                           -->
+        <!-- ========================================================================= -->
+        <section id="home" class="relative min-h-[calc(100vh-80px)] flex items-center justify-center py-16 lg:py-24 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+                    
+                    <!-- Left Hero Content -->
+                    <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                        
+                        <!-- Small Badge -->
+                        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900/90 border border-cyan-500/30 text-neon-cyan text-xs font-mono tracking-widest uppercase shadow-[0_0_15px_rgba(0,240,255,0.15)]">
+                            <span class="w-2 h-2 rounded-full bg-neon-green animate-ping"></span>
+                            <span>● NEXT-GENERATION CYBERSECURITY</span>
+                        </div>
+
+                        <!-- Main Heading -->
+                        <h1 class="text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-extrabold tracking-tight text-white leading-[1.1]">
+                            SECURE THE <br class="hidden sm:inline" />
+                            <span class="text-gradient-neon filter drop-shadow-[0_0_25px_rgba(0,240,255,0.3)]">
+                                DIGITAL FUTURE
+                            </span>
+                        </h1>
+
+                        <!-- Description -->
+                        <p class="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
+                            Protect your digital world with intelligent security solutions, modern technology, and powerful defense strategies. Zero-trust architecture built for high-stakes enterprise IT systems.
+                        </p>
+
+                        <!-- Buttons -->
+                        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                            <a href="#services" class="w-full sm:w-auto px-8 py-4 rounded-xl font-mono text-sm font-bold text-slate-950 bg-gradient-to-r from-neon-cyan via-teal-400 to-neon-green shadow-neon-cyan hover:shadow-neon-green hover:scale-[1.02] active:scale-95 transition-all duration-300 text-center flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-shield-halved"></i>
+                                <span>Explore Cybersecurity</span>
+                            </a>
+                            <a href="#projects" class="w-full sm:w-auto px-8 py-4 rounded-xl font-mono text-sm font-semibold text-slate-200 glass-panel glass-panel-hover hover:text-neon-cyan active:scale-95 transition-all duration-300 text-center flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-cubes"></i>
+                                <span>View Our Projects</span>
+                            </a>
+                        </div>
+
+                        <!-- Live Assurance Badges -->
+                        <div class="pt-6 grid grid-cols-3 gap-2 sm:gap-4 border-t border-slate-800/80">
+                            <div class="flex items-center gap-2">
+                                <i class="fa-solid fa-lock text-neon-cyan text-sm"></i>
+                                <span class="text-[11px] sm:text-xs font-mono text-slate-400">Zero-Trust Ready</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fa-solid fa-bolt text-neon-green text-sm"></i>
+                                <span class="text-[11px] sm:text-xs font-mono text-slate-400">&lt; 1.2ms Latency</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fa-solid fa-certificate text-neon-purple text-sm"></i>
+                                <span class="text-[11px] sm:text-xs font-mono text-slate-400">SOC2 Type II</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Right Hero Visual: Futuristic Dashboard / Terminal Visual with Glowing Radar -->
+                    <div class="lg:col-span-5 relative flex justify-center">
+                        
+                        <!-- Glowing Circular Security Radar Animation Behind Dashboard -->
+                        <div class="absolute -inset-6 sm:-inset-10 flex items-center justify-center pointer-events-none">
+                            <div class="w-72 h-72 sm:w-96 sm:h-96 rounded-full border border-cyan-500/20 relative animate-spin-slow">
+                                <div class="absolute inset-0 rounded-full border border-dashed border-neon-green/30"></div>
+                                <div class="absolute inset-8 rounded-full border border-cyan-500/15"></div>
+                                <div class="absolute inset-16 rounded-full border border-violet-500/20"></div>
+                            </div>
+                            <!-- Radar sweep cone -->
+                            <div class="w-72 h-72 sm:w-96 sm:h-96 rounded-full absolute overflow-hidden pointer-events-none opacity-40">
+                                <div class="w-full h-full radar-line animate-radar-sweep rounded-full"></div>
+                            </div>
+                            <div class="w-64 h-64 rounded-full bg-cyan-500/15 blur-3xl absolute"></div>
+                        </div>
+
+                        <!-- Dashboard / Terminal Container Card -->
+                        <div class="relative w-full max-w-md glass-panel rounded-2xl p-5 sm:p-6 border border-cyan-500/30 shadow-[0_0_35px_rgba(0,240,255,0.18)] backdrop-blur-2xl animate-float">
+                            
+                            <!-- Card Header Bar -->
+                            <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+                                <div class="flex items-center gap-2">
+                                    <span class="w-3 h-3 rounded-full bg-red-500/80 inline-block"></span>
+                                    <span class="w-3 h-3 rounded-full bg-yellow-500/80 inline-block"></span>
+                                    <span class="w-3 h-3 rounded-full bg-green-500/80 inline-block"></span>
+                                    <span class="font-mono text-xs text-slate-400 ml-2">CYBERNEX_DEFENSE_NODE</span>
+                                </div>
+                                <div class="flex items-center gap-1 text-[11px] font-mono text-neon-green">
+                                    <span class="w-2 h-2 rounded-full bg-neon-green animate-ping"></span>
+                                    <span>LIVE</span>
+                                </div>
+                            </div>
+
+                            <!-- Dashboard Metrics (Exact Prompt Specs) -->
+                            <div class="py-5 font-mono text-xs sm:text-sm space-y-3">
+                                
+                                <div class="flex items-center justify-between p-2.5 rounded-lg bg-slate-900/60 border border-slate-800">
+                                    <span class="text-slate-400">SYSTEM STATUS</span>
+                                    <span class="font-bold text-neon-green tracking-wider flex items-center gap-1.5">
+                                        <i class="fa-solid fa-circle-check text-xs"></i> ONLINE
+                                    </span>
+                                </div>
+
+                                <div class="flex items-center justify-between p-2.5 rounded-lg bg-slate-900/60 border border-slate-800">
+                                    <span class="text-slate-400">SECURITY LEVEL</span>
+                                    <span class="font-bold text-neon-cyan tracking-wider flex items-center gap-1.5">
+                                        <i class="fa-solid fa-shield-virus text-xs"></i> HIGH
+                                    </span>
+                                </div>
+
+                                <div class="flex items-center justify-between p-2.5 rounded-lg bg-slate-900/60 border border-slate-800">
+                                    <span class="text-slate-400">NETWORK</span>
+                                    <span class="font-bold text-neon-cyan tracking-wider flex items-center gap-1.5">
+                                        <i class="fa-solid fa-wifi text-xs"></i> PROTECTED
+                                    </span>
+                                </div>
+
+                                <div class="flex items-center justify-between p-2.5 rounded-lg bg-slate-900/60 border border-slate-800">
+                                    <span class="text-slate-400">THREATS DETECTED</span>
+                                    <span class="font-bold text-neon-green px-2 py-0.5 rounded bg-neon-green/10 border border-neon-green/30 tracking-wider">
+                                        00
+                                    </span>
+                                </div>
+
+                                <div class="p-3 rounded-lg bg-slate-900/80 border border-cyan-500/20 space-y-2">
+                                    <div class="flex justify-between items-center text-xs">
+                                        <span class="text-slate-400">SYSTEM HEALTH</span>
+                                        <span class="font-bold text-neon-green">99.9%</span>
+                                    </div>
+                                    <div class="w-full h-2 bg-slate-800 rounded-full overflow-hidden">
+                                        <div class="h-full bg-gradient-to-r from-neon-cyan via-teal-400 to-neon-green rounded-full w-[99.9%] shadow-[0_0_10px_rgba(0,255,157,0.8)]"></div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <!-- Micro Activity Ticker -->
+                            <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between text-[11px] font-mono text-slate-400">
+                                <span class="flex items-center gap-1.5">
+                                    <i class="fa-solid fa-network-wired text-neon-cyan"></i> 10,482 PKT/S
+                                </span>
+                                <span class="text-slate-500">PING: <span class="text-neon-cyan font-semibold">14ms</span></span>
+                                <span class="text-neon-green">AES-256</span>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- 5. CYBERSECURITY STATISTICS                                               -->
+        <!-- ========================================================================= -->
+        <section class="relative py-12 border-y border-cyan-500/15 bg-slate-950/70 backdrop-blur-md">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    
+                    <!-- Stat Card 1 -->
+                    <div class="glass-panel glass-card-green rounded-2xl p-6 relative overflow-hidden group transition-all duration-300">
+                        <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-30 group-hover:scale-110 transition-all text-neon-green">
+                            <i class="fa-solid fa-shield-halved text-5xl"></i>
+                        </div>
+                        <div class="font-mono text-4xl sm:text-5xl font-extrabold text-neon-green drop-shadow-[0_0_15px_rgba(0,255,157,0.4)]">
+                            99.9%
+                        </div>
+                        <div class="mt-2 text-sm font-medium text-slate-300">
+                            System Protection
+                        </div>
+                        <div class="mt-1 text-xs font-mono text-slate-400">
+                            Guaranteed uptime SLA
+                        </div>
+                        <div class="mt-4 w-full h-1 bg-slate-800 rounded-full overflow-hidden">
+                            <div class="h-full bg-neon-green w-[99.9%]"></div>
+                        </div>
+                    </div>
+
+                    <!-- Stat Card 2 -->
+                    <div class="glass-panel glass-panel-hover rounded-2xl p-6 relative overflow-hidden group transition-all duration-300">
+                        <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-30 group-hover:scale-110 transition-all text-neon-cyan">
+                            <i class="fa-solid fa-eye text-5xl"></i>
+                        </div>
+                        <div class="font-mono text-4xl sm:text-5xl font-extrabold text-neon-cyan drop-shadow-[0_0_15px_rgba(0,240,255,0.4)]">
+                            24/7
+                        </div>
+                        <div class="mt-2 text-sm font-medium text-slate-300">
+                            Security Monitoring
+                        </div>
+                        <div class="mt-1 text-xs font-mono text-slate-400">
+                            Continuous SOC telemetry
+                        </div>
+                        <div class="mt-4 w-full h-1 bg-slate-800 rounded-full overflow-hidden">
+                            <div class="h-full bg-neon-cyan w-[100%]"></div>
+                        </div>
+                    </div>
+
+                    <!-- Stat Card 3 -->
+                    <div class="glass-panel glass-panel-hover rounded-2xl p-6 relative overflow-hidden group transition-all duration-300">
+                        <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-30 group-hover:scale-110 transition-all text-neon-purple">
+                            <i class="fa-solid fa-server text-5xl"></i>
+                        </div>
+                        <div class="font-mono text-4xl sm:text-5xl font-extrabold text-neon-purple drop-shadow-[0_0_15px_rgba(168,85,247,0.4)]">
+                            500+
+                        </div>
+                        <div class="mt-2 text-sm font-medium text-slate-300">
+                            Projects Secured
+                        </div>
+                        <div class="mt-1 text-xs font-mono text-slate-400">
+                            Enterprises worldwide
+                        </div>
+                        <div class="mt-4 w-full h-1 bg-slate-800 rounded-full overflow-hidden">
+                            <div class="h-full bg-neon-purple w-[88%]"></div>
+                        </div>
+                    </div>
+
+                    <!-- Stat Card 4 -->
+                    <div class="glass-panel glass-card-green rounded-2xl p-6 relative overflow-hidden group transition-all duration-300">
+                        <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-30 group-hover:scale-110 transition-all text-neon-green">
+                            <i class="fa-solid fa-bug-slash text-5xl"></i>
+                        </div>
+                        <div class="font-mono text-4xl sm:text-5xl font-extrabold text-neon-green drop-shadow-[0_0_15px_rgba(0,255,157,0.4)]">
+                            10K+
+                        </div>
+                        <div class="mt-2 text-sm font-medium text-slate-300">
+                            Threats Prevented
+                        </div>
+                        <div class="mt-1 text-xs font-mono text-slate-400">
+                            Autonomous mitigation
+                        </div>
+                        <div class="mt-4 w-full h-1 bg-slate-800 rounded-full overflow-hidden">
+                            <div class="h-full bg-neon-green w-[95%]"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- 6. ABOUT US                                                               -->
+        <!-- ========================================================================= -->
+        <section id="about" class="py-24 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- Left Column: Content -->
+                    <div class="lg:col-span-7 space-y-6">
+                        
+                        <div class="inline-flex items-center gap-2 text-xs font-mono text-neon-cyan tracking-wider uppercase">
+                            <span class="w-1.5 h-1.5 bg-neon-cyan rounded-full"></span>
+                            <span>// ABOUT CYBERNEX DEFENSE</span>
+                        </div>
+
+                        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight">
+                            WE BUILD SECURITY FOR THE <br/>
+                            <span class="text-gradient-neon">DIGITAL WORLD</span>
+                        </h2>
+
+                        <p class="text-slate-300 text-base sm:text-lg leading-relaxed">
+                            At CYBERNEX, we engineer next-generation defensive architectures designed to protect mission-critical digital infrastructure against sophisticated cyber adversaries. Our philosophy blends ethical technology, autonomous telemetry, multi-layered cloud security, and quantum-ready cryptographic protocols.
+                        </p>
+
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            Whether securing high-throughput financial networks or safeguarding sensitive enterprise records, our zero-trust engineering guarantees absolute digital safety without compromising system latency or operational speed.
+                        </p>
+
+                        <!-- Three Mini Cards Requested in Prompt -->
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
+                            
+                            <!-- Mini Card 1: Innovation -->
+                            <div class="glass-panel glass-panel-hover p-4 rounded-xl space-y-2 border border-cyan-500/20">
+                                <div class="w-8 h-8 rounded-lg bg-cyan-500/10 flex items-center justify-center text-neon-cyan text-sm">
+                                    <i class="fa-solid fa-lightbulb"></i>
+                                </div>
+                                <h4 class="font-mono text-sm font-bold text-white">Innovation</h4>
+                                <p class="text-xs text-slate-400 leading-relaxed">
+                                    Modern technology and creative solutions.
+                                </p>
+                            </div>
+
+                            <!-- Mini Card 2: Protection -->
+                            <div class="glass-panel glass-card-green p-4 rounded-xl space-y-2 border border-emerald-500/20">
+                                <div class="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center text-neon-green text-sm">
+                                    <i class="fa-solid fa-shield-halved"></i>
+                                </div>
+                                <h4 class="font-mono text-sm font-bold text-white">Protection</h4>
+                                <p class="text-xs text-slate-400 leading-relaxed">
+                                    Security-focused digital systems.
+                                </p>
+                            </div>
+
+                            <!-- Mini Card 3: Performance -->
+                            <div class="glass-panel glass-panel-hover p-4 rounded-xl space-y-2 border border-purple-500/20">
+                                <div class="w-8 h-8 rounded-lg bg-purple-500/10 flex items-center justify-center text-neon-purple text-sm">
+                                    <i class="fa-solid fa-gauge-high"></i>
+                                </div>
+                                <h4 class="font-mono text-sm font-bold text-white">Performance</h4>
+                                <p class="text-xs text-slate-400 leading-relaxed">
+                                    Fast and reliable IT solutions.
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- Right Column: Futuristic Security Illustration / Architecture Matrix Card -->
+                    <div class="lg:col-span-5">
+                        <div class="glass-panel rounded-2xl p-6 border border-cyan-500/30 relative overflow-hidden">
+                            
+                            <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+                                <span class="text-xs font-mono text-neon-cyan uppercase">Zero-Trust Matrix v4</span>
+                                <span class="text-[11px] font-mono text-neon-green flex items-center gap-1">
+                                    <span class="w-2 h-2 rounded-full bg-neon-green"></span> ENCRYPTED
+                                </span>
+                            </div>
+
+                            <!-- Interactive Architectural Node Visual -->
+                            <div class="py-6 space-y-4">
+                                
+                                <!-- Core Node -->
+                                <div class="p-4 rounded-xl bg-slate-900/90 border border-cyan-500/30 flex items-center justify-between">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 rounded-lg bg-cyan-500/20 flex items-center justify-center text-neon-cyan text-lg">
+                                            <i class="fa-solid fa-microchip"></i>
+                                        </div>
+                                        <div>
+                                            <div class="text-xs font-mono font-bold text-white">CYBERNEX AI KERNEL</div>
+                                            <div class="text-[10px] font-mono text-slate-400">Autonomous Anomaly Detection</div>
+                                        </div>
+                                    </div>
+                                    <span class="px-2 py-1 rounded bg-neon-green/10 text-neon-green text-[10px] font-mono border border-neon-green/30">
+                                        ACTIVE
+                                    </span>
+                                </div>
+
+                                <!-- Connecting Lines Visual -->
+                                <div class="grid grid-cols-2 gap-3">
+                                    <div class="p-3 rounded-lg bg-slate-900/60 border border-slate-800 text-xs">
+                                        <div class="flex items-center gap-2 text-neon-cyan font-mono font-medium">
+                                            <i class="fa-solid fa-cloud"></i> Cloud Mesh
+                                        </div>
+                                        <div class="text-[10px] text-slate-400 mt-1">Multi-Region TLS 1.3</div>
+                                    </div>
+                                    <div class="p-3 rounded-lg bg-slate-900/60 border border-slate-800 text-xs">
+                                        <div class="flex items-center gap-2 text-neon-green font-mono font-medium">
+                                            <i class="fa-solid fa-database"></i> Data Vault
+                                        </div>
+                                        <div class="text-[10px] text-slate-400 mt-1">AES-256 Quantum Safe</div>
+                                    </div>
+                                </div>
+
+                                <!-- Live Telemetry Stream Box -->
+                                <div class="p-3 rounded-lg bg-black/60 border border-slate-800 font-mono text-[11px] text-slate-400 space-y-1">
+                                    <div class="text-neon-cyan">&gt; SSL Handshake: TLS_AES_256_GCM_SHA384</div>
+                                    <div class="text-slate-300">&gt; Packet Integrity: 100% Verified</div>
+                                    <div class="text-neon-green">&gt; Gateway Status: Zero Vulnerabilities</div>
+                                </div>
+
+                            </div>
+
+                            <!-- Footer Stats -->
+                            <div class="pt-3 border-t border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-400">
+                                <span>PROTOCOL: HYDRA-SEC</span>
+                                <span class="text-neon-cyan">REV: 2026.08</span>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- 7. SERVICES SECTION (6 Large Glass Cards)                                 -->
+        <!-- ========================================================================= -->
+        <section id="services" class="py-24 relative bg-slate-950/50 border-t border-cyan-500/10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <!-- Section Header -->
+                <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-neon-cyan text-xs font-mono uppercase">
+                        <span>// COMPREHENSIVE CAPABILITIES</span>
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
+                        OUR CYBERSECURITY SERVICES
+                    </h2>
+                    <p class="text-slate-400 text-sm sm:text-base">
+                        Engineered to safeguard modern digital assets with defense-in-depth protocols, real-time threat intelligence, and continuous protection.
+                    </p>
+                </div>
+
+                <!-- 6 Large Glass Cards Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                    
+                    <!-- 1. Web Security -->
+                    <div class="glass-panel glass-panel-hover rounded-2xl p-7 flex flex-col justify-between group transition-all duration-300 border border-cyan-500/20 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-cyan-500/10 rounded-full blur-2xl group-hover:bg-cyan-500/20 transition-all"></div>
+                        <div class="space-y-4 relative z-10">
+                            <div class="w-14 h-14 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-neon-cyan text-2xl group-hover:scale-110 group-hover:shadow-neon-cyan transition-all duration-300">
+                                <i class="fa-solid fa-globe"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white group-hover:text-neon-cyan transition-colors">
+                                Web Security
+                            </h3>
+                            <p class="text-slate-300 text-sm leading-relaxed">
+                                Protect modern websites and applications. Defend against OWASP Top 10 exploits, zero-day vulnerabilities, API attacks, and malicious bot traffic with intelligent Web Application Firewalls (WAF).
+                            </p>
+                        </div>
+                        <div class="pt-6 mt-6 border-t border-slate-800/80 flex items-center justify-between relative z-10">
+                            <button onclick="openServiceModal('Web Security', 'Defend high-traffic web applications with AI-powered Web Application Firewalls (WAF), automated DDoS mitigation, Content Security Policy (CSP) enforcement, and real-time behavioral bot inspection.')" class="text-xs font-mono font-bold text-neon-cyan flex items-center gap-1.5 group-hover:translate-x-1 transition-transform">
+                                Learn More <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                            </button>
+                            <span class="text-[10px] font-mono text-slate-500">L7 FIREWALL</span>
+                        </div>
+                    </div>
+
+                    <!-- 2. Network Security -->
+                    <div class="glass-panel glass-card-green rounded-2xl p-7 flex flex-col justify-between group transition-all duration-300 border border-emerald-500/20 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 rounded-full blur-2xl group-hover:bg-emerald-500/20 transition-all"></div>
+                        <div class="space-y-4 relative z-10">
+                            <div class="w-14 h-14 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-neon-green text-2xl group-hover:scale-110 group-hover:shadow-neon-green transition-all duration-300">
+                                <i class="fa-solid fa-network-wired"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white group-hover:text-neon-green transition-colors">
+                                Network Security
+                            </h3>
+                            <p class="text-slate-300 text-sm leading-relaxed">
+                                Monitor and protect digital networks. Real-time packet telemetry, next-generation intrusion prevention systems (IPS/IDS), micro-segmentation, and zero-trust edge tunnels.
+                            </p>
+                        </div>
+                        <div class="pt-6 mt-6 border-t border-slate-800/80 flex items-center justify-between relative z-10">
+                            <button onclick="openServiceModal('Network Security', 'Deploy enterprise network micro-segmentation, hardware-accelerated deep packet inspection (DPI), secure SD-WAN routing, and autonomous intrusion prevention systems.')" class="text-xs font-mono font-bold text-neon-green flex items-center gap-1.5 group-hover:translate-x-1 transition-transform">
+                                Learn More <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                            </button>
+                            <span class="text-[10px] font-mono text-slate-500">ZERO TRUST</span>
+                        </div>
+                    </div>
+
+                    <!-- 3. Cloud Security -->
+                    <div class="glass-panel glass-panel-hover rounded-2xl p-7 flex flex-col justify-between group transition-all duration-300 border border-purple-500/20 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-purple-500/10 rounded-full blur-2xl group-hover:bg-purple-500/20 transition-all"></div>
+                        <div class="space-y-4 relative z-10">
+                            <div class="w-14 h-14 rounded-xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-neon-purple text-2xl group-hover:scale-110 group-hover:shadow-neon-purple transition-all duration-300">
+                                <i class="fa-solid fa-cloud-arrow-up"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white group-hover:text-neon-purple transition-colors">
+                                Cloud Security
+                            </h3>
+                            <p class="text-slate-300 text-sm leading-relaxed">
+                                Secure cloud-based infrastructure across AWS, Azure, GCP, and Kubernetes clusters. Eliminate misconfigurations, manage IAM policies, and ensure compliance in hybrid cloud setups.
+                            </p>
+                        </div>
+                        <div class="pt-6 mt-6 border-t border-slate-800/80 flex items-center justify-between relative z-10">
+                            <button onclick="openServiceModal('Cloud Security', 'Autonomous Cloud Security Posture Management (CSPM), Kubernetes cluster hardening, container vulnerability scanning, and IAM least-privilege automation.')" class="text-xs font-mono font-bold text-neon-purple flex items-center gap-1.5 group-hover:translate-x-1 transition-transform">
+                                Learn More <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                            </button>
+                            <span class="text-[10px] font-mono text-slate-500">MULTI-CLOUD</span>
+                        </div>
+                    </div>
+
+                    <!-- 4. Threat Detection -->
+                    <div class="glass-panel glass-panel-hover rounded-2xl p-7 flex flex-col justify-between group transition-all duration-300 border border-red-500/20 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-red-500/10 rounded-full blur-2xl group-hover:bg-red-500/20 transition-all"></div>
+                        <div class="space-y-4 relative z-10">
+                            <div class="w-14 h-14 rounded-xl bg-red-500/10 border border-red-500/30 flex items-center justify-center text-neon-red text-2xl group-hover:scale-110 group-hover:shadow-neon-red transition-all duration-300">
+                                <i class="fa-solid fa-radar"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white group-hover:text-neon-red transition-colors">
+                                Threat Detection
+                            </h3>
+                            <p class="text-slate-300 text-sm leading-relaxed">
+                                Identify suspicious activity and security risks with 24/7 AI-assisted SIEM/SOAR threat hunting, heuristic behavior anomaly detection, and rapid automated incident response.
+                            </p>
+                        </div>
+                        <div class="pt-6 mt-6 border-t border-slate-800/80 flex items-center justify-between relative z-10">
+                            <button onclick="openServiceModal('Threat Detection', 'AI-powered Extended Detection & Response (XDR), continuous endpoint behavior monitoring, MITRE ATT&CK framework mapping, and automated containment playbooks.')" class="text-xs font-mono font-bold text-neon-red flex items-center gap-1.5 group-hover:translate-x-1 transition-transform">
+                                Learn More <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                            </button>
+                            <span class="text-[10px] font-mono text-slate-500">AI TELEMETRY</span>
+                        </div>
+                    </div>
+
+                    <!-- 5. Data Protection -->
+                    <div class="glass-panel glass-card-green rounded-2xl p-7 flex flex-col justify-between group transition-all duration-300 border border-emerald-500/20 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 rounded-full blur-2xl group-hover:bg-emerald-500/20 transition-all"></div>
+                        <div class="space-y-4 relative z-10">
+                            <div class="w-14 h-14 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-neon-green text-2xl group-hover:scale-110 group-hover:shadow-neon-green transition-all duration-300">
+                                <i class="fa-solid fa-vault"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white group-hover:text-neon-green transition-colors">
+                                Data Protection
+                            </h3>
+                            <p class="text-slate-300 text-sm leading-relaxed">
+                                Protect important information and digital assets. End-to-end AES-256 encryption at rest and in transit, Data Loss Prevention (DLP), cryptographic key custody, and automated backup vaulting.
+                            </p>
+                        </div>
+                        <div class="pt-6 mt-6 border-t border-slate-800/80 flex items-center justify-between relative z-10">
+                            <button onclick="openServiceModal('Data Protection', 'Zero-knowledge encryption architectures, hardware security module (HSM) integrations, tokenization engines, and strict GDPR/HIPAA data sovereignty pipelines.')" class="text-xs font-mono font-bold text-neon-green flex items-center gap-1.5 group-hover:translate-x-1 transition-transform">
+                                Learn More <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                            </button>
+                            <span class="text-[10px] font-mono text-slate-500">AES-256-GCM</span>
+                        </div>
+                    </div>
+
+                    <!-- 6. Security Consulting -->
+                    <div class="glass-panel glass-panel-hover rounded-2xl p-7 flex flex-col justify-between group transition-all duration-300 border border-cyan-500/20 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-cyan-500/10 rounded-full blur-2xl group-hover:bg-cyan-500/20 transition-all"></div>
+                        <div class="space-y-4 relative z-10">
+                            <div class="w-14 h-14 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-neon-cyan text-2xl group-hover:scale-110 group-hover:shadow-neon-cyan transition-all duration-300">
+                                <i class="fa-solid fa-user-shield"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white group-hover:text-neon-cyan transition-colors">
+                                Security Consulting
+                            </h3>
+                            <p class="text-slate-300 text-sm leading-relaxed">
+                                Professional guidance for improving security posture. Penetration testing, ethical hacking simulations, red-team exercises, regulatory compliance audits, and security awareness training.
+                            </p>
+                        </div>
+                        <div class="pt-6 mt-6 border-t border-slate-800/80 flex items-center justify-between relative z-10">
+                            <button onclick="openServiceModal('Security Consulting', 'Strategic CISO advisory, offensive red-team penetration testing, vulnerability assessments, and comprehensive compliance readiness audits for ISO 27001 & SOC 2.')" class="text-xs font-mono font-bold text-neon-cyan flex items-center gap-1.5 group-hover:translate-x-1 transition-transform">
+                                Learn More <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                            </button>
+                            <span class="text-[10px] font-mono text-slate-500">RED TEAM AUDIT</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- 8. TECHNOLOGY STACK                                                       -->
+        <!-- ========================================================================= -->
+        <section id="technologies" class="py-24 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <!-- Section Header -->
+                <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-neon-green text-xs font-mono uppercase">
+                        <span>// HIGH-PERFORMANCE TECH ENGINE</span>
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
+                        POWERED BY MODERN TECHNOLOGY
+                    </h2>
+                    <p class="text-slate-400 text-sm sm:text-base">
+                        Built with cutting-edge languages, hardened runtimes, and distributed protocols to deliver unyielding protection.
+                    </p>
+                </div>
+
+                <!-- 8 Technology Cards (Exact Prompt List) -->
+                <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+                    
+                    <!-- 1. HTML5 -->
+                    <div class="glass-panel glass-panel-hover p-6 rounded-2xl text-center group transition-all duration-300 border border-slate-800 flex flex-col items-center justify-center space-y-3">
+                        <div class="w-16 h-16 rounded-xl bg-orange-500/10 border border-orange-500/30 flex items-center justify-center text-orange-400 text-3xl group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(249,115,22,0.4)] transition-all">
+                            <i class="fa-brands fa-html5"></i>
+                        </div>
+                        <h4 class="font-mono font-bold text-white text-base">HTML5</h4>
+                        <span class="text-[11px] font-mono text-slate-400">Semantic &amp; CSP 3.0</span>
+                        <span class="text-[10px] px-2 py-0.5 rounded bg-orange-500/10 text-orange-400 border border-orange-500/20 font-mono">Standard Compliant</span>
+                    </div>
+
+                    <!-- 2. CSS3 -->
+                    <div class="glass-panel glass-panel-hover p-6 rounded-2xl text-center group transition-all duration-300 border border-slate-800 flex flex-col items-center justify-center space-y-3">
+                        <div class="w-16 h-16 rounded-xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 text-3xl group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.4)] transition-all">
+                            <i class="fa-brands fa-css3-alt"></i>
+                        </div>
+                        <h4 class="font-mono font-bold text-white text-base">CSS3</h4>
+                        <span class="text-[11px] font-mono text-slate-400">Hardware Accelerated</span>
+                        <span class="text-[10px] px-2 py-0.5 rounded bg-blue-500/10 text-blue-400 border border-blue-500/20 font-mono">Modern Layouts</span>
+                    </div>
+
+                    <!-- 3. Tailwind CSS -->
+                    <div class="glass-panel glass-panel-hover p-6 rounded-2xl text-center group transition-all duration-300 border border-slate-800 flex flex-col items-center justify-center space-y-3">
+                        <div class="w-16 h-16 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-neon-cyan text-3xl group-hover:scale-110 group-hover:shadow-neon-cyan transition-all">
+                            <i class="fa-solid fa-wind"></i>
+                        </div>
+                        <h4 class="font-mono font-bold text-white text-base">Tailwind CSS</h4>
+                        <span class="text-[11px] font-mono text-slate-400">Zero-Runtime Utility</span>
+                        <span class="text-[10px] px-2 py-0.5 rounded bg-cyan-500/10 text-neon-cyan border border-cyan-500/20 font-mono">High Precision</span>
+                    </div>
+
+                    <!-- 4. JavaScript -->
+                    <div class="glass-panel glass-panel-hover p-6 rounded-2xl text-center group transition-all duration-300 border border-slate-800 flex flex-col items-center justify-center space-y-3">
+                        <div class="w-16 h-16 rounded-xl bg-yellow-500/10 border border-yellow-500/30 flex items-center justify-center text-yellow-400 text-3xl group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(234,179,8,0.4)] transition-all">
+                            <i class="fa-brands fa-js"></i>
+                        </div>
+                        <h4 class="font-mono font-bold text-white text-base">JavaScript</h4>
+                        <span class="text-[11px] font-mono text-slate-400">Async Event Stream</span>
+                        <span class="text-[10px] px-2 py-0.5 rounded bg-yellow-500/10 text-yellow-400 border border-yellow-500/20 font-mono">ESNext Engine</span>
+                    </div>
+
+                    <!-- 5. Python -->
+                    <div class="glass-panel glass-panel-hover p-6 rounded-2xl text-center group transition-all duration-300 border border-slate-800 flex flex-col items-center justify-center space-y-3">
+                        <div class="w-16 h-16 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-neon-green text-3xl group-hover:scale-110 group-hover:shadow-neon-green transition-all">
+                            <i class="fa-brands fa-python"></i>
+                        </div>
+                        <h4 class="font-mono font-bold text-white text-base">Python</h4>
+                        <span class="text-[11px] font-mono text-slate-400">ML Threat Modeling</span>
+                        <span class="text-[10px] px-2 py-0.5 rounded bg-emerald-500/10 text-neon-green border border-emerald-500/20 font-mono">Automated Scripts</span>
+                    </div>
+
+                    <!-- 6. Linux -->
+                    <div class="glass-panel glass-panel-hover p-6 rounded-2xl text-center group transition-all duration-300 border border-slate-800 flex flex-col items-center justify-center space-y-3">
+                        <div class="w-16 h-16 rounded-xl bg-slate-700/30 border border-slate-600 flex items-center justify-center text-slate-200 text-3xl group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(255,255,255,0.2)] transition-all">
+                            <i class="fa-brands fa-linux"></i>
+                        </div>
+                        <h4 class="font-mono font-bold text-white text-base">Linux</h4>
+                        <span class="text-[11px] font-mono text-slate-400">Hardened Kernel &amp; eBPF</span>
+                        <span class="text-[10px] px-2 py-0.5 rounded bg-slate-700/50 text-slate-300 border border-slate-600 font-mono">SELinux Ready</span>
+                    </div>
+
+                    <!-- 7. Cloud -->
+                    <div class="glass-panel glass-panel-hover p-6 rounded-2xl text-center group transition-all duration-300 border border-slate-800 flex flex-col items-center justify-center space-y-3">
+                        <div class="w-16 h-16 rounded-xl bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-indigo-400 text-3xl group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(99,102,241,0.4)] transition-all">
+                            <i class="fa-solid fa-cloud"></i>
+                        </div>
+                        <h4 class="font-mono font-bold text-white text-base">Cloud</h4>
+                        <span class="text-[11px] font-mono text-slate-400">Distributed &amp; Sovereign</span>
+                        <span class="text-[10px] px-2 py-0.5 rounded bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 font-mono">AWS / GCP / K8s</span>
+                    </div>
+
+                    <!-- 8. Networking -->
+                    <div class="glass-panel glass-panel-hover p-6 rounded-2xl text-center group transition-all duration-300 border border-slate-800 flex flex-col items-center justify-center space-y-3">
+                        <div class="w-16 h-16 rounded-xl bg-teal-500/10 border border-teal-500/30 flex items-center justify-center text-teal-400 text-3xl group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(20,184,166,0.4)] transition-all">
+                            <i class="fa-solid fa-diagram-project"></i>
+                        </div>
+                        <h4 class="font-mono font-bold text-white text-base">Networking</h4>
+                        <span class="text-[11px] font-mono text-slate-400">BGP Anycast &amp; Mesh</span>
+                        <span class="text-[10px] px-2 py-0.5 rounded bg-teal-500/10 text-teal-400 border border-teal-500/20 font-mono">Zero Loss</span>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- 9. CYBERSECURITY DASHBOARD UI                                             -->
+        <!-- ========================================================================= -->
+        <section id="dashboard-section" class="py-24 relative bg-slate-950/60 border-t border-cyan-500/10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <!-- Section Title -->
+                <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-neon-cyan text-xs font-mono uppercase">
+                        <span class="w-2 h-2 rounded-full bg-neon-green animate-ping"></span>
+                        <span>// LIVE TELEMETRY CONTROL PLANE</span>
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
+                        CYBERSECURITY DASHBOARD
+                    </h2>
+                    <p class="text-slate-400 text-sm sm:text-base">
+                        Simulated live enterprise security telemetry monitoring network ingress, firewall filter status, and real-time defense posture.
+                    </p>
+                </div>
+
+                <!-- Main Dashboard Card -->
+                <div class="glass-panel rounded-3xl p-6 sm:p-8 lg:p-10 border border-cyan-500/30 shadow-[0_0_50px_rgba(0,240,255,0.12)]">
+                    
+                    <!-- Dashboard Top Bar -->
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-slate-800">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-neon-cyan/10 border border-neon-cyan/30 flex items-center justify-center text-neon-cyan">
+                                <i class="fa-solid fa-gauge-high text-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-mono text-lg sm:text-xl font-bold text-white tracking-wider">
+                                    SECURITY DASHBOARD
+                                </h3>
+                                <span class="font-mono text-xs text-slate-400">Node cluster: us-east-hydra-01</span>
+                            </div>
+                        </div>
+
+                        <!-- Live Action: Trigger Security Scan Simulator -->
+                        <div class="flex items-center gap-3">
+                            <button id="scan-trigger-btn" onclick="runSimulatedSecurityScan()" class="px-5 py-2.5 rounded-xl font-mono text-xs font-bold text-slate-950 bg-neon-cyan hover:bg-neon-green shadow-neon-cyan hover:shadow-neon-green transition-all duration-300 flex items-center gap-2 active:scale-95">
+                                <i class="fa-solid fa-arrows-rotate" id="scan-icon"></i>
+                                <span id="scan-btn-text">RUN FULL SECURITY SCAN</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 4 Top Metric Cards (Exact Prompt Requirements) -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 my-8">
+                        
+                        <!-- System Health 98% -->
+                        <div class="p-5 rounded-2xl bg-slate-900/70 border border-slate-800 space-y-3">
+                            <div class="flex items-center justify-between text-xs font-mono text-slate-400">
+                                <span>System Health</span>
+                                <span class="text-neon-green"><i class="fa-solid fa-heart-pulse"></i></span>
+                            </div>
+                            <div class="text-3xl font-mono font-bold text-white" id="stat-health">98%</div>
+                            <div class="w-full h-2 bg-slate-800 rounded-full overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-neon-cyan to-neon-green w-[98%] transition-all duration-1000" id="bar-health"></div>
+                            </div>
+                            <div class="text-[10px] font-mono text-slate-500">Optimal baseline operating state</div>
+                        </div>
+
+                        <!-- Network Status SECURE -->
+                        <div class="p-5 rounded-2xl bg-slate-900/70 border border-slate-800 space-y-3">
+                            <div class="flex items-center justify-between text-xs font-mono text-slate-400">
+                                <span>Network Status</span>
+                                <span class="text-neon-cyan"><i class="fa-solid fa-network-wired"></i></span>
+                            </div>
+                            <div class="text-2xl font-mono font-bold text-neon-cyan tracking-wider flex items-center gap-2" id="stat-network">
+                                SECURE
+                            </div>
+                            <div class="flex items-center gap-2 text-[11px] font-mono text-neon-green">
+                                <span class="w-2 h-2 rounded-full bg-neon-green animate-ping"></span>
+                                <span>0 Compromised Nodes</span>
+                            </div>
+                            <div class="text-[10px] font-mono text-slate-500">Latency: 11.4ms (BGP routed)</div>
+                        </div>
+
+                        <!-- Firewall ACTIVE -->
+                        <div class="p-5 rounded-2xl bg-slate-900/70 border border-slate-800 space-y-3">
+                            <div class="flex items-center justify-between text-xs font-mono text-slate-400">
+                                <span>Firewall</span>
+                                <span class="text-neon-purple"><i class="fa-solid fa-shield-halved"></i></span>
+                            </div>
+                            <div class="text-2xl font-mono font-bold text-neon-purple tracking-wider" id="stat-firewall">
+                                ACTIVE
+                            </div>
+                            <div class="text-[11px] font-mono text-slate-300">
+                                1,429,880 Rules Loaded
+                            </div>
+                            <div class="text-[10px] font-mono text-slate-500">Next-gen L7 Stateful Inspection</div>
+                        </div>
+
+                        <!-- Threat Level LOW -->
+                        <div class="p-5 rounded-2xl bg-slate-900/70 border border-slate-800 space-y-3">
+                            <div class="flex items-center justify-between text-xs font-mono text-slate-400">
+                                <span>Threat Level</span>
+                                <span class="text-neon-green"><i class="fa-solid fa-circle-check"></i></span>
+                            </div>
+                            <div class="text-2xl font-mono font-bold text-neon-green tracking-wider" id="stat-threat">
+                                LOW
+                            </div>
+                            <div class="text-[11px] font-mono text-slate-300">
+                                0 Active Anomalies
+                            </div>
+                            <div class="text-[10px] font-mono text-slate-500">Heuristic threat score: 0.02</div>
+                        </div>
+
+                    </div>
+
+                    <!-- Lower Dashboard Grid: Security Events & Realtime Activity Chart -->
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                        
+                        <!-- Left: Security Events (Exact Prompt Requirements) -->
+                        <div class="lg:col-span-6 p-6 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-4">
+                            <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                                <h4 class="font-mono text-sm font-bold text-white flex items-center gap-2">
+                                    <i class="fa-solid fa-list-check text-neon-cyan"></i> Security Events
+                                </h4>
+                                <span class="font-mono text-[11px] text-neon-green">All checks passed</span>
+                            </div>
+
+                            <div class="space-y-2.5 font-mono text-xs" id="events-list">
+                                
+                                <div class="flex items-center justify-between p-3 rounded-xl bg-slate-950/70 border border-slate-800/80">
+                                    <div class="flex items-center gap-3">
+                                        <span class="w-6 h-6 rounded-md bg-neon-green/10 text-neon-green flex items-center justify-center text-xs">✓</span>
+                                        <span class="text-slate-200">System Check</span>
+                                    </div>
+                                    <span class="text-[11px] text-neon-green font-bold px-2 py-0.5 rounded bg-neon-green/10">PASSED</span>
+                                </div>
+
+                                <div class="flex items-center justify-between p-3 rounded-xl bg-slate-950/70 border border-slate-800/80">
+                                    <div class="flex items-center gap-3">
+                                        <span class="w-6 h-6 rounded-md bg-neon-green/10 text-neon-green flex items-center justify-center text-xs">✓</span>
+                                        <span class="text-slate-200">Network Scan</span>
+                                    </div>
+                                    <span class="text-[11px] text-neon-green font-bold px-2 py-0.5 rounded bg-neon-green/10">PASSED</span>
+                                </div>
+
+                                <div class="flex items-center justify-between p-3 rounded-xl bg-slate-950/70 border border-slate-800/80">
+                                    <div class="flex items-center gap-3">
+                                        <span class="w-6 h-6 rounded-md bg-neon-green/10 text-neon-green flex items-center justify-center text-xs">✓</span>
+                                        <span class="text-slate-200">Firewall</span>
+                                    </div>
+                                    <span class="text-[11px] text-neon-green font-bold px-2 py-0.5 rounded bg-neon-green/10">PASSED</span>
+                                </div>
+
+                                <div class="flex items-center justify-between p-3 rounded-xl bg-slate-950/70 border border-slate-800/80">
+                                    <div class="flex items-center gap-3">
+                                        <span class="w-6 h-6 rounded-md bg-neon-green/10 text-neon-green flex items-center justify-center text-xs">✓</span>
+                                        <span class="text-slate-200">Data Protection</span>
+                                    </div>
+                                    <span class="text-[11px] text-neon-green font-bold px-2 py-0.5 rounded bg-neon-green/10">PASSED</span>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- Right: Real-time Bandwidth / Telemetry Chart -->
+                        <div class="lg:col-span-6 p-6 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-4 flex flex-col justify-between">
+                            
+                            <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                                <h4 class="font-mono text-sm font-bold text-white flex items-center gap-2">
+                                    <i class="fa-solid fa-chart-line text-neon-green"></i> Real-Time Packet Ingress
+                                </h4>
+                                <span class="font-mono text-[11px] text-neon-cyan">Peak: 12.8 Gbps</span>
+                            </div>
+
+                            <!-- Futuristic CSS/SVG Animated Line Graph -->
+                            <div class="py-4">
+                                <svg viewBox="0 0 400 120" class="w-full h-32 overflow-visible">
+                                    <defs>
+                                        <linearGradient id="chartGradient" x1="0" y1="0" x2="0" y2="1">
+                                            <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.4"/>
+                                            <stop offset="100%" stop-color="#00f0ff" stop-opacity="0.0"/>
+                                        </linearGradient>
+                                    </defs>
+                                    <!-- Horizontal Grid lines -->
+                                    <line x1="0" y1="20" x2="400" y2="20" stroke="rgba(255,255,255,0.05)" stroke-dasharray="4"/>
+                                    <line x1="0" y1="60" x2="400" y2="60" stroke="rgba(255,255,255,0.05)" stroke-dasharray="4"/>
+                                    <line x1="0" y1="100" x2="400" y2="100" stroke="rgba(255,255,255,0.05)" stroke-dasharray="4"/>
+                                    
+                                    <!-- Area Fill -->
+                                    <polygon points="0,95 40,80 80,85 120,60 160,70 200,45 240,55 280,30 320,40 360,25 400,35 400,120 0,120" fill="url(#chartGradient)"/>
+                                    
+                                    <!-- Line Path -->
+                                    <polyline points="0,95 40,80 80,85 120,60 160,70 200,45 240,55 280,30 320,40 360,25 400,35" fill="none" stroke="#00f0ff" stroke-width="2.5" class="filter drop-shadow-[0_0_8px_rgba(0,240,255,0.8)]"/>
+                                    
+                                    <!-- Live Pulse Node on Chart -->
+                                    <circle cx="400" cy="35" r="4" fill="#00ff9d" class="animate-ping"/>
+                                    <circle cx="400" cy="35" r="4" fill="#00ff9d"/>
+                                </svg>
+                            </div>
+
+                            <!-- Live Scan Output Feedback Bar -->
+                            <div id="scan-status-feed" class="p-3 rounded-xl bg-black/60 border border-slate-800 font-mono text-[11px] text-slate-400 flex items-center justify-between">
+                                <span class="flex items-center gap-2">
+                                    <span class="w-2 h-2 rounded-full bg-neon-green"></span>
+                                    <span id="scan-status-msg">Autonomous Sentinel: Normal stream</span>
+                                </span>
+                                <span class="text-slate-500">INTERVAL: 1s</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- 10. TERMINAL SECTION (Interactive Hacker Terminal)                        -->
+        <!-- ========================================================================= -->
+        <section id="terminal-section" class="py-24 relative">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <!-- Section Header -->
+                <div class="text-center max-w-3xl mx-auto mb-12 space-y-3">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neon-green/10 border border-neon-green/20 text-neon-green text-xs font-mono uppercase">
+                        <span>// COMMAND LINE INTERFACE</span>
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
+                        CYBERNEX TERMINAL
+                    </h2>
+                    <p class="text-slate-400 text-sm sm:text-base">
+                        Interactive command console. Experience our simulated security kernel by typing commands below.
+                    </p>
+                </div>
+
+                <!-- Terminal Window -->
+                <div class="glass-panel rounded-2xl overflow-hidden border border-cyan-500/40 shadow-[0_0_40px_rgba(0,255,157,0.15)] backdrop-blur-2xl">
+                    
+                    <!-- Terminal Top Header Bar -->
+                    <div class="bg-slate-900/90 px-4 py-3 border-b border-slate-800 flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                            <span class="w-3 h-3 rounded-full bg-red-500/90 inline-block"></span>
+                            <span class="w-3 h-3 rounded-full bg-yellow-500/90 inline-block"></span>
+                            <span class="w-3 h-3 rounded-full bg-green-500/90 inline-block"></span>
+                            <span class="font-mono text-xs text-slate-300 ml-3 font-semibold">
+                                CYBERNEX TERMINAL ~ v4.9.2-sec [ROOT]
+                            </span>
+                        </div>
+                        <div class="flex items-center gap-3 text-[11px] font-mono text-slate-400">
+                            <span class="hidden sm:inline">TTY: /dev/pts/0</span>
+                            <span class="text-neon-cyan">PORT: 443</span>
+                            <span class="text-neon-green">AUTH: OK</span>
+                        </div>
+                    </div>
+
+                    <!-- Terminal Output Screen -->
+                    <div id="terminal-body" class="p-6 font-mono text-xs sm:text-sm bg-[#040711]/95 text-slate-200 min-h-[320px] max-h-[440px] overflow-y-auto space-y-2 leading-relaxed">
+                        <div class="text-slate-500">// CYBERNEX DEFENSE OPERATING SYSTEM (DEMO CLI)</div>
+                        <div class="text-slate-500">// Type 'help' for available security commands or 'scan' to inspect.</div>
+                        <div class="text-neon-cyan">&gt; initializing security system...</div>
+                        <div class="text-slate-300">&gt; checking network status...</div>
+                        <div class="text-slate-300">&gt; analyzing system health...</div>
+                        <div class="text-neon-green">&gt; security verification complete</div>
+                        <div class="text-neon-green font-bold">&gt; system status: SECURE</div>
+                        <div class="text-neon-cyan font-bold">&gt; connection: PROTECTED</div>
+                    </div>
+
+                    <!-- Interactive Terminal Input Line -->
+                    <div class="bg-slate-950 px-6 py-4 border-t border-slate-800/80 flex items-center gap-2">
+                        <span class="font-mono text-sm text-neon-green font-bold">cybernex@root:~$</span>
+                        <input type="text" id="terminal-input" placeholder="Type a command (e.g. 'help', 'scan', 'status', 'matrix')..." autocomplete="off" spellcheck="false" class="flex-1 bg-transparent font-mono text-sm text-neon-cyan focus:outline-none placeholder:text-slate-600">
+                        <button onclick="handleTerminalSubmit()" class="px-3 py-1 bg-cyan-500/10 hover:bg-cyan-500/20 text-neon-cyan border border-cyan-500/30 rounded font-mono text-xs transition-colors">
+                            EXECUTE
+                        </button>
+                    </div>
+
+                </div>
+
+                <!-- Quick Command Suggestions -->
+                <div class="mt-4 flex flex-wrap items-center justify-center gap-2 font-mono text-xs text-slate-400">
+                    <span>Quick commands:</span>
+                    <button onclick="executeQuickCommand('help')" class="px-2 py-1 rounded bg-slate-900 hover:bg-slate-800 text-neon-cyan border border-slate-700 transition-colors">help</button>
+                    <button onclick="executeQuickCommand('scan')" class="px-2 py-1 rounded bg-slate-900 hover:bg-slate-800 text-neon-green border border-slate-700 transition-colors">scan</button>
+                    <button onclick="executeQuickCommand('status')" class="px-2 py-1 rounded bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-700 transition-colors">status</button>
+                    <button onclick="executeQuickCommand('firewall')" class="px-2 py-1 rounded bg-slate-900 hover:bg-slate-800 text-neon-purple border border-slate-700 transition-colors">firewall</button>
+                    <button onclick="executeQuickCommand('ping')" class="px-2 py-1 rounded bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-700 transition-colors">ping</button>
+                    <button onclick="executeQuickCommand('clear')" class="px-2 py-1 rounded bg-slate-900 hover:bg-slate-800 text-slate-400 border border-slate-700 transition-colors">clear</button>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- 11. PROJECTS SHOWCASE                                                     -->
+        <!-- ========================================================================= -->
+        <section id="projects" class="py-24 relative bg-slate-950/40 border-t border-cyan-500/10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <!-- Section Header -->
+                <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-neon-cyan text-xs font-mono uppercase">
+                        <span>// CASE STUDIES &amp; ARCHITECTURES</span>
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
+                        FEATURED SECURITY PROJECTS
+                    </h2>
+                    <p class="text-slate-400 text-sm sm:text-base">
+                        Explore our enterprise defense implementations engineered for mission-critical security.
+                    </p>
+                </div>
+
+                <!-- 4 Projects Grid (Exact Prompt List) -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    
+                    <!-- Project 1: Secure Web Platform -->
+                    <div class="glass-panel glass-panel-hover rounded-2xl overflow-hidden border border-slate-800 group transition-all duration-300 flex flex-col justify-between">
+                        <!-- Project Visual Placeholder Mockup -->
+                        <div class="h-52 bg-gradient-to-br from-slate-900 to-slate-950 p-6 flex flex-col justify-between relative overflow-hidden border-b border-slate-800">
+                            <div class="absolute inset-0 cyber-grid opacity-30"></div>
+                            <div class="flex items-center justify-between relative z-10">
+                                <span class="px-2.5 py-1 rounded bg-cyan-500/20 text-neon-cyan text-[11px] font-mono border border-cyan-500/30">
+                                    PROD_DEPLOYED
+                                </span>
+                                <i class="fa-solid fa-globe text-slate-600 text-2xl group-hover:text-neon-cyan group-hover:scale-110 transition-all"></i>
+                            </div>
+                            <div class="space-y-1 relative z-10">
+                                <div class="text-xs font-mono text-neon-green">&gt; ZERO-KNOWLEDGE AUTH LAYER</div>
+                                <div class="text-slate-300 font-mono text-sm font-bold">SHA-384 / TLS 1.3 / OAuth2 Zero-Trust</div>
+                            </div>
+                        </div>
+
+                        <div class="p-6 sm:p-8 space-y-4">
+                            <h3 class="text-2xl font-bold text-white group-hover:text-neon-cyan transition-colors">
+                                Secure Web Platform
+                            </h3>
+                            <p class="text-slate-300 text-sm leading-relaxed">
+                                Modern secure web application concept with zero-knowledge cryptographic authentication, tokenized user sessions, and continuous client-side tampering protection.
+                            </p>
+                            <!-- Tech Tags -->
+                            <div class="flex flex-wrap gap-2 pt-2">
+                                <span class="px-2.5 py-1 rounded-md bg-slate-900 text-slate-300 text-xs font-mono border border-slate-800">HTML5 / Tailwind</span>
+                                <span class="px-2.5 py-1 rounded-md bg-slate-900 text-slate-300 text-xs font-mono border border-slate-800">Web Crypto API</span>
+                                <span class="px-2.5 py-1 rounded-md bg-slate-900 text-slate-300 text-xs font-mono border border-slate-800">CSP Level 3</span>
+                            </div>
+                            <div class="pt-4 border-t border-slate-800/80">
+                                <button onclick="openProjectModal('Secure Web Platform', 'An enterprise-grade web application architecture incorporating client-side cryptographic hashing, zero-knowledge proofs for login verification, automatic DOM-tamper detection, and rate-limiting middleware.')" class="text-xs font-mono font-bold text-neon-cyan flex items-center gap-2 group-hover:translate-x-1 transition-transform">
+                                    View Project →
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 2: Network Monitoring -->
+                    <div class="glass-panel glass-card-green rounded-2xl overflow-hidden border border-slate-800 group transition-all duration-300 flex flex-col justify-between">
+                        <!-- Project Visual Placeholder Mockup -->
+                        <div class="h-52 bg-gradient-to-br from-slate-900 to-slate-950 p-6 flex flex-col justify-between relative overflow-hidden border-b border-slate-800">
+                            <div class="absolute inset-0 cyber-grid opacity-30"></div>
+                            <div class="flex items-center justify-between relative z-10">
+                                <span class="px-2.5 py-1 rounded bg-emerald-500/20 text-neon-green text-[11px] font-mono border border-emerald-500/30">
+                                    ENTERPRISE_SOC
+                                </span>
+                                <i class="fa-solid fa-network-wired text-slate-600 text-2xl group-hover:text-neon-green group-hover:scale-110 transition-all"></i>
+                            </div>
+                            <div class="space-y-1 relative z-10">
+                                <div class="text-xs font-mono text-neon-cyan">&gt; EBPF KERNEL TRACING</div>
+                                <div class="text-slate-300 font-mono text-sm font-bold">100M+ Packets/sec Deep Inspection</div>
+                            </div>
+                        </div>
+
+                        <div class="p-6 sm:p-8 space-y-4">
+                            <h3 class="text-2xl font-bold text-white group-hover:text-neon-green transition-colors">
+                                Network Monitoring
+                            </h3>
+                            <p class="text-slate-300 text-sm leading-relaxed">
+                                Real-time network monitoring dashboard concept engineered with Linux eBPF kernel hooks, visual packet topology maps, and microsecond anomaly alerts.
+                            </p>
+                            <!-- Tech Tags -->
+                            <div class="flex flex-wrap gap-2 pt-2">
+                                <span class="px-2.5 py-1 rounded-md bg-slate-900 text-slate-300 text-xs font-mono border border-slate-800">Linux eBPF</span>
+                                <span class="px-2.5 py-1 rounded-md bg-slate-900 text-slate-300 text-xs font-mono border border-slate-800">BGP Mesh</span>
+                                <span class="px-2.5 py-1 rounded-md bg-slate-900 text-slate-300 text-xs font-mono border border-slate-800">Prometheus</span>
+                            </div>
+                            <div class="pt-4 border-t border-slate-800/80">
+                                <button onclick="openProjectModal('Network Monitoring', 'Ultra low-overhead Linux kernel-level network tracing platform that monitors encrypted traffic flows, detects lateral movement in enterprise LANs, and triggers micro-segmentation isolations.')" class="text-xs font-mono font-bold text-neon-green flex items-center gap-2 group-hover:translate-x-1 transition-transform">
+                                    View Project →
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 3: Cloud Security -->
+                    <div class="glass-panel glass-panel-hover rounded-2xl overflow-hidden border border-slate-800 group transition-all duration-300 flex flex-col justify-between">
+                        <!-- Project Visual Placeholder Mockup -->
+                        <div class="h-52 bg-gradient-to-br from-slate-900 to-slate-950 p-6 flex flex-col justify-between relative overflow-hidden border-b border-slate-800">
+                            <div class="absolute inset-0 cyber-grid opacity-30"></div>
+                            <div class="flex items-center justify-between relative z-10">
+                                <span class="px-2.5 py-1 rounded bg-purple-500/20 text-neon-purple text-[11px] font-mono border border-purple-500/30">
+                                    MULTI_CLOUD
+                                </span>
+                                <i class="fa-solid fa-cloud-bolt text-slate-600 text-2xl group-hover:text-neon-purple group-hover:scale-110 transition-all"></i>
+                            </div>
+                            <div class="space-y-1 relative z-10">
+                                <div class="text-xs font-mono text-neon-purple">&gt; AUTOMATED COMPLIANCE ENGINE</div>
+                                <div class="text-slate-300 font-mono text-sm font-bold">AWS + GCP + Azure Unified Posture</div>
+                            </div>
+                        </div>
+
+                        <div class="p-6 sm:p-8 space-y-4">
+                            <h3 class="text-2xl font-bold text-white group-hover:text-neon-purple transition-colors">
+                                Cloud Security
+                            </h3>
+                            <p class="text-slate-300 text-sm leading-relaxed">
+                                Cloud infrastructure protection concept featuring automated posture enforcement, Kubernetes cluster hardening, and automated drift remediation.
+                            </p>
+                            <!-- Tech Tags -->
+                            <div class="flex flex-wrap gap-2 pt-2">
+                                <span class="px-2.5 py-1 rounded-md bg-slate-900 text-slate-300 text-xs font-mono border border-slate-800">Kubernetes Hardening</span>
+                                <span class="px-2.5 py-1 rounded-md bg-slate-900 text-slate-300 text-xs font-mono border border-slate-800">Terraform Policy</span>
+                                <span class="px-2.5 py-1 rounded-md bg-slate-900 text-slate-300 text-xs font-mono border border-slate-800">IAM Least Privilege</span>
+                            </div>
+                            <div class="pt-4 border-t border-slate-800/80">
+                                <button onclick="openProjectModal('Cloud Security', 'Autonomous multi-cloud security engine verifying immutable infrastructure deployments, enforcing zero-trust network policies on Kubernetes pods, and generating automated audit proofs.')" class="text-xs font-mono font-bold text-neon-purple flex items-center gap-2 group-hover:translate-x-1 transition-transform">
+                                    View Project →
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 4: Smart Security Dashboard -->
+                    <div class="glass-panel glass-panel-hover rounded-2xl overflow-hidden border border-slate-800 group transition-all duration-300 flex flex-col justify-between">
+                        <!-- Project Visual Placeholder Mockup -->
+                        <div class="h-52 bg-gradient-to-br from-slate-900 to-slate-950 p-6 flex flex-col justify-between relative overflow-hidden border-b border-slate-800">
+                            <div class="absolute inset-0 cyber-grid opacity-30"></div>
+                            <div class="flex items-center justify-between relative z-10">
+                                <span class="px-2.5 py-1 rounded bg-cyan-500/20 text-neon-cyan text-[11px] font-mono border border-cyan-500/30">
+                                    AI_ANALYTICS
+                                </span>
+                                <i class="fa-solid fa-chart-pie text-slate-600 text-2xl group-hover:text-neon-cyan group-hover:scale-110 transition-all"></i>
+                            </div>
+                            <div class="space-y-1 relative z-10">
+                                <div class="text-xs font-mono text-neon-green">&gt; PREDICTIVE RISK SCORING</div>
+                                <div class="text-slate-300 font-mono text-sm font-bold">Real-time Unified Threat Intelligence</div>
+                            </div>
+                        </div>
+
+                        <div class="p-6 sm:p-8 space-y-4">
+                            <h3 class="text-2xl font-bold text-white group-hover:text-neon-cyan transition-colors">
+                                Smart Security Dashboard
+                            </h3>
+                            <p class="text-slate-300 text-sm leading-relaxed">
+                                Modern cybersecurity analytics interface aggregating endpoint signals, honeypot hits, and contextual MITRE ATT&CK vectors into actionable insights.
+                            </p>
+                            <!-- Tech Tags -->
+                            <div class="flex flex-wrap gap-2 pt-2">
+                                <span class="px-2.5 py-1 rounded-md bg-slate-900 text-slate-300 text-xs font-mono border border-slate-800">Python ML</span>
+                                <span class="px-2.5 py-1 rounded-md bg-slate-900 text-slate-300 text-xs font-mono border border-slate-800">Tailwind UI</span>
+                                <span class="px-2.5 py-1 rounded-md bg-slate-900 text-slate-300 text-xs font-mono border border-slate-800">WebSocket Stream</span>
+                            </div>
+                            <div class="pt-4 border-t border-slate-800/80">
+                                <button onclick="openProjectModal('Smart Security Dashboard', 'High-density SecOps analytics interface featuring streaming WebSocket telemetry, sub-second anomaly categorization, dynamic risk gauges, and incident timeline reconstructions.')" class="text-xs font-mono font-bold text-neon-cyan flex items-center gap-2 group-hover:translate-x-1 transition-transform">
+                                    View Project →
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- 12. WHY CHOOSE US                                                         -->
+        <!-- ========================================================================= -->
+        <section class="py-24 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <!-- Section Header -->
+                <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-neon-cyan text-xs font-mono uppercase">
+                        <span>// THE CYBERNEX ADVANTAGE</span>
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
+                        WHY CHOOSE CYBERNEX?
+                    </h2>
+                    <p class="text-slate-400 text-sm sm:text-base">
+                        Proven enterprise-level defense systems trusted by forward-thinking organizations worldwide.
+                    </p>
+                </div>
+
+                <!-- 6 Feature Cards (Exact Prompt List) -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    
+                    <!-- 1. Fast Solutions -->
+                    <div class="glass-panel glass-panel-hover p-6 rounded-2xl space-y-3 group border border-slate-800 transition-all duration-300">
+                        <div class="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center text-neon-cyan text-2xl group-hover:scale-110 transition-transform">
+                            ⚡
+                        </div>
+                        <h4 class="text-lg font-bold text-white group-hover:text-neon-cyan transition-colors">Fast Solutions</h4>
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            Sub-second automated threat mitigation and rapid deployment workflows that eliminate downtime without bottlenecks.
+                        </p>
+                    </div>
+
+                    <!-- 2. Security First -->
+                    <div class="glass-panel glass-card-green p-6 rounded-2xl space-y-3 group border border-slate-800 transition-all duration-300">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center text-neon-green text-2xl group-hover:scale-110 transition-transform">
+                            🛡️
+                        </div>
+                        <h4 class="text-lg font-bold text-white group-hover:text-neon-green transition-colors">Security First</h4>
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            Zero-compromise defensive posture embedded from the ground up across every application layer and API gateway.
+                        </p>
+                    </div>
+
+                    <!-- 3. Modern Technology -->
+                    <div class="glass-panel glass-panel-hover p-6 rounded-2xl space-y-3 group border border-slate-800 transition-all duration-300">
+                        <div class="w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center text-neon-purple text-2xl group-hover:scale-110 transition-transform">
+                            🚀
+                        </div>
+                        <h4 class="text-lg font-bold text-white group-hover:text-neon-purple transition-colors">Modern Technology</h4>
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            Leveraging quantum-safe cryptographic algorithms, eBPF telemetry, and autonomous heuristic AI models.
+                        </p>
+                    </div>
+
+                    <!-- 4. Creative Thinking -->
+                    <div class="glass-panel glass-panel-hover p-6 rounded-2xl space-y-3 group border border-slate-800 transition-all duration-300">
+                        <div class="w-12 h-12 rounded-xl bg-yellow-500/10 flex items-center justify-center text-yellow-400 text-2xl group-hover:scale-110 transition-transform">
+                            💡
+                        </div>
+                        <h4 class="text-lg font-bold text-white group-hover:text-yellow-400 transition-colors">Creative Thinking</h4>
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            Custom security architectures engineered to resolve complex, unique compliance and operational challenges.
+                        </p>
+                    </div>
+
+                    <!-- 5. Smart Analytics -->
+                    <div class="glass-panel glass-card-green p-6 rounded-2xl space-y-3 group border border-slate-800 transition-all duration-300">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center text-neon-green text-2xl group-hover:scale-110 transition-transform">
+                            📊
+                        </div>
+                        <h4 class="text-lg font-bold text-white group-hover:text-neon-green transition-colors">Smart Analytics</h4>
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            Contextual telemetry, real-time risk scoring, and interactive predictive analytics that simplify SecOps decision making.
+                        </p>
+                    </div>
+
+                    <!-- 6. Global Approach -->
+                    <div class="glass-panel glass-panel-hover p-6 rounded-2xl space-y-3 group border border-slate-800 transition-all duration-300">
+                        <div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center text-neon-cyan text-2xl group-hover:scale-110 transition-transform">
+                            🌐
+                        </div>
+                        <h4 class="text-lg font-bold text-white group-hover:text-neon-cyan transition-colors">Global Approach</h4>
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            Worldwide threat intelligence network analyzing adversarial signals across 140+ countries in real time.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- 13. SECURITY PROCESS (4-Step Timeline)                                    -->
+        <!-- ========================================================================= -->
+        <section id="security" class="py-24 relative bg-slate-950/60 border-t border-cyan-500/10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <!-- Section Header -->
+                <div class="text-center max-w-3xl mx-auto mb-20 space-y-3">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-neon-green text-xs font-mono uppercase">
+                        <span>// DEFENSE METHODOLOGY</span>
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
+                        OUR 4-STEP SECURITY PROCESS
+                    </h2>
+                    <p class="text-slate-400 text-sm sm:text-base">
+                        A structured lifecycle to assess, harden, and continuously maintain your cybersecurity defenses.
+                    </p>
+                </div>
+
+                <!-- 4 Steps Connected with Glowing Timeline -->
+                <div class="relative">
+                    
+                    <!-- Glowing horizontal connecting line (Desktop) -->
+                    <div class="hidden lg:block absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-neon-cyan via-neon-green to-neon-purple -translate-y-6 z-0 shadow-[0_0_15px_rgba(0,240,255,0.6)]"></div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
+                        
+                        <!-- Step 01 — Discover -->
+                        <div class="glass-panel glass-panel-hover p-6 rounded-2xl space-y-4 border border-cyan-500/30 text-center flex flex-col items-center">
+                            <div class="w-14 h-14 rounded-2xl bg-slate-900 border-2 border-neon-cyan flex items-center justify-center font-mono font-bold text-neon-cyan text-lg shadow-neon-cyan">
+                                01
+                            </div>
+                            <h3 class="font-mono text-xl font-bold text-white">Discover</h3>
+                            <p class="text-slate-300 text-sm leading-relaxed">
+                                Understand the digital environment. Catalog all endpoints, cloud instances, and external attack surfaces.
+                            </p>
+                            <span class="text-[11px] font-mono text-neon-cyan">Phase 1: Recon &amp; Audit</span>
+                        </div>
+
+                        <!-- Step 02 — Analyze -->
+                        <div class="glass-panel glass-panel-hover p-6 rounded-2xl space-y-4 border border-emerald-500/30 text-center flex flex-col items-center">
+                            <div class="w-14 h-14 rounded-2xl bg-slate-900 border-2 border-neon-green flex items-center justify-center font-mono font-bold text-neon-green text-lg shadow-neon-green">
+                                02
+                            </div>
+                            <h3 class="font-mono text-xl font-bold text-white">Analyze</h3>
+                            <p class="text-slate-300 text-sm leading-relaxed">
+                                Identify potential security risks. Perform deep vulnerability scanning and simulate adversarial penetration vectors.
+                            </p>
+                            <span class="text-[11px] font-mono text-neon-green">Phase 2: Risk Scoring</span>
+                        </div>
+
+                        <!-- Step 03 — Protect -->
+                        <div class="glass-panel glass-panel-hover p-6 rounded-2xl space-y-4 border border-purple-500/30 text-center flex flex-col items-center">
+                            <div class="w-14 h-14 rounded-2xl bg-slate-900 border-2 border-neon-purple flex items-center justify-center font-mono font-bold text-neon-purple text-lg shadow-neon-purple">
+                                03
+                            </div>
+                            <h3 class="font-mono text-xl font-bold text-white">Protect</h3>
+                            <p class="text-slate-300 text-sm leading-relaxed">
+                                Build strong security solutions. Deploy zero-trust access controls, hardware-grade encryption, and firewalls.
+                            </p>
+                            <span class="text-[11px] font-mono text-neon-purple">Phase 3: Hardening</span>
+                        </div>
+
+                        <!-- Step 04 — Monitor -->
+                        <div class="glass-panel glass-panel-hover p-6 rounded-2xl space-y-4 border border-cyan-500/30 text-center flex flex-col items-center">
+                            <div class="w-14 h-14 rounded-2xl bg-slate-900 border-2 border-neon-cyan flex items-center justify-center font-mono font-bold text-neon-cyan text-lg shadow-neon-cyan">
+                                04
+                            </div>
+                            <h3 class="font-mono text-xl font-bold text-white">Monitor</h3>
+                            <p class="text-slate-300 text-sm leading-relaxed">
+                                Continuously improve digital protection. 24/7 SOC surveillance, autonomous incident response, and live updates.
+                            </p>
+                            <span class="text-[11px] font-mono text-neon-cyan">Phase 4: 24/7 Telemetry</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- 14. TESTIMONIALS                                                          -->
+        <!-- ========================================================================= -->
+        <section class="py-24 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <!-- Section Header -->
+                <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-neon-cyan text-xs font-mono uppercase">
+                        <span>// CLIENT EXPERIENCES</span>
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
+                        TRUSTED BY INDUSTRY LEADERS
+                    </h2>
+                    <p class="text-slate-400 text-sm sm:text-base">
+                        What technical executives and security leaders say about partnering with CYBERNEX.
+                    </p>
+                </div>
+
+                <!-- 3 Testimonials Cards (Exact Prompt Requirements) -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    
+                    <!-- Testimonial 1: Alex -->
+                    <div class="glass-panel glass-panel-hover p-8 rounded-2xl flex flex-col justify-between space-y-6 border border-slate-800 group transition-all duration-300">
+                        <div class="space-y-4">
+                            <div class="flex text-neon-green text-sm gap-1">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                            <blockquote class="text-slate-200 text-base sm:text-lg italic font-normal leading-relaxed">
+                                "CYBERNEX transformed the way we think about digital security."
+                            </blockquote>
+                        </div>
+                        <div class="pt-4 border-t border-slate-800 flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-cyan-500/20 border border-cyan-500 flex items-center justify-center font-mono font-bold text-neon-cyan">
+                                AL
+                            </div>
+                            <div>
+                                <div class="font-bold text-white text-sm">Alex</div>
+                                <div class="text-xs font-mono text-slate-400">Technology Lead</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 2: David -->
+                    <div class="glass-panel glass-card-green p-8 rounded-2xl flex flex-col justify-between space-y-6 border border-slate-800 group transition-all duration-300">
+                        <div class="space-y-4">
+                            <div class="flex text-neon-green text-sm gap-1">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                            <blockquote class="text-slate-200 text-base sm:text-lg italic font-normal leading-relaxed">
+                                "Modern design, excellent technology, and a strong security mindset."
+                            </blockquote>
+                        </div>
+                        <div class="pt-4 border-t border-slate-800 flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-emerald-500/20 border border-emerald-500 flex items-center justify-center font-mono font-bold text-neon-green">
+                                DM
+                            </div>
+                            <div>
+                                <div class="font-bold text-white text-sm">David</div>
+                                <div class="text-xs font-mono text-slate-400">IT Manager</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 3: Sarah -->
+                    <div class="glass-panel glass-panel-hover p-8 rounded-2xl flex flex-col justify-between space-y-6 border border-slate-800 group transition-all duration-300">
+                        <div class="space-y-4">
+                            <div class="flex text-neon-green text-sm gap-1">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                            <blockquote class="text-slate-200 text-base sm:text-lg italic font-normal leading-relaxed">
+                                "The dashboard experience is incredibly clean and futuristic."
+                            </blockquote>
+                        </div>
+                        <div class="pt-4 border-t border-slate-800 flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-purple-500/20 border border-purple-500 flex items-center justify-center font-mono font-bold text-neon-purple">
+                                SC
+                            </div>
+                            <div>
+                                <div class="font-bold text-white text-sm">Sarah</div>
+                                <div class="text-xs font-mono text-slate-400">Product Designer</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- 15. CALL TO ACTION (CTA)                                                  -->
+        <!-- ========================================================================= -->
+        <section class="py-20 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="relative glass-panel rounded-3xl p-8 sm:p-12 lg:p-16 border-2 border-cyan-500/40 shadow-[0_0_60px_rgba(0,240,255,0.2)] overflow-hidden text-center space-y-8">
+                    
+                    <!-- Ambient Glow Effects inside CTA -->
+                    <div class="absolute -top-24 -left-24 w-72 h-72 rounded-full bg-cyan-500/20 blur-3xl pointer-events-none"></div>
+                    <div class="absolute -bottom-24 -right-24 w-72 h-72 rounded-full bg-emerald-500/20 blur-3xl pointer-events-none"></div>
+                    <div class="absolute inset-0 cyber-grid opacity-20 pointer-events-none"></div>
+
+                    <!-- Content (Exact Prompt Specs) -->
+                    <div class="relative z-10 max-w-3xl mx-auto space-y-4">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neon-green/10 border border-neon-green/30 text-neon-green text-xs font-mono uppercase">
+                            <span>⚡ ENTERPRISE-GRADE DEFENSE</span>
+                        </div>
+                        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight">
+                            READY TO SECURE YOUR <br/>
+                            <span class="text-gradient-neon">DIGITAL WORLD?</span>
+                        </h2>
+                        <p class="text-slate-200 text-base sm:text-lg font-medium">
+                            "Build smarter. Protect better. Move forward with confidence."
+                        </p>
+                    </div>
+
+                    <!-- Buttons -->
+                    <div class="relative z-10 flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
+                        <a href="#contact" class="w-full sm:w-auto px-9 py-4 rounded-xl font-mono text-sm font-bold text-slate-950 bg-gradient-to-r from-neon-cyan via-teal-400 to-neon-green shadow-neon-cyan hover:shadow-neon-green hover:scale-[1.02] active:scale-95 transition-all duration-300 flex items-center justify-center gap-2">
+                            <span>Start Your Journey</span>
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </a>
+                        <a href="#contact" class="w-full sm:w-auto px-9 py-4 rounded-xl font-mono text-sm font-semibold text-slate-200 glass-panel glass-panel-hover hover:text-neon-cyan active:scale-95 transition-all duration-300 flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-envelope"></i>
+                            <span>Contact Us</span>
+                        </a>
+                    </div>
+
+                    <!-- Trust Compliance Badges -->
+                    <div class="relative z-10 pt-6 flex flex-wrap items-center justify-center gap-6 text-xs font-mono text-slate-400 border-t border-slate-800/80 max-w-2xl mx-auto">
+                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-shield text-neon-cyan"></i> SOC2 Type II Certified</span>
+                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-check text-neon-green"></i> ISO 27001 Ready</span>
+                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-lock text-neon-purple"></i> 256-Bit Quantum Encryption</span>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- 16. CONTACT SECTION                                                       -->
+        <!-- ========================================================================= -->
+        <section id="contact" class="py-24 relative bg-slate-950/60 border-t border-cyan-500/10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                    
+                    <!-- Left: Contact Details & Security Hotline -->
+                    <div class="lg:col-span-5 space-y-8">
+                        
+                        <div class="space-y-3">
+                            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-neon-cyan text-xs font-mono uppercase">
+                                <span>// ENCRYPTED CHANNEL</span>
+                            </div>
+                            <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+                                CONNECT WITH OUR DEFENSE ARCHITECTS
+                            </h2>
+                            <p class="text-slate-300 text-sm leading-relaxed">
+                                Have an emergency security audit request or infrastructure consultation? Reach out securely to our global incident response division.
+                            </p>
+                        </div>
+
+                        <!-- Contact Info Cards (Exact Prompt Requirements) -->
+                        <div class="space-y-4 font-mono text-sm">
+                            
+                            <div class="p-4 rounded-xl glass-panel border border-slate-800 flex items-center gap-4">
+                                <div class="w-10 h-10 rounded-lg bg-cyan-500/10 flex items-center justify-center text-neon-cyan text-lg">
+                                    <i class="fa-solid fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <div class="text-xs text-slate-400">Direct Inquiries</div>
+                                    <div class="text-white font-bold select-all">hello@cybernex.example</div>
+                                </div>
+                            </div>
+
+                            <div class="p-4 rounded-xl glass-panel border border-slate-800 flex items-center gap-4">
+                                <div class="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center text-neon-green text-lg">
+                                    <i class="fa-solid fa-headset"></i>
+                                </div>
+                                <div>
+                                    <div class="text-xs text-slate-400">Incident Response Desk</div>
+                                    <div class="text-white font-bold">24/7 Digital Support</div>
+                                </div>
+                            </div>
+
+                            <div class="p-4 rounded-xl glass-panel border border-slate-800 flex items-center gap-4">
+                                <div class="w-10 h-10 rounded-lg bg-purple-500/10 flex items-center justify-center text-neon-purple text-lg">
+                                    <i class="fa-solid fa-key"></i>
+                                </div>
+                                <div>
+                                    <div class="text-xs text-slate-400">PGP Key Fingerprint</div>
+                                    <div class="text-slate-300 text-xs font-mono break-all">9F4B 2A8C 7D1E 6F3A 0B5C 8E2D 4A1F 3C7B</div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- Live Status Pill -->
+                        <div class="p-4 rounded-xl bg-slate-900/80 border border-cyan-500/20 flex items-center justify-between text-xs font-mono">
+                            <span class="text-slate-400">Global SOC Availability:</span>
+                            <span class="text-neon-green flex items-center gap-1.5 font-bold">
+                                <span class="w-2 h-2 rounded-full bg-neon-green animate-ping"></span> 100% OPERATIONAL
+                            </span>
+                        </div>
+
+                    </div>
+
+                    <!-- Right: Professional Contact Form -->
+                    <div class="lg:col-span-7">
+                        <div class="glass-panel rounded-3xl p-6 sm:p-10 border border-cyan-500/30 shadow-[0_0_40px_rgba(0,240,255,0.1)]">
+                            
+                            <h3 class="text-xl font-bold text-white mb-6 font-mono flex items-center gap-2">
+                                <i class="fa-solid fa-lock text-neon-cyan"></i> SECURE MESSAGE DISPATCH
+                            </h3>
+
+                            <form id="contact-form" onsubmit="handleContactSubmit(event)" class="space-y-5">
+                                
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                    <!-- Full Name -->
+                                    <div class="space-y-1.5">
+                                        <label for="fullName" class="block text-xs font-mono text-slate-300 uppercase">Full Name *</label>
+                                        <input type="text" id="fullName" required placeholder="e.g. John Cyber" class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-700/80 text-white placeholder-slate-500 text-sm font-mono focus:outline-none focus:border-neon-cyan focus:ring-1 focus:ring-neon-cyan transition-all">
+                                    </div>
+
+                                    <!-- Email -->
+                                    <div class="space-y-1.5">
+                                        <label for="email" class="block text-xs font-mono text-slate-300 uppercase">Email Address *</label>
+                                        <input type="email" id="email" required placeholder="name@company.com" class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-700/80 text-white placeholder-slate-500 text-sm font-mono focus:outline-none focus:border-neon-cyan focus:ring-1 focus:ring-neon-cyan transition-all">
+                                    </div>
+                                </div>
+
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                    <!-- Company -->
+                                    <div class="space-y-1.5">
+                                        <label for="company" class="block text-xs font-mono text-slate-300 uppercase">Company Name</label>
+                                        <input type="text" id="company" placeholder="e.g. Nexus Tech Corp" class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-700/80 text-white placeholder-slate-500 text-sm font-mono focus:outline-none focus:border-neon-cyan focus:ring-1 focus:ring-neon-cyan transition-all">
+                                    </div>
+
+                                    <!-- Subject -->
+                                    <div class="space-y-1.5">
+                                        <label for="subject" class="block text-xs font-mono text-slate-300 uppercase">Subject *</label>
+                                        <input type="text" id="subject" required placeholder="e.g. Enterprise Security Audit" class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-700/80 text-white placeholder-slate-500 text-sm font-mono focus:outline-none focus:border-neon-cyan focus:ring-1 focus:ring-neon-cyan transition-all">
+                                    </div>
+                                </div>
+
+                                <!-- Message -->
+                                <div class="space-y-1.5">
+                                    <label for="message" class="block text-xs font-mono text-slate-300 uppercase">Message *</label>
+                                    <textarea id="message" required rows="4" placeholder="Describe your technical security requirements or infrastructure scope..." class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-700/80 text-white placeholder-slate-500 text-sm font-mono focus:outline-none focus:border-neon-cyan focus:ring-1 focus:ring-neon-cyan transition-all"></textarea>
+                                </div>
+
+                                <!-- Form Submit Button -->
+                                <button type="submit" id="submit-btn" class="w-full py-4 rounded-xl font-mono text-sm font-bold text-slate-950 bg-gradient-to-r from-neon-cyan via-teal-400 to-neon-green shadow-neon-cyan hover:shadow-neon-green hover:scale-[1.01] active:scale-95 transition-all duration-300 flex items-center justify-center gap-2">
+                                    <span>SEND MESSAGE →</span>
+                                </button>
+
+                            </form>
+
+                            <!-- Live Feedback Toast Notification Placeholder -->
+                            <div id="form-toast" class="hidden mt-4 p-4 rounded-xl bg-neon-green/10 border border-neon-green/40 text-neon-green font-mono text-xs flex items-center gap-3">
+                                <i class="fa-solid fa-circle-check text-base"></i>
+                                <span>Message successfully dispatched with AES-256 encryption. Our SecOps team will respond within 15 minutes.</span>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ========================================================================= -->
+    <!-- 17. FOOTER                                                                -->
+    <!-- ========================================================================= -->
+    <footer class="bg-cyber-deep border-t border-slate-800 text-slate-400 font-sans relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
+                
+                <!-- Brand Info (Spans 2 cols on lg) -->
+                <div class="lg:col-span-2 space-y-4">
+                    <a href="#home" class="flex items-center gap-2">
+                        <span class="text-neon-cyan text-2xl">⚡</span>
+                        <span class="font-mono text-xl font-bold tracking-wider text-white">
+                            CYBER<span class="text-neon-cyan">NEX</span>
+                        </span>
+                    </a>
+                    <p class="text-slate-400 text-sm max-w-sm leading-relaxed">
+                        Building secure, intelligent, and futuristic digital experiences. Next-generation zero-trust defense architectures for global technology leaders.
+                    </p>
+                    <!-- Social Links -->
+                    <div class="flex items-center gap-3 pt-2">
+                        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-lg bg-slate-900 border border-slate-800 hover:border-neon-cyan hover:text-neon-cyan flex items-center justify-center text-slate-400 transition-colors" aria-label="GitHub">
+                            <i class="fa-brands fa-github"></i>
+                        </a>
+                        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-lg bg-slate-900 border border-slate-800 hover:border-neon-cyan hover:text-neon-cyan flex items-center justify-center text-slate-400 transition-colors" aria-label="Twitter">
+                            <i class="fa-brands fa-x-twitter"></i>
+                        </a>
+                        <a href="https://discord.com" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-lg bg-slate-900 border border-slate-800 hover:border-neon-cyan hover:text-neon-cyan flex items-center justify-center text-slate-400 transition-colors" aria-label="Discord">
+                            <i class="fa-brands fa-discord"></i>
+                        </a>
+                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-lg bg-slate-900 border border-slate-800 hover:border-neon-cyan hover:text-neon-cyan flex items-center justify-center text-slate-400 transition-colors" aria-label="LinkedIn">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Column 1: Company -->
+                <div class="space-y-3">
+                    <h4 class="font-mono text-xs font-bold uppercase tracking-wider text-white">Company</h4>
+                    <ul class="space-y-2 text-sm font-mono">
+                        <li><a href="#about" class="hover:text-neon-cyan transition-colors">About</a></li>
+                        <li><a href="#services" class="hover:text-neon-cyan transition-colors">Services</a></li>
+                        <li><a href="#projects" class="hover:text-neon-cyan transition-colors">Projects</a></li>
+                        <li><a href="#contact" class="hover:text-neon-cyan transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 2: Technology -->
+                <div class="space-y-3">
+                    <h4 class="font-mono text-xs font-bold uppercase tracking-wider text-white">Technology</h4>
+                    <ul class="space-y-2 text-sm font-mono">
+                        <li><a href="#services" class="hover:text-neon-cyan transition-colors">Web Security</a></li>
+                        <li><a href="#services" class="hover:text-neon-cyan transition-colors">Cloud</a></li>
+                        <li><a href="#services" class="hover:text-neon-cyan transition-colors">Networking</a></li>
+                        <li><a href="#services" class="hover:text-neon-cyan transition-colors">Data Protection</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Resources -->
+                <div class="space-y-3">
+                    <h4 class="font-mono text-xs font-bold uppercase tracking-wider text-white">Resources</h4>
+                    <ul class="space-y-2 text-sm font-mono">
+                        <li><a href="#terminal-section" class="hover:text-neon-cyan transition-colors">Security Guide</a></li>
+                        <li><a href="#dashboard-section" class="hover:text-neon-cyan transition-colors">Documentation</a></li>
+                        <li><a href="#security" class="hover:text-neon-cyan transition-colors">FAQ</a></li>
+                        <li><a href="#contact" class="hover:text-neon-cyan transition-colors">Support</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- Bottom Legal & Status Bar -->
+            <div class="mt-12 pt-8 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono">
+                <div>
+                    © 2026 CYBERNEX. All Rights Reserved.
+                </div>
+                <div class="flex items-center gap-6 text-slate-400">
+                    <span class="flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-neon-green"></span>
+                        <span>ALL SYSTEMS OPERATIONAL</span>
+                    </span>
+                    <span id="utc-clock" class="text-neon-cyan font-bold">UTC 00:00:00</span>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- ========================================================================= -->
+    <!-- INTERACTIVE MODALS                                                        -->
+    <!-- ========================================================================= -->
+    <!-- Service / Project Detail Modal -->
+    <div id="info-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+        <div class="glass-panel max-w-lg w-full rounded-3xl p-6 sm:p-8 border border-cyan-500/40 shadow-[0_0_50px_rgba(0,240,255,0.25)] space-y-5 animate-float">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                <div class="flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-neon-cyan inline-block animate-ping"></span>
+                    <h3 id="modal-title" class="font-mono text-lg font-bold text-white">System Specification</h3>
+                </div>
+                <button onclick="closeInfoModal()" class="text-slate-400 hover:text-white p-1" aria-label="Close Modal">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+            <p id="modal-desc" class="text-slate-300 text-sm leading-relaxed font-sans">
+                Detailed architecture specifications.
+            </p>
+            <div class="p-4 rounded-xl bg-slate-950 border border-slate-800 font-mono text-xs space-y-1 text-slate-400">
+                <div class="text-neon-green">&gt; STATUS: Production Ready</div>
+                <div class="text-neon-cyan">&gt; ENCRYPTION: Quantum-Safe Kyber/Dilithium</div>
+                <div class="text-slate-300">&gt; LATENCY OVERHEAD: &lt; 0.8ms</div>
+            </div>
+            <div class="pt-2 flex justify-end">
+                <button onclick="closeInfoModal()" class="px-5 py-2 rounded-xl bg-neon-cyan text-slate-950 font-mono text-xs font-bold hover:bg-neon-green transition-colors">
+                    ACKNOWLEDGE
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- JAVASCRIPT LOGIC & INTERACTIONS                                           -->
+    <!-- ========================================================================= -->
+    <script>
+        // ---------------------------------------------------------
+        // 1. Mobile Menu Toggle
+        // ---------------------------------------------------------
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', () => {
+                const isHidden = mobileMenu.classList.toggle('hidden');
+                menuIcon.className = isHidden ? 'fa-solid fa-bars text-xl' : 'fa-solid fa-xmark text-xl text-neon-cyan';
+            });
+        }
+
+        // Close mobile menu on link click
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIcon.className = 'fa-solid fa-bars text-xl';
+            });
+        });
+
+        // ---------------------------------------------------------
+        // 2. Interactive Terminal CLI
+        // ---------------------------------------------------------
+        const terminalBody = document.getElementById('terminal-body');
+        const terminalInput = document.getElementById('terminal-input');
+
+        const TERMINAL_COMMANDS = {
+            help: `Available commands:
+  - scan       : Initiate active perimeter diagnostic scan
+  - status     : Display defense node health & core telemetry
+  - firewall   : View stateful firewall inspection statistics
+  - matrix     : Display zero-trust node cryptographic topology
+  - ping       : Measure latency across global SOC clusters
+  - threats    : Display recent blocked attack vectors
+  - clear      : Clear the terminal console
+  - about      : Information regarding the CYBERNEX architecture`,
+            scan: `Initiating active perimeter diagnostic...
+  [+] Probing web application gateways: OK
+  [+] Inspecting SSL/TLS certificates: VALID (TLS 1.3)
+  [+] Deep Packet Inspection (DPI): 0 MALICIOUS PACKETS
+  [+] Heuristic Anomaly Score: 0.00 (NOMINAL)
+  >> SCAN COMPLETE: 100% SECURE`,
+            status: `CYBERNEX CLUSTER STATUS:
+  - Core Uptime        : 99.998%
+  - Active Firewalls   : 1,429,880 active stateful rules
+  - Threat Mitigations : 10,492 blocked today
+  - Master Node        : us-east-hydra-01 (ONLINE)`,
+            firewall: `FIREWALL ENGINE STATUS:
+  - Mode               : STRICT ZERO-TRUST
+  - L7 Inspection      : ACTIVE
+  - Rate Limiter       : 50,000 req/sec threshold
+  - Threat Dropped     : 0 packets leaked`,
+            matrix: `CRYPTOGRAPHIC TOPOLOGY:
+  [KERNEL] <==TLS 1.3==> [CLOUD MESH] <==AES-256==> [DATA VAULT]
+  ALL NODES OPERATING UNDER ZERO-TRUST PROTOCOL`,
+            ping: `PING 1.1.1.1 (soc-gateway.cybernex.net):
+  64 bytes from 10.0.4.1: icmp_seq=1 ttl=64 time=11.2 ms
+  64 bytes from 10.0.4.1: icmp_seq=2 ttl=64 time=10.8 ms
+  64 bytes from 10.0.4.1: icmp_seq=3 ttl=64 time=11.4 ms
+  --- packet loss: 0.0% | avg rtt = 11.13 ms ---`,
+            threats: `RECENT ANOMALY LOG (PAST 24H):
+  [BLOCKED] 198.51.100.44 - SQL Injection in query string (WAF rule 942100)
+  [BLOCKED] 203.0.113.19 - SYN Flood attempt (Mitigated in 0.4ms)
+  [BLOCKED] 192.0.2.78 - SSH Brute-force probe (IP auto-banned)`,
+            about: `CYBERNEX DEFENSE PLATFORM
+  Next-generation cybersecurity engineering, intelligent zero-trust
+  architectures, and high-performance IT infrastructure.`
+        };
+
+        function printTerminalLine(text, colorClass = 'text-slate-300') {
+            const line = document.createElement('div');
+            line.className = `${colorClass} leading-relaxed whitespace-pre-wrap`;
+            line.textContent = text;
+            terminalBody.appendChild(line);
+            terminalBody.scrollTop = terminalBody.scrollHeight;
+        }
+
+        function handleTerminalSubmit() {
+            const rawVal = terminalInput.value.trim();
+            if (!rawVal) return;
+
+            const cmd = rawVal.toLowerCase();
+            printTerminalLine(`cybernex@root:~$ ${rawVal}`, 'text-neon-green font-bold');
+            terminalInput.value = '';
+
+            if (cmd === 'clear') {
+                terminalBody.innerHTML = '';
+                return;
+            }
+
+            if (TERMINAL_COMMANDS[cmd]) {
+                printTerminalLine(TERMINAL_COMMANDS[cmd], 'text-neon-cyan');
+            } else {
+                printTerminalLine(`Command not found: '${rawVal}'. Type 'help' for available commands.`, 'text-red-400');
+            }
+        }
+
+        if (terminalInput) {
+            terminalInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    handleTerminalSubmit();
+                }
+            });
+        }
+
+        function executeQuickCommand(cmd) {
+            if (terminalInput) {
+                terminalInput.value = cmd;
+                handleTerminalSubmit();
+            }
+        }
+
+        // ---------------------------------------------------------
+        // 3. Live Dashboard Security Scanner Simulation
+        // ---------------------------------------------------------
+        let isScanning = false;
+        function runSimulatedSecurityScan() {
+            if (isScanning) return;
+            isScanning = true;
+
+            const scanBtnText = document.getElementById('scan-btn-text');
+            const scanIcon = document.getElementById('scan-icon');
+            const scanStatusMsg = document.getElementById('scan-status-msg');
+            const statHealth = document.getElementById('stat-health');
+            const barHealth = document.getElementById('bar-health');
+
+            scanBtnText.textContent = "SCANNING PERIMETER...";
+            scanIcon.classList.add('animate-spin');
+            scanStatusMsg.textContent = "Analyzing cluster packet vectors...";
+            scanStatusMsg.className = "text-neon-cyan font-bold";
+
+            setTimeout(() => {
+                scanStatusMsg.textContent = "Verifying cryptographic TLS handshakes...";
+            }, 1000);
+
+            setTimeout(() => {
+                scanStatusMsg.textContent = "Testing firewall policy rules & rate limits...";
+            }, 2000);
+
+            setTimeout(() => {
+                scanStatusMsg.textContent = "Perimeter verified. 0 vulnerabilities found.";
+                scanStatusMsg.className = "text-neon-green font-bold";
+                scanBtnText.textContent = "SCAN COMPLETED ✓";
+                scanIcon.classList.remove('animate-spin');
+                statHealth.textContent = "99.9%";
+                barHealth.style.width = "99.9%";
+                
+                setTimeout(() => {
+                    scanBtnText.textContent = "RUN FULL SECURITY SCAN";
+                    isScanning = false;
+                }, 3000);
+            }, 3000);
+        }
+
+        // ---------------------------------------------------------
+        // 4. Modal Triggers (Services & Projects)
+        // ---------------------------------------------------------
+        const infoModal = document.getElementById('info-modal');
+        const modalTitle = document.getElementById('modal-title');
+        const modalDesc = document.getElementById('modal-desc');
+
+        function openServiceModal(serviceName, description) {
+            modalTitle.textContent = serviceName;
+            modalDesc.textContent = description;
+            infoModal.classList.remove('hidden');
+            infoModal.classList.add('flex');
+        }
+
+        function openProjectModal(projectName, description) {
+            modalTitle.textContent = projectName;
+            modalDesc.textContent = description;
+            infoModal.classList.remove('hidden');
+            infoModal.classList.add('flex');
+        }
+
+        function closeInfoModal() {
+            infoModal.classList.add('hidden');
+            infoModal.classList.remove('flex');
+        }
+
+        window.addEventListener('click', (e) => {
+            if (e.target === infoModal) {
+                closeInfoModal();
+            }
+        });
+
+        // ---------------------------------------------------------
+        // 5. Contact Form Simulation & Toast Feedback
+        // ---------------------------------------------------------
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            const formToast = document.getElementById('form-toast');
+            const submitBtn = document.getElementById('submit-btn');
+
+            submitBtn.innerHTML = `<span>DISPATCHING...</span> <i class="fa-solid fa-spinner animate-spin"></i>`;
+            submitBtn.disabled = true;
+
+            setTimeout(() => {
+                submitBtn.innerHTML = `<span>MESSAGE DISPATCHED ✓</span>`;
+                submitBtn.classList.remove('from-neon-cyan', 'to-neon-green');
+                submitBtn.classList.add('bg-neon-green');
+                formToast.classList.remove('hidden');
+                
+                // Reset form
+                document.getElementById('contact-form').reset();
+
+                setTimeout(() => {
+                    submitBtn.innerHTML = `<span>SEND MESSAGE →</span>`;
+                    submitBtn.disabled = false;
+                }, 4000);
+            }, 1200);
+        }
+
+        // ---------------------------------------------------------
+        // 6. Live UTC Server Time Clock in Footer
+        // ---------------------------------------------------------
+        function updateUtcClock() {
+            const clockEl = document.getElementById('utc-clock');
+            if (clockEl) {
+                const now = new Date();
+                clockEl.textContent = `UTC ${now.toUTCString().split(' ')[4]}`;
+            }
+        }
+        setInterval(updateUtcClock, 1000);
+        updateUtcClock();
+
+        // ---------------------------------------------------------
+        // 7. Interactive Particle Network Canvas
+        // ---------------------------------------------------------
+        const canvas = document.getElementById('particle-canvas');
+        if (canvas) {
+            const ctx = canvas.getContext('2d');
+            let particles = [];
+            let width = (canvas.width = window.innerWidth);
+            let height = (canvas.height = window.innerHeight);
+
+            window.addEventListener('resize', () => {
+                width = canvas.width = window.innerWidth;
+                height = canvas.height = window.innerHeight;
+            });
+
+            class Particle {
+                constructor() {
+                    this.x = Math.random() * width;
+                    this.y = Math.random() * height;
+                    this.vx = (Math.random() - 0.5) * 0.5;
+                    this.vy = (Math.random() - 0.5) * 0.5;
+                    this.radius = Math.random() * 1.5 + 0.5;
+                }
+                update() {
+                    this.x += this.vx;
+                    this.y += this.vy;
+                    if (this.x < 0 || this.x > width) this.vx = -this.vx;
+                    if (this.y < 0 || this.y > height) this.vy = -this.vy;
+                }
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                    ctx.fillStyle = '#00f0ff';
+                    ctx.fill();
+                }
+            }
+
+            const particleCount = Math.min(Math.floor(window.innerWidth / 20), 45);
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+
+            function animateParticles() {
+                ctx.clearRect(0, 0, width, height);
+                for (let i = 0; i < particles.length; i++) {
+                    particles[i].update();
+                    particles[i].draw();
+                    for (let j = i + 1; j < particles.length; j++) {
+                        const dx = particles[i].x - particles[j].x;
+                        const dy = particles[i].y - particles[j].y;
+                        const dist = Math.sqrt(dx * dx + dy * dy);
+                        if (dist < 110) {
+                            ctx.beginPath();
+                            ctx.strokeStyle = `rgba(0, 240, 255, ${0.12 * (1 - dist / 110)})`;
+                            ctx.lineWidth = 0.6;
+                            ctx.moveTo(particles[i].x, particles[i].y);
+                            ctx.lineTo(particles[j].x, particles[j].y);
+                            ctx.stroke();
+                        }
+                    }
+                }
+                requestAnimationFrame(animateParticles);
+            }
+            animateParticles();
+        }
+    </script>
+</body>
+</html>

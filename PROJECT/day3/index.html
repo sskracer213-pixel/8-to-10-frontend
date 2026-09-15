@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>THE WORLD AFTER IT | An Interactive Futuristic Documentary &amp; Timeline</title>
+  <meta name="description" content="What happens to India and the world when technology changes — or disappears? An interactive 3-chapter documentary experience.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-theme="future">
+
+  <!-- Interactive Background Canvas & Atmospheric Grid -->
+  <canvas id="bg-canvas"></canvas>
+  <div class="scanline-overlay"></div>
+  <div class="glow-blob glow-blob-1"></div>
+  <div class="glow-blob glow-blob-2"></div>
+
+  <!-- Persistent Top HUD Navigation -->
+  <nav class="site-nav">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand-logo">
+        <div class="logo-symbol">&lt;/&gt;</div>
+        <div class="logo-text">
+          THE WORLD AFTER IT
+          <span>Interactive Documentary</span>
+        </div>
+      </a>
+
+      <div class="trilogy-stepper">
+        <a href="future.html" class="chapter-node active">
+          <span class="chapter-num">01</span>
+          <span>EVOLUTION</span>
+        </a>
+        <a href="collapse.html" class="chapter-node">
+          <span class="chapter-num">02</span>
+          <span>COLLAPSE</span>
+        </a>
+        <a href="solution.html" class="chapter-node">
+          <span class="chapter-num">03</span>
+          <span>REBUILDING</span>
+        </a>
+      </div>
+
+      <div class="nav-controls">
+        <button id="audio-toggle" class="audio-toggle" title="Toggle Ambient Audio">
+          <div class="audio-waves">
+            <span></span><span></span><span></span>
+          </div>
+          <span>AUDIO AMBIANCE</span>
+        </button>
+        <button id="menu-toggle" class="menu-toggle" aria-label="Open Menu">
+          <span>☰</span>
+        </button>
+      </div>
+    </div>
+    <div class="reading-progress-bar"></div>
+  </nav>
+
+  <!-- Mobile Drawer Modal -->
+  <div id="mobile-nav-modal" class="mobile-nav-modal">
+    <button id="mobile-nav-close" class="source-pill" style="align-self: flex-end; margin-bottom: 24px;">✕ CLOSE</button>
+    <div class="mobile-nav-links">
+      <a href="future.html" class="mobile-nav-item active">Chapter 01: The Future of IT</a>
+      <a href="collapse.html" class="mobile-nav-item">Chapter 02: The Day Code Stopped</a>
+      <a href="solution.html" class="mobile-nav-item">Chapter 03: Rebuilding Tomorrow</a>
+      <a href="#sources" class="mobile-nav-item" style="font-size: 1.1rem; color: var(--cyan-core);">Research &amp; Sources</a>
+    </div>
+  </div>
+
+  <div class="site-wrapper">
+
+    <!-- HERO SECTION -->
+    <header class="hero-section">
+      <div class="container hero-content">
+        <div class="hero-preheader">
+          <span class="tech-tag"><span class="pulsing-dot"></span> CHAPTER 01 — TIMELINE 2026 → 2030</span>
+          <span class="source-pill">NASSCOM • WEF • MEITY • STANFORD HAI</span>
+        </div>
+
+        <h1 class="hero-title">
+          2030: The IT Sector Didn't Disappear. <span class="gradient-text">It Evolved.</span>
+        </h1>
+
+        <p class="hero-subtitle">
+          “Three years can change an industry. Artificial Intelligence will not destroy Information Technology — it is fundamentally redefining what technology, engineering, and human intelligence mean.”
+        </p>
+
+        <!-- Live Animated Metrics -->
+        <div class="hero-stats-strip reveal-on-scroll">
+          <div class="hero-stat-card">
+            <div class="stat-value stat-counter" data-target="254" data-prefix="$" data-suffix="B">0</div>
+            <div class="stat-label">India IT-BPM Revenue (FY24)</div>
+            <span class="source-pill" style="margin-top: 6px;">NASSCOM Strategic Review</span>
+          </div>
+
+          <div class="hero-stat-card">
+            <div class="stat-value stat-counter" data-target="5.4" data-suffix="M+">0</div>
+            <div class="stat-label">Direct Tech Workforce</div>
+            <span class="source-pill" style="margin-top: 6px;">MeitY / NASSCOM 2024</span>
+          </div>
+
+          <div class="hero-stat-card">
+            <div class="stat-value stat-counter" data-target="17.2" data-suffix="M">0</div>
+            <div class="stat-label">Projected India Devs (2027)</div>
+            <span class="source-pill" style="margin-top: 6px;">GitHub Octoverse Report</span>
+          </div>
+
+          <div class="hero-stat-card">
+            <div class="stat-value stat-counter" data-target="14.4" data-suffix="B+">0</div>
+            <div class="stat-label">Monthly UPI Transactions</div>
+            <span class="source-pill" style="margin-top: 6px;">NPCI / RBI Official Data</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- SECTION 1: WHERE IT IS TODAY -->
+    <section class="page-section">
+      <div class="container">
+        <div class="section-header text-center reveal-on-scroll">
+          <span class="section-eyebrow">FOUNDATIONAL LANDSCAPE</span>
+          <h2 class="section-title">Where Global &amp; Indian IT Stands Today</h2>
+          <p class="section-desc">
+            India is no longer just the back-office of global outsourcing. It has transformed into the world's premier digital innovation workbench, enterprise capability hub, and open digital public rail.
+          </p>
+        </div>
+
+        <div class="grid-4 reveal-on-scroll">
+          <div class="glass-card pillar-card">
+            <div class="pillar-icon">⚡</div>
+            <h3>IT Services &amp; Global BPM</h3>
+            <p>Exporting software services to over 100+ nations. Generating 7.5% of India’s GDP with massive balance-of-payments contributions.</p>
+            <span class="source-pill">NASSCOM FY24 Report</span>
+          </div>
+
+          <div class="glass-card pillar-card">
+            <div class="pillar-icon">🏢</div>
+            <h3>Global Capability Centres (GCCs)</h3>
+            <p>Over 1,580+ multinational GCCs operating in Bengaluru, Hyderabad, and Pune — leading core AI, chip design, and automotive software.</p>
+            <span class="source-pill">Zinnov-NASSCOM GCC 2024</span>
+          </div>
+
+          <div class="glass-card pillar-card">
+            <div class="pillar-icon">🌐</div>
+            <h3>Digital Public Infrastructure (DPI)</h3>
+            <p>The sovereign India Stack: Aadhaar, UPI, DigiLocker, and Account Aggregator processing trillions in frictionless financial value.</p>
+            <span class="source-pill">MeitY / World Bank 2024</span>
+          </div>
+
+          <div class="glass-card pillar-card">
+            <div class="pillar-icon">☁️</div>
+            <h3>Cloud, SaaS &amp; Data Centers</h3>
+            <p>India’s enterprise SaaS revenue surpassed $17B ARR, supported by rapid hyperscale green data center investments across Mumbai and Chennai.</p>
+            <span class="source-pill">Bain &amp; Co. SaaS Report</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: WHAT CHANGES OVER THE NEXT 3 YEARS -->
+    <section class="page-section" style="background: rgba(8, 14, 28, 0.4);">
+      <div class="container">
+        <div class="section-header reveal-on-scroll">
+          <span class="section-eyebrow">THE 36-MONTH DISRUPTION VORTEX</span>
+          <h2 class="section-title">What Changes Between 2026 and 2029</h2>
+          <p class="section-desc">
+            The traditional software development lifecycle (SDLC) is undergoing its most radical transformation since the invention of the high-level programming compiler.
+          </p>
+        </div>
+
+        <div class="grid-3 reveal-on-scroll">
+          <div class="glass-card">
+            <span class="tech-tag" style="margin-bottom: 12px;">01 • AGENTIC SYSTEMS</span>
+            <h3>Autonomous Multi-Agent SDLC</h3>
+            <p>AI is shifting from passive code autocomplete to autonomous agent swarms that analyze user stories, scaffold architecture, write test suites, and deploy containerized microservices with formal verification.</p>
+            <div style="margin-top: 16px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan-core);">
+              McKinsey Research: 20%–55% speedup in routine programming tasks.
+            </div>
+          </div>
+
+          <div class="glass-card">
+            <span class="tech-tag" style="margin-bottom: 12px;">02 • TALENT PARADIGM</span>
+            <h3>The Death of Boilerplate Entry Jobs</h3>
+            <p>Mass campus hiring for rote syntax coding, manual unit testing, and standard database queries is evaporating. Companies now demand junior engineers who grasp system boundaries and domain architecture on Day 1.</p>
+            <div style="margin-top: 16px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan-core);">
+              WEF Future of Jobs: 44% of core technical skills disrupted.
+            </div>
+          </div>
+
+          <div class="glass-card">
+            <span class="tech-tag" style="margin-bottom: 12px;">03 • SOVEREIGN COMPUTE</span>
+            <h3>The Compute &amp; Energy Bottleneck</h3>
+            <p>The new geopolitical currency is token bandwidth, GPU clusters, and power substation capacity. Nations and enterprises without sovereign AI compute risk becoming digital colonies of foreign foundation models.</p>
+            <div style="margin-top: 16px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan-core);">
+              IndiaAI Mission: ₹10,372 Cr allocated for 10,000+ GPU sovereign clusters.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: THE DEVELOPER EVOLUTION (INTERACTIVE STEPPER) -->
+    <section class="page-section">
+      <div class="container">
+        <div class="section-header text-center reveal-on-scroll">
+          <span class="section-eyebrow">INTERACTIVE CAREER TRAJECTORY</span>
+          <h2 class="section-title">The 5-Stage Developer Evolution</h2>
+          <p class="section-desc">
+            How the definition of a software engineer transforms from a syntax typist to an autonomous systems architect. Click each stage to inspect the skill composition.
+          </p>
+        </div>
+
+        <div class="evolution-track-container reveal-on-scroll">
+          <!-- Stepper Buttons -->
+          <div class="evolution-stepper">
+            <button class="evo-step-btn active" data-step="1">
+              <span class="evo-step-year">2015 – 2022</span>
+              <span class="evo-step-title">Traditional Dev</span>
+            </button>
+            <button class="evo-step-btn" data-step="2">
+              <span class="evo-step-year">2023 – 2025</span>
+              <span class="evo-step-title">AI-Assisted Dev</span>
+            </button>
+            <button class="evo-step-btn" data-step="3">
+              <span class="evo-step-year">2025 – 2027</span>
+              <span class="evo-step-title">AI Engineer</span>
+            </button>
+            <button class="evo-step-btn" data-step="4">
+              <span class="evo-step-year">2027 – 2029</span>
+              <span class="evo-step-title">AI System Builder</span>
+            </button>
+            <button class="evo-step-btn" data-step="5">
+              <span class="evo-step-year">2030+</span>
+              <span class="evo-step-title">Human+AI Architect</span>
+            </button>
+          </div>
+
+          <!-- Dynamic Detail Box -->
+          <div class="evo-detail-card">
+            <div>
+              <span class="tech-tag" id="evo-stage-timeline" style="margin-bottom: 12px;">2015 – 2022</span>
+              <h3 id="evo-stage-title" style="font-size: 1.6rem; margin-bottom: 12px;">Traditional Developer</h3>
+              <p id="evo-stage-desc" style="color: var(--text-muted); margin-bottom: 16px;">
+                Engineers wrote manual syntax, manually debugged stack traces, wrote extensive boilerplate CRUD operations, and maintained monolithic repositories.
+              </p>
+              <div style="background: rgba(255,255,255,0.03); padding: 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
+                <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--cyan-core); margin-bottom: 4px;">DAILY WORKLOAD DISTRIBUTION:</div>
+                <div id="evo-stage-work" style="font-size: 0.9rem; font-weight: 600;">80% Manual Coding &amp; Syntax, 20% Architecture &amp; Design</div>
+              </div>
+            </div>
+
+            <!-- Skill Shift Bar Visualizer -->
+            <div class="skill-shift-meter">
+              <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-bright); margin-bottom: 8px;">SKILL RELEVANCE INDEX:</div>
+              
+              <div class="skill-bar-wrapper">
+                <div class="skill-label-row">
+                  <span>Syntax Memorization &amp; Boilerplate</span>
+                  <span style="color: var(--text-dim);">Relevance</span>
+                </div>
+                <div class="skill-bar-track">
+                  <div id="bar-syntax" class="skill-bar-fill" style="width: 85%;"></div>
+                </div>
+              </div>
+
+              <div class="skill-bar-wrapper">
+                <div class="skill-label-row">
+                  <span>System Architecture &amp; Fault Tolerance</span>
+                  <span style="color: var(--cyan-core);">Relevance</span>
+                </div>
+                <div class="skill-bar-track">
+                  <div id="bar-arch" class="skill-bar-fill" style="width: 25%;"></div>
+                </div>
+              </div>
+
+              <div class="skill-bar-wrapper">
+                <div class="skill-label-row">
+                  <span>Complex Problem Solving &amp; Product Thinking</span>
+                  <span style="color: var(--cyan-core);">Relevance</span>
+                </div>
+                <div class="skill-bar-track">
+                  <div id="bar-problem" class="skill-bar-fill" style="width: 40%;"></div>
+                </div>
+              </div>
+
+              <div class="skill-bar-wrapper">
+                <div class="skill-label-row">
+                  <span>AI Agent Orchestration &amp; Context Engineering</span>
+                  <span style="color: var(--cyan-core);">Relevance</span>
+                </div>
+                <div class="skill-bar-track">
+                  <div id="bar-ai" class="skill-bar-fill" style="width: 5%;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: INDIA'S OPPORTUNITY -->
+    <section class="page-section" style="background: rgba(6, 11, 23, 0.7);">
+      <div class="container">
+        <div class="section-header reveal-on-scroll">
+          <span class="section-eyebrow">GEOPOLITICAL ADVANTAGE</span>
+          <h2 class="section-title">Why India Could Anchor the Global Tech Century</h2>
+          <p class="section-desc">
+            With 1.5 million annual engineering graduates, sovereign digital public infrastructure, and the fastest-growing AI developer community in the world, India is uniquely positioned to lead the post-IT transformation.
+          </p>
+        </div>
+
+        <div class="grid-2 reveal-on-scroll">
+          <div class="glass-card">
+            <h3 style="color: var(--cyan-core); margin-bottom: 12px;">From Service Arbitrage to Deep-Tech Ownership</h3>
+            <p style="margin-bottom: 14px;">
+              For three decades, India's advantage was cost efficiency. In the AI era, the new advantage is <strong>scale of cognitive talent</strong>. As global enterprises dismantle monolithic legacy stacks and rebuild with generative AI agents, Indian GCCs and system integrators hold the domain context of the Fortune 500.
+            </p>
+            <ul style="list-style: none; display: flex; flex-direction: column; gap: 8px; font-size: 0.9rem; color: var(--text-muted);">
+              <li>🔹 <strong>GitHub Octoverse:</strong> India will surpass the US as the largest developer hub by 2027-2028.</li>
+              <li>🔹 <strong>Deep-Tech Ventures:</strong> Over 3,000+ AI startups incubating in spacetech, semiconductor design, and biotech.</li>
+              <li>🔹 <strong>Indigenous Silicon:</strong> India Semiconductor Mission (ISM) driving localized RISC-V and fab investments.</li>
+            </ul>
+          </div>
+
+          <div class="glass-card">
+            <h3 style="color: var(--cyan-core); margin-bottom: 12px;">The Digital Public Rail Multiplier</h3>
+            <p style="margin-bottom: 14px;">
+              Unlike Western closed-platform monopolies, India pioneered open digital protocols (UPI, ONDC, OCEN, ABDM). This provides an unprecedented foundation where AI agents can execute micro-transactions, verify identity, and trade goods autonomously at near-zero friction.
+            </p>
+            <ul style="list-style: none; display: flex; flex-direction: column; gap: 8px; font-size: 0.9rem; color: var(--text-muted);">
+              <li>🔹 <strong>Open Commerce:</strong> ONDC breaking delivery and retail walled gardens.</li>
+              <li>🔹 <strong>Financial Inclusion:</strong> 500M+ unbanked brought into formal financial rails in 10 years.</li>
+              <li>🔹 <strong>Multilingual AI:</strong> Bhashini AI enabling voice-based computing in 22 official Indian languages.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: THE UNCOMFORTABLE TRUTH -->
+    <section class="page-section">
+      <div class="container">
+        <div class="section-header text-center reveal-on-scroll">
+          <span class="section-eyebrow" style="color: var(--crimson-core);">CRITICAL VULNERABILITY ANALYSIS</span>
+          <h2 class="section-title">The Uncomfortable Side: What Could Go Wrong?</h2>
+          <p class="section-desc">
+            Progress is neither automatic nor painless. Without strategic intervention, rapid automation creates profound systemic fractures.
+          </p>
+        </div>
+
+        <div class="grid-3 reveal-on-scroll">
+          <div class="glass-card" style="border-color: rgba(255, 42, 85, 0.25);">
+            <span class="tech-tag danger" style="margin-bottom: 12px;">RISK 01 • CAMPUS CRISIS</span>
+            <h3>Junior Hiring Freeze</h3>
+            <p>When an AI agent can write standard CRUD APIs and SQL queries in 3 seconds, traditional entry-level coding roles evaporate, trapping millions of fresh graduates in structural unemployment.</p>
+          </div>
+
+          <div class="glass-card" style="border-color: rgba(255, 42, 85, 0.25);">
+            <span class="tech-tag danger" style="margin-bottom: 12px;">RISK 02 • SOVEREIGNTY GAP</span>
+            <h3>Compute Colonialism</h3>
+            <p>Over 85% of advanced AI foundation model weights, GPU accelerators, and high-bandwidth memory (HBM) remain concentrated in 3 countries. Relying entirely on foreign APIs creates immense national security exposure.</p>
+          </div>
+
+          <div class="glass-card" style="border-color: rgba(255, 42, 85, 0.25);">
+            <span class="tech-tag danger" style="margin-bottom: 12px;">RISK 03 • CYBER FRAGILITY</span>
+            <h3>Compounded Software Fragility</h3>
+            <p>AI-generated code ships 10x faster, but often introduces subtle hallucinated logic flaws, supply-chain vulnerabilities, and unverified package dependencies that human teams struggle to audit.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLIFFHANGER TRANSITION -->
+    <section class="container">
+      <div class="chapter-cta-banner reveal-on-scroll">
+        <span class="tech-tag danger" style="margin-bottom: 16px;">THE ALTERNATIVE TIMELINE</span>
+        <h2 style="font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 16px;">
+          “We assume code will always be there. But what if IT didn't evolve at all?”
+        </h2>
+        <p style="color: var(--text-muted); max-width: 650px; margin: 0 auto 24px;">
+          What happens when the hyper-connected digital layer holding modern commerce, banking, hospitals, and transit abruptly goes dark?
+        </p>
+        <a href="collapse.html" data-nav="next" class="cta-button" style="background: linear-gradient(135deg, var(--crimson-core), #FF5500); color: #FFF; box-shadow: 0 0 30px var(--crimson-glow);">
+          <span>ENTER THE OTHER FUTURE →</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- RESEARCH & SOURCES WALL -->
+    <section id="sources" class="sources-section">
+      <div class="container">
+        <span class="section-eyebrow">VERIFIED CITATIONS &amp; EMPIRICAL DATA</span>
+        <h3 style="font-size: 1.5rem; margin-bottom: 8px;">Research &amp; Source Archive</h3>
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 24px;">
+          All economic figures, developer statistics, and policy frameworks cited across this chapter are grounded in published reports.
+        </p>
+
+        <div class="sources-grid">
+          <div class="source-item-card">
+            <span class="source-org">NASSCOM</span>
+            <div class="source-title">Strategic Review 2024: Navigating the Tech Disruption</div>
+            <div class="source-meta">Published 2024 • Industry Revenue &amp; GCC Headcount</div>
+          </div>
+
+          <div class="source-item-card">
+            <span class="source-org">GITHUB</span>
+            <div class="source-title">Octoverse 2023–2024: The State of Open Source and Global Developers</div>
+            <div class="source-meta">Published 2024 • India Developer Community Projections</div>
+          </div>
+
+          <div class="source-item-card">
+            <span class="source-org">WORLD ECONOMIC FORUM</span>
+            <div class="source-title">Future of Jobs Report: Technology Adoption &amp; Workforce Disruption</div>
+            <div class="source-meta">Published 2023/2024 • 44% Skill Core Disruption Metrics</div>
+          </div>
+
+          <div class="source-item-card">
+            <span class="source-org">MEITY / GOVT OF INDIA</span>
+            <div class="source-title">IndiaAI Mission Cabinet Resolution (₹10,372 Cr Outlay)</div>
+            <div class="source-meta">Approved 2024 • GPU Infrastructure &amp; Foundation Models</div>
+          </div>
+
+          <div class="source-item-card">
+            <span class="source-org">MCKINSEY &amp; COMPANY</span>
+            <div class="source-title">The Economic Potential of Generative AI: The Next Productivity Frontier</div>
+            <div class="source-meta">Published 2023/2024 • Software Engineering Productivity Benchmarks</div>
+          </div>
+
+          <div class="source-item-card">
+            <span class="source-org">NPCI / RESERVE BANK OF INDIA</span>
+            <div class="source-title">Monthly Payment System Indicators &amp; UPI Annualized Volume</div>
+            <div class="source-meta">Published 2024 • 14B+ Monthly Retail Transactions</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>
+          <strong>THE WORLD AFTER IT</strong> — Chapter 01 of 03
+        </div>
+        <div style="display: flex; gap: 16px;">
+          <a href="collapse.html" style="color: var(--cyan-core); text-decoration: none;">Chapter 02: Collapse →</a>
+          <a href="solution.html" style="color: var(--cyan-core); text-decoration: none;">Chapter 03: Rebuilding →</a>
+        </div>
+        <div>
+          Keyboard: Press <kbd style="background:#222; padding:2px 6px; border-radius:4px;">→</kbd> Next • <kbd style="background:#222; padding:2px 6px; border-radius:4px;">M</kbd> Audio
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

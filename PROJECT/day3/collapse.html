@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Day the Code Stopped | A World Without IT | Chapter 02</title>
+  <meta name="description" content="A hypothetical thought experiment examining what happens when digital infrastructure, software, and autonomous rails suddenly fail.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-theme="collapse">
+
+  <!-- Interactive Background Canvas (Glitch / Signal Severance) -->
+  <canvas id="bg-canvas"></canvas>
+  <div class="scanline-overlay"></div>
+  <div class="glow-blob glow-blob-1" style="background: var(--crimson-core);"></div>
+  <div class="glow-blob glow-blob-2" style="background: #550011;"></div>
+
+  <!-- Persistent Top HUD Navigation -->
+  <nav class="site-nav">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand-logo">
+        <div class="logo-symbol" style="background: linear-gradient(135deg, var(--crimson-core), #FF5500); color: #FFF; box-shadow: 0 0 16px var(--crimson-glow);">&lt;!&gt;</div>
+        <div class="logo-text">
+          THE WORLD AFTER IT
+          <span style="color: var(--crimson-core);">System Failure Simulation</span>
+        </div>
+      </a>
+
+      <div class="trilogy-stepper">
+        <a href="future.html" class="chapter-node">
+          <span class="chapter-num">01</span>
+          <span>EVOLUTION</span>
+        </a>
+        <a href="collapse.html" class="chapter-node active">
+          <span class="chapter-num">02</span>
+          <span>COLLAPSE</span>
+        </a>
+        <a href="solution.html" class="chapter-node">
+          <span class="chapter-num">03</span>
+          <span>REBUILDING</span>
+        </a>
+      </div>
+
+      <div class="nav-controls">
+        <button id="audio-toggle" class="audio-toggle" title="Toggle Ambient Audio">
+          <div class="audio-waves">
+            <span></span><span></span><span></span>
+          </div>
+          <span>AUDIO AMBIANCE</span>
+        </button>
+        <button id="menu-toggle" class="menu-toggle" aria-label="Open Menu">
+          <span>☰</span>
+        </button>
+      </div>
+    </div>
+    <div class="reading-progress-bar" style="background: linear-gradient(90deg, var(--crimson-core), #FF5500, #AA0022);"></div>
+  </nav>
+
+  <!-- Mobile Drawer Modal -->
+  <div id="mobile-nav-modal" class="mobile-nav-modal">
+    <button id="mobile-nav-close" class="source-pill" style="align-self: flex-end; margin-bottom: 24px;">✕ CLOSE</button>
+    <div class="mobile-nav-links">
+      <a href="future.html" class="mobile-nav-item">Chapter 01: The Future of IT</a>
+      <a href="collapse.html" class="mobile-nav-item active">Chapter 02: The Day Code Stopped</a>
+      <a href="solution.html" class="mobile-nav-item">Chapter 03: Rebuilding Tomorrow</a>
+      <a href="#sources" class="mobile-nav-item" style="font-size: 1.1rem; color: var(--crimson-core);">Research &amp; Sources</a>
+    </div>
+  </div>
+
+  <div class="site-wrapper">
+
+    <!-- HERO SECTION -->
+    <header class="hero-section">
+      <div class="container hero-content">
+        <div class="hero-preheader">
+          <span class="tech-tag danger"><span class="pulsing-dot"></span> CHAPTER 02 — BLACKOUT TIMELINE</span>
+          <span class="tech-tag warning">A HYPOTHETICAL THOUGHT EXPERIMENT</span>
+        </div>
+
+        <h1 class="hero-title">
+          The Day the <span class="gradient-text">Code Stopped.</span>
+        </h1>
+
+        <p class="hero-subtitle">
+          “Imagine waking up tomorrow and discovering that the digital systems behind modern life no longer respond. No APIs. No databases. No cloud. How fragile is our civilizational operating system?”
+        </p>
+
+        <!-- System Alert Matrix Bar -->
+        <div class="system-status-matrix reveal-on-scroll">
+          <div class="status-node">
+            <span class="node-name">BANKING &amp; UPI</span>
+            <span class="node-state">OFFLINE ✖</span>
+          </div>
+          <div class="status-node">
+            <span class="node-name">HOSPITAL SYSTEMS</span>
+            <span class="node-state">DISCONNECTED ✖</span>
+          </div>
+          <div class="status-node">
+            <span class="node-name">AIR &amp; RAIL TRANSIT</span>
+            <span class="node-state">DISRUPTED ✖</span>
+          </div>
+          <div class="status-node">
+            <span class="node-name">COMMERCE &amp; ERP</span>
+            <span class="node-state">FROZEN ✖</span>
+          </div>
+          <div class="status-node">
+            <span class="node-name">COMMUNICATIONS</span>
+            <span class="node-state">LIMITED ✖</span>
+          </div>
+        </div>
+
+        <div class="alert-banner reveal-on-scroll">
+          <div style="display: flex; align-items: center; gap: 12px; text-align: left;">
+            <span style="font-size: 1.8rem;">⚠️</span>
+            <div>
+              <strong style="color: var(--crimson-core); font-family: var(--font-mono); font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase;">METHODOLOGY NOTE:</strong>
+              <div style="font-size: 0.88rem; color: var(--text-muted);">
+                This scenario is a structured systemic stress-test. It is informed by real-world disruptions — including the July 2024 global CrowdStrike outage and historical power-grid cyber telemetry failures — to analyze societal single-points-of-failure.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- SECTION 1: INDIA WITHOUT IT (INTERACTIVE SECTOR MATRIX) -->
+    <section class="page-section">
+      <div class="container">
+        <div class="section-header text-center reveal-on-scroll">
+          <span class="section-eyebrow" style="color: var(--crimson-core);">SECTOR CRISIS INSPECTOR</span>
+          <h2 class="section-title">India Without Code: Cascade Analysis</h2>
+          <p class="section-desc">
+            Over the last two decades, India became the world’s most digitalized emerging economy. Click any critical infrastructure pillar to inspect how instantaneous software loss cascades into physical reality.
+          </p>
+        </div>
+
+        <div class="india-crisis-container reveal-on-scroll">
+          <!-- Left: Sector Cards -->
+          <div class="sector-selector-grid">
+            <div class="sector-crisis-card active" data-sector="banking">
+              <h4>💳 Banking &amp; UPI <span style="color: var(--crimson-core); font-size: 0.75rem;">CRITICAL</span></h4>
+              <p>Instantaneous failure of 500M+ daily digital settlements, ATM liquidity, and interbank clearance.</p>
+            </div>
+
+            <div class="sector-crisis-card" data-sector="healthcare">
+              <h4>🏥 Healthcare &amp; ICU <span style="color: var(--crimson-core); font-size: 0.75rem;">CRITICAL</span></h4>
+              <p>Electronic medical records, oxygen telemetry, and automated pharmaceutical pumps lose network lock.</p>
+            </div>
+
+            <div class="sector-crisis-card" data-sector="governance">
+              <h4>🏛️ Digital Public Rails <span style="color: var(--crimson-core); font-size: 0.75rem;">HIGH</span></h4>
+              <p>Aadhaar authentication, GST e-invoicing, customs clearance, and welfare direct benefit transfers freeze.</p>
+            </div>
+
+            <div class="sector-crisis-card" data-sector="transport">
+              <h4>🚆 Aviation &amp; Railways <span style="color: var(--crimson-core); font-size: 0.75rem;">CRITICAL</span></h4>
+              <p>Air traffic radar spacing, IRCTC ticketing, train signaling (Kavach), and FASTag highway tolls stop.</p>
+            </div>
+
+            <div class="sector-crisis-card" data-sector="agriculture">
+              <h4>🌾 Agritech &amp; Mandis <span style="color: var(--crimson-core); font-size: 0.75rem;">ELEVATED</span></h4>
+              <p>Doppler monsoon telemetry, e-NAM crop auction auctions, and fertilizer subsidy systems disconnect.</p>
+            </div>
+
+            <div class="sector-crisis-card" data-sector="energy">
+              <h4>⚡ Power Grid &amp; SCADA <span style="color: var(--crimson-core); font-size: 0.75rem;">CRITICAL</span></h4>
+              <p>National Load Despatch Centre loses 50Hz millisecond telemetry for solar and thermal load balancing.</p>
+            </div>
+          </div>
+
+          <!-- Right: Deep Diagnostic Panel -->
+          <div class="sector-detail-panel">
+            <div>
+              <span class="tech-tag danger" id="sector-detail-sub" style="margin-bottom: 12px;">UPI, NEFT, Core Banking Systems, ATM Switch</span>
+              <h3 id="sector-detail-title" style="font-size: 1.6rem; margin-bottom: 12px; color: var(--text-bright);">Banking &amp; Financial Public Rails</h3>
+              <p id="sector-detail-text" style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px;">
+                India processes over 14 billion UPI transactions every month (NPCI data). A sudden software stoppage halts direct benefit transfers (DBT), micro-merchant commerce, ATM cash dispensers, and interbank liquidity settlement within minutes.
+              </p>
+            </div>
+
+            <div>
+              <div style="background: rgba(255,42,85,0.08); border-left: 3px solid var(--crimson-core); padding: 14px; border-radius: var(--radius-sm); margin-bottom: 14px;">
+                <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--crimson-core); margin-bottom: 4px;">SYSTEMIC THROUGHPUT EXPOSURE:</div>
+                <div id="sector-detail-metric" style="font-size: 0.95rem; font-weight: 700; color: #FFF;">₹20+ Lakh Crore ($240B+) monthly transactional throughput frozen.</div>
+              </div>
+
+              <div style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-dim);" id="sector-detail-recovery">
+                Estimated recovery without digital ledger audit: 21+ Days (Manual Paper Ledgers).
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: “A DAY WITHOUT CODE” (INTERACTIVE 24-HOUR CHRONICLE) -->
+    <section class="page-section" style="background: rgba(10, 5, 8, 0.6);">
+      <div class="container">
+        <div class="section-header text-center reveal-on-scroll">
+          <span class="section-eyebrow" style="color: var(--crimson-core);">THE 24-HOUR STRESS TEST</span>
+          <h2 class="section-title">A Day Without Code: The Collapse Timeline</h2>
+          <p class="section-desc">
+            Drag the time slider below to scrub through the 24-hour progression of a total digital blackout across modern civilization.
+          </p>
+        </div>
+
+        <div class="timeline-scrubber-box reveal-on-scroll">
+          <div class="time-slider-wrapper">
+            <input type="range" id="blackout-slider" class="custom-range-slider" min="0" max="6" value="0" step="1">
+            <div class="time-markers-row">
+              <span>06:00 AM</span>
+              <span>08:00 AM</span>
+              <span>10:00 AM</span>
+              <span>12:00 PM</span>
+              <span>03:00 PM</span>
+              <span>06:00 PM</span>
+              <span>09:00 PM</span>
+            </div>
+          </div>
+
+          <!-- Dynamic Stage Card -->
+          <div class="blackout-stage-card">
+            <div class="stage-clock-badge" id="blackout-clock">06:00 AM</div>
+            <div>
+              <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+                <h3 id="blackout-title" style="font-size: 1.4rem;">The Silent Disconnect</h3>
+                <span id="blackout-severity" class="tech-tag warning">STAGE 1: ANOMALY</span>
+              </div>
+              <p id="blackout-desc" style="color: var(--text-muted); margin-bottom: 12px; font-size: 0.95rem;">
+                Across global cloud clusters, automated DNS resolvers, API gateways, and authorization handshakes silently fail to negotiate cryptographic handshakes.
+              </p>
+              <div style="background: rgba(0,0,0,0.3); padding: 12px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); font-size: 0.88rem; color: #FFAA88;">
+                <strong>Civilian Impact:</strong> <span id="blackout-impact">Smart alarms fail to sync weather updates. Mobile networks begin dropping data packets. Morning commuters encounter silent payment terminals at metro gates.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: THE DOMINO EFFECT (ANIMATED PHYSICS CASCADE) -->
+    <section class="page-section">
+      <div class="container">
+        <div class="section-header text-center reveal-on-scroll">
+          <span class="section-eyebrow" style="color: var(--crimson-core);">SYSTEMIC DYNAMICS</span>
+          <h2 class="section-title">The Domino Effect: How Fragility Propagates</h2>
+          <p class="section-desc">
+            In hyper-optimized just-in-time economies, no sector exists in isolation. Click the simulation trigger below to observe how a single software failure topples the civilizational chain.
+          </p>
+        </div>
+
+        <div style="text-align: center; margin-bottom: 24px;" class="reveal-on-scroll">
+          <button id="trigger-domino-btn" class="cta-button" style="background: linear-gradient(135deg, var(--crimson-core), #FF5500); color: #FFF; font-size: 0.95rem; padding: 12px 28px;">
+            ⚡ TRIGGER CASCADE SIMULATION
+          </button>
+          <div id="cascade-status" style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--crimson-core); margin-top: 12px;">
+            STATUS: STABLE (CLICK TO SIMULATE CASCADE)
+          </div>
+        </div>
+
+        <!-- Domino Sequence -->
+        <div class="domino-chain-container reveal-on-scroll">
+          <div class="domino-card" data-idx="0">
+            <div style="font-size: 1.5rem; margin-bottom: 8px;">💻</div>
+            <strong style="font-size: 0.9rem; display: block; margin-bottom: 4px;">1. No Software</strong>
+            <span style="font-size: 0.72rem; color: var(--text-dim);">API &amp; Kernel Halts</span>
+          </div>
+          <div class="domino-arrow">→</div>
+
+          <div class="domino-card" data-idx="1">
+            <div style="font-size: 1.5rem; margin-bottom: 8px;">🌐</div>
+            <strong style="font-size: 0.9rem; display: block; margin-bottom: 4px;">2. No Digital Infra</strong>
+            <span style="font-size: 0.72rem; color: var(--text-dim);">Cloud &amp; DNS Drops</span>
+          </div>
+          <div class="domino-arrow">→</div>
+
+          <div class="domino-card" data-idx="2">
+            <div style="font-size: 1.5rem; margin-bottom: 8px;">⚙️</div>
+            <strong style="font-size: 0.9rem; display: block; margin-bottom: 4px;">3. Operational Freeze</strong>
+            <span style="font-size: 0.72rem; color: var(--text-dim);">Manual Failover Crisis</span>
+          </div>
+          <div class="domino-arrow">→</div>
+
+          <div class="domino-card" data-idx="3">
+            <div style="font-size: 1.5rem; margin-bottom: 8px;">📉</div>
+            <strong style="font-size: 0.9rem; display: block; margin-bottom: 4px;">4. Economic Loss</strong>
+            <span style="font-size: 0.72rem; color: var(--text-dim);">$2+ Trillion Daily Halt</span>
+          </div>
+          <div class="domino-arrow">→</div>
+
+          <div class="domino-card" data-idx="4">
+            <div style="font-size: 1.5rem; margin-bottom: 8px;">🚢</div>
+            <strong style="font-size: 0.9rem; display: block; margin-bottom: 4px;">5. Supply Breakdown</strong>
+            <span style="font-size: 0.72rem; color: var(--text-dim);">Port &amp; Freight Gridlock</span>
+          </div>
+          <div class="domino-arrow">→</div>
+
+          <div class="domino-card" data-idx="5">
+            <div style="font-size: 1.5rem; margin-bottom: 8px;">⚠️</div>
+            <strong style="font-size: 0.9rem; display: block; margin-bottom: 4px;">6. Social Fragility</strong>
+            <span style="font-size: 0.72rem; color: var(--text-dim);">Zero-Buffer Society</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: THE REAL LESSON -->
+    <section class="page-section" style="background: rgba(15, 8, 14, 0.8);">
+      <div class="container">
+        <div class="section-header text-center reveal-on-scroll">
+          <span class="section-eyebrow" style="color: var(--amber-core);">THE EPISTEMIC LESSON</span>
+          <h2 class="section-title">The Real Lesson: The Fragility of Frictionless Optimization</h2>
+        </div>
+
+        <div class="glass-card reveal-on-scroll" style="max-width: 900px; margin: 0 auto; padding: 40px; border-color: rgba(255, 184, 0, 0.3);">
+          <blockquote style="font-size: clamp(1.15rem, 2.2vw, 1.45rem); line-height: 1.5; color: #FFF; margin-bottom: 24px; font-weight: 500;">
+            “The problem is not that humans cannot live without technology. The problem is that modern society has been built around technology so deeply that removing it suddenly creates catastrophic disruption because we eradicated all analog redundancies.”
+          </blockquote>
+          
+          <div class="grid-2" style="margin-top: 24px; border-top: 1px solid var(--border-subtle); padding-top: 24px;">
+            <div>
+              <h4 style="color: var(--amber-core); margin-bottom: 8px;">The Efficiency Trap</h4>
+              <p style="font-size: 0.88rem; color: var(--text-muted);">
+                In pursuit of maximum quarterly margin, enterprise software replaced paper backups, local inventories, and manual bookkeeping with single-threaded cloud APIs.
+              </p>
+            </div>
+
+            <div>
+              <h4 style="color: var(--emerald-core); margin-bottom: 8px;">The Antifragile Mandate</h4>
+              <p style="font-size: 0.88rem; color: var(--text-muted);">
+                The goal cannot be to abandon technology. The goal must be to build <strong>antifragile systems</strong>: decentralized, memory-safe, offline-capable, and anchored by skilled human judgment.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLIFFHANGER TRANSITION -->
+    <section class="container">
+      <div class="chapter-cta-banner reveal-on-scroll" style="border-color: rgba(0, 255, 157, 0.3);">
+        <span class="tech-tag success" style="margin-bottom: 16px;">THE SYNTHESIS TIMELINE</span>
+        <h2 style="font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 16px;">
+          “So what do we do? How do we build an unbreakable tomorrow?”
+        </h2>
+        <p style="color: var(--text-muted); max-width: 650px; margin: 0 auto 24px;">
+          The solution isn't resisting AI or rejecting digital rails. The answer lies in designing a new synthesis where humans and technology make each other permanently resilient.
+        </p>
+        <a href="solution.html" data-nav="next" class="cta-button">
+          <span>BUILD THE THIRD FUTURE →</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- RESEARCH & SOURCES WALL -->
+    <section id="sources" class="sources-section">
+      <div class="container">
+        <span class="section-eyebrow" style="color: var(--crimson-core);">EMPIRICAL INCIDENTS &amp; RESILIENCE FRAMEWORKS</span>
+        <h3 style="font-size: 1.5rem; margin-bottom: 8px;">Research &amp; Incident Source Archive</h3>
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 24px;">
+          Stress-test modeling based on real-world IT cascading failures, central bank resilience whitepapers, and international cybersecurity audit reports.
+        </p>
+
+        <div class="sources-grid">
+          <div class="source-item-card">
+            <span class="source-org" style="color: var(--crimson-core);">CROWDSTRIKE &amp; MICROSOFT</span>
+            <div class="source-title">Preliminary Post-Incident Review: July 19, 2024 Channel File 291 Outage</div>
+            <div class="source-meta">Published 2024 • 8.5M Endpoint Kernel Crashes &amp; Airline Groundings</div>
+          </div>
+
+          <div class="source-item-card">
+            <span class="source-org" style="color: var(--crimson-core);">BANK FOR INTERNATIONAL SETTLEMENTS (BIS)</span>
+            <div class="source-title">Principles for Operational Resilience in Core Payment Systems</div>
+            <div class="source-meta">Basel Committee 2023/2024 • Interbank Liquidity Failure Models</div>
+          </div>
+
+          <div class="source-item-card">
+            <span class="source-org" style="color: var(--crimson-core);">WORLD ECONOMIC FORUM</span>
+            <div class="source-title">Global Cybersecurity Outlook: Systemic Risk in Interconnected Supply Chains</div>
+            <div class="source-meta">Published 2024 • Critical Infrastructure Vulnerability Indexes</div>
+          </div>
+
+          <div class="source-item-card">
+            <span class="source-org" style="color: var(--crimson-core);">CISA / US HOMELAND SECURITY</span>
+            <div class="source-title">National Cyber Incident Response Plan (NCIRP) &amp; SCADA Defense</div>
+            <div class="source-meta">Published 2023/2024 • Power Grid &amp; Pipeline Telemetry Protocols</div>
+          </div>
+
+          <div class="source-item-card">
+            <span class="source-org" style="color: var(--crimson-core);">INDIAN COMPUTER EMERGENCY RESPONSE TEAM (CERT-IN)</span>
+            <div class="source-title">Annual Cyber Security Assurance Report: Critical Information Infrastructure</div>
+            <div class="source-meta">MeitY 2024 • Indian Banking &amp; Rail Telemetry Redundancy Rules</div>
+          </div>
+
+          <div class="source-item-card">
+            <span class="source-org" style="color: var(--crimson-core);">INTERNATIONAL MONETARY FUND (IMF)</span>
+            <div class="source-title">Cyber Risk and Financial Stability: Macro-Financial Shock Channels</div>
+            <div class="source-meta">Published 2024 • GDP Exposure to Instantaneous Cloud Halts</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>
+          <strong>THE WORLD AFTER IT</strong> — Chapter 02 of 03
+        </div>
+        <div style="display: flex; gap: 16px;">
+          <a href="future.html" style="color: var(--crimson-core); text-decoration: none;">← Chapter 01: Evolution</a>
+          <a href="solution.html" style="color: var(--crimson-core); text-decoration: none;">Chapter 03: Rebuilding →</a>
+        </div>
+        <div>
+          Keyboard: Press <kbd style="background:#222; padding:2px 6px; border-radius:4px;">←</kbd> Prev • <kbd style="background:#222; padding:2px 6px; border-radius:4px;">→</kbd> Next
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
