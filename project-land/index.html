@@ -133,9 +133,17 @@
               <!-- Farmer Name -->
               <div class="form-group">
                 <label for="farmerName">
-                  <span>👤</span> <span data-i18n="labelName">Farmer Name</span>
+                  <span>👤</span> <span data-i18n="labelName">Farmer Name (English)</span>
                 </label>
                 <input type="text" id="farmerName" class="form-input" placeholder="e.g., Muthuvel / Rajesh" data-i18n-placeholder="placeholderName" required autocomplete="name">
+              </div>
+
+              <!-- Farmer Tamil Name -->
+              <div class="form-group">
+                <label for="farmerTamilName">
+                  <span>🗣️</span> <span data-i18n="labelTamilName">Farmer Name in Tamil (விவசாயி பெயர்)</span>
+                </label>
+                <input type="text" id="farmerTamilName" class="form-input" placeholder="எ.கா., முத்துவேல் / ராஜேஷ்" data-i18n-placeholder="placeholderTamilName" autocomplete="name">
               </div>
 
               <!-- Mobile Number -->
@@ -154,39 +162,116 @@
                 <input type="email" id="farmerEmail" class="form-input" placeholder="e.g., farmer@gmail.com" data-i18n-placeholder="placeholderEmail" autocomplete="email">
               </div>
 
-              <!-- Land Area in Acres (Core Scaling Factor) -->
+              <!-- Location / District Selection (38 Tamil Nadu Districts) -->
               <div class="form-group">
-                <label for="landArea">
-                  <span>📏</span> <strong data-i18n="labelLandArea">Land Area (in Acres)</strong> *
+                <label for="farmerDistrict">
+                  <span>📍</span> <strong data-i18n="labelDistrict">Location / District (மாவட்டம்)</strong>
                 </label>
-                <input type="number" id="landArea" class="form-input" step="0.1" min="0.1" max="500" value="1.0" placeholder="e.g. 1.5" data-i18n-placeholder="placeholderLandArea" required>
-                
-                <!-- Quick Acreage Chips -->
-                <div class="quick-area-selector">
-                  <span data-i18n="quickSelectArea">Quick Select Area:</span>
-                  <div class="chips-container">
-                    <button type="button" class="area-chip" data-acres="0.5">0.5 Acre</button>
-                    <button type="button" class="area-chip active" data-acres="1">1 Acre</button>
-                    <button type="button" class="area-chip" data-acres="2">2 Acres</button>
-                    <button type="button" class="area-chip" data-acres="3">3 Acres</button>
-                    <button type="button" class="area-chip" data-acres="5">5 Acres</button>
-                    <button type="button" class="area-chip" data-acres="10">10 Acres</button>
-                  </div>
-                </div>
+                <select id="farmerDistrict" class="form-select">
+                  <option value="" data-i18n="districtSelect">Select Tamil Nadu District</option>
+                  <option value="Thanjavur" selected>🌾 Thanjavur (தஞ்சாவூர்)</option>
+                  <option value="Madurai">🏛️ Madurai (மதுரை)</option>
+                  <option value="Cuddalore">🌾 Cuddalore (கடலூர்)</option>
+                  <option value="Coimbatore">🏭 Coimbatore (கோயம்புத்தூர்)</option>
+                  <option value="Salem">🥭 Salem (சேலம்)</option>
+                  <option value="Tiruchirappalli">🏰 Tiruchirappalli (திருச்சிராப்பள்ளி)</option>
+                  <option value="Tirunelveli">🌴 Tirunelveli (திருநெல்வேலி)</option>
+                  <option value="Erode">🟡 Erode (ஈரோடு)</option>
+                  <option value="Villupuram">🥜 Villupuram (விழுப்புரம்)</option>
+                  <option value="Dindigul">⛰️ Dindigul (திண்டுக்கல்)</option>
+                  <option value="Nagapattinam">🌊 Nagapattinam (நாகப்பட்டினம்)</option>
+                  <option value="Tiruvarur">🌾 Tiruvarur (திருவாரூர்)</option>
+                  <option value="Dharmapuri">🌳 Dharmapuri (தருமபுரி)</option>
+                  <option value="Krishnagiri">🥭 Krishnagiri (கிருஷ்ணகிரி)</option>
+                  <option value="Tiruvannamalai">🛕 Tiruvannamalai (திருவண்ணாமலை)</option>
+                  <option value="Vellore">Fort Vellore (வேலூர்)</option>
+                  <option value="Theni">🍇 Theni (தேனி)</option>
+                  <option value="Pudukkottai">🌾 Pudukkottai (புதுக்கோட்டை)</option>
+                  <option value="Virudhunagar">🌶️ Virudhunagar (விருதுநகர்)</option>
+                  <option value="Sivaganga">🌾 Sivaganga (சிவகங்கை)</option>
+                  <option value="Ramanathapuram">🌶️ Ramanathapuram (இராமநாதபுரம்)</option>
+                  <option value="Thoothukudi">🚢 Thoothukudi (தூத்துக்குடி)</option>
+                  <option value="Kanyakumari">🥥 Kanyakumari (கன்னியாகுமரி)</option>
+                  <option value="Tiruppur">🧵 Tiruppur (திருப்பூர்)</option>
+                  <option value="Namakkal">🥚 Namakkal (நாமக்கல்)</option>
+                  <option value="Karur">🎋 Karur (கரூர்)</option>
+                  <option value="Perambalur">🌽 Perambalur (பெரம்பலூர்)</option>
+                  <option value="Ariyalur">⛏️ Ariyalur (அரியலூர்)</option>
+                  <option value="Kallakurichi">🎋 Kallakurichi (கள்ளக்குறிச்சி)</option>
+                  <option value="Chengalpattu">🌾 Chengalpattu (செங்கல்பட்டு)</option>
+                  <option value="Kanchipuram">🛕 Kanchipuram (காஞ்சிபுரம்)</option>
+                  <option value="Tiruvallur">🌾 Tiruvallur (திருவள்ளூர்)</option>
+                  <option value="Ranipet">🏭 Ranipet (இராணிப்பேட்டை)</option>
+                  <option value="Tirupathur">⛰️ Tirupathur (திருப்பத்தூர்)</option>
+                  <option value="Tenkasi">🌊 Tenkasi (தென்காசி)</option>
+                  <option value="Mayiladuthurai">🌾 Mayiladuthurai (மயிலாடுதுறை)</option>
+                  <option value="Nilgiris">🍵 Nilgiris (நீலகிரி)</option>
+                  <option value="Chennai">🏢 Chennai (சென்னை)</option>
+                  <option value="Other">🌍 Other District (பிற மாவட்டம்)</option>
+                </select>
+              </div>
+
+              <!-- Primary Crop Selection -->
+              <div class="form-group">
+                <label for="primaryCrop">
+                  <span>🌾</span> <span data-i18n="labelCrop">Select Primary Crop</span>
+                </label>
+                <select id="primaryCrop" class="form-select">
+                  <option value="auto" data-i18n="cropAutoDetect">Auto Detect from Photo / Video</option>
+                  <option value="paddy" data-i18n="cropPaddy" selected>🌾 Paddy / Rice (நெல்)</option>
+                  <option value="groundnut" data-i18n="cropGroundnut">🥜 Groundnut / Peanut (நிலக்கடலை)</option>
+                  <option value="corn" data-i18n="cropCorn">🌽 Corn / Maize (மக்காச்சோளம்)</option>
+                  <option value="cashew" data-i18n="cropCashew">🌰 Cashew (முந்திரி)</option>
+                  <option value="jackfruit" data-i18n="cropJackfruit">🍈 Jackfruit (பலாப்பழம்)</option>
+                  <option value="cotton" data-i18n="cropCotton">🌱 Cotton (பருத்தி)</option>
+                  <option value="sugarcane" data-i18n="cropSugarcane">🎋 Sugarcane (கரும்பு)</option>
+                  <option value="banana" data-i18n="cropBanana">🍌 Banana (வாழை)</option>
+                  <option value="tomato" data-i18n="cropTomato">🍅 Tomato (தக்காளி)</option>
+                  <option value="chilli" data-i18n="cropChilli">🌶️ Chilli (மிளகாய்)</option>
+                  <option value="coconut" data-i18n="cropCoconut">🥥 Coconut (தென்னை)</option>
+                  <option value="turmeric" data-i18n="cropTurmeric">🟡 Turmeric (மஞ்சள்)</option>
+                  <option value="other" data-i18n="cropOther">✍️ Other Crop / Type Manually (பிற பயிர்)</option>
+                </select>
+              </div>
+
+              <!-- Manual / Custom Crop Name Input (Shown when "other" is picked or manually typed) -->
+              <div id="customCropContainer" class="form-group" style="display:none;">
+                <label for="customCropName">
+                  <span>✍️</span> <strong data-i18n="labelCustomCrop">Type Crop Name (பயிரின் பெயர்)</strong>
+                </label>
+                <input type="text" id="customCropName" class="form-input" placeholder="e.g., Blackgram, Green gram, Brinjal, Jasmine, Onion..." data-i18n-placeholder="placeholderCustomCrop">
+              </div>
+
+              <!-- Crop Variety Field -->
+              <div class="form-group">
+                <label for="cropVariety">
+                  <span>🌱</span> <strong data-i18n="labelCropVariety">Crop Variety (ரகம் - Optional)</strong>
+                </label>
+                <input type="text" id="cropVariety" class="form-input" placeholder="e.g., BPT 5204 (Samba Mahsuri) / CO 51 / CR 1009 / TMV 7 / VRI 2" data-i18n-placeholder="placeholderVariety" value="BPT 5204 (Samba Mahsuri)">
+              </div>
+
+              <!-- Seed Sowing Date Picker (Auto calculates DAS & Stage) -->
+              <div class="form-group">
+                <label for="seedSowingDate">
+                  <span>📅</span> <strong data-i18n="labelSowingDate">Seed Sowing Date (விதைத்த நாள்)</strong> *
+                </label>
+                <input type="date" id="seedSowingDate" class="form-input">
+                <small class="sowing-helper-text" data-i18n="sowingDateHint">📅 Automatically calculates Days Since Sowing (DAS) & Growth Stage</small>
               </div>
 
               <!-- Days Since Sowing / Planting (DAS) -->
               <div class="form-group">
                 <label for="farmerDAS">
-                  <span>📅</span> <strong data-i18n="labelDAS">Days Since Sowing / Planting (DAS)</strong>
+                  <span>⏱️</span> <strong data-i18n="labelDAS">Days Since Sowing / Planting (DAS / Crop Age)</strong>
                 </label>
-                <input type="number" id="farmerDAS" class="form-input" min="0" max="1500" value="45" placeholder="e.g. 45" data-i18n-placeholder="placeholderDAS">
+                <input type="number" id="farmerDAS" class="form-input" min="0" max="1500" value="26" placeholder="e.g. 26" data-i18n-placeholder="placeholderDAS">
                 <div class="quick-area-selector">
                   <span data-i18n="quickSelectDAS">Quick Select Crop Age (DAS):</span>
                   <div class="chips-container" id="dasQuickChipsContainer">
                     <button type="button" class="area-chip das-chip" data-das="15">15 <span data-i18n="dasDaysUnit">Days</span></button>
+                    <button type="button" class="area-chip das-chip active" data-das="26">26 <span data-i18n="dasDaysUnit">Days</span></button>
                     <button type="button" class="area-chip das-chip" data-das="30">30 <span data-i18n="dasDaysUnit">Days</span></button>
-                    <button type="button" class="area-chip das-chip active" data-das="45">45 <span data-i18n="dasDaysUnit">Days</span></button>
+                    <button type="button" class="area-chip das-chip" data-das="45">45 <span data-i18n="dasDaysUnit">Days</span></button>
                     <button type="button" class="area-chip das-chip" data-das="60">60 <span data-i18n="dasDaysUnit">Days</span></button>
                     <button type="button" class="area-chip das-chip" data-das="75">75 <span data-i18n="dasDaysUnit">Days</span></button>
                     <button type="button" class="area-chip das-chip" data-das="90">90 <span data-i18n="dasDaysUnit">Days</span></button>
@@ -204,26 +289,25 @@
                 </select>
               </div>
 
-              <!-- Full 12 Major Crops Selection -->
+              <!-- Land Area in Acres (Core Scaling Factor) -->
               <div class="form-group">
-                <label for="primaryCrop">
-                  <span>🌾</span> <span data-i18n="labelCrop">Select Primary Crop</span>
+                <label for="landArea">
+                  <span>📏</span> <strong data-i18n="labelLandArea">Land Area (in Acres)</strong> *
                 </label>
-                <select id="primaryCrop" class="form-select">
-                  <option value="auto" data-i18n="cropAutoDetect">Auto Detect from Photo / Video</option>
-                  <option value="paddy" data-i18n="cropPaddy">🌾 Paddy / Rice (நெல்)</option>
-                  <option value="groundnut" data-i18n="cropGroundnut">🥜 Groundnut / Peanut (நிலக்கடலை)</option>
-                  <option value="corn" data-i18n="cropCorn">🌽 Corn / Maize (மக்காச்சோளம்)</option>
-                  <option value="cashew" data-i18n="cropCashew">🌰 Cashew (முந்திரி)</option>
-                  <option value="jackfruit" data-i18n="cropJackfruit">🍈 Jackfruit (பலாப்பழம்)</option>
-                  <option value="cotton" data-i18n="cropCotton">🌱 Cotton (பருத்தி)</option>
-                  <option value="sugarcane" data-i18n="cropSugarcane">🎋 Sugarcane (கரும்பு)</option>
-                  <option value="banana" data-i18n="cropBanana">🍌 Banana (வாழை)</option>
-                  <option value="tomato" data-i18n="cropTomato">🍅 Tomato (தக்காளி)</option>
-                  <option value="chilli" data-i18n="cropChilli">🌶️ Chilli (மிளகாய்)</option>
-                  <option value="coconut" data-i18n="cropCoconut">🥥 Coconut (தென்னை)</option>
-                  <option value="turmeric" data-i18n="cropTurmeric">🟡 Turmeric (மஞ்சள்)</option>
-                </select>
+                <input type="number" id="landArea" class="form-input" step="0.1" min="0.1" max="500" value="2.0" placeholder="e.g. 2.0" data-i18n-placeholder="placeholderLandArea" required>
+                
+                <!-- Quick Acreage Chips -->
+                <div class="quick-area-selector">
+                  <span data-i18n="quickSelectArea">Quick Select Area:</span>
+                  <div class="chips-container">
+                    <button type="button" class="area-chip" data-acres="0.5">0.5 Acre</button>
+                    <button type="button" class="area-chip" data-acres="1">1 Acre</button>
+                    <button type="button" class="area-chip active" data-acres="2">2 Acres</button>
+                    <button type="button" class="area-chip" data-acres="3">3 Acres</button>
+                    <button type="button" class="area-chip" data-acres="5">5 Acres</button>
+                    <button type="button" class="area-chip" data-acres="10">10 Acres</button>
+                  </div>
+                </div>
               </div>
 
             </div>
@@ -306,13 +390,14 @@
           <div id="uploadViewContainer" class="scanner-viewport-wrapper">
             <div id="uploadDropZone" class="upload-drop-zone">
               <div class="upload-icon">📂</div>
-              <p data-i18n="uploadInstruction">Drag & drop your crop photo here, or click to browse from device gallery.</p>
-              <div class="upload-hint" data-i18n="uploadHint">Supported formats: JPG, PNG, WEBP (Max 15MB)</div>
+              <p data-i18n="uploadInstruction">Drag & drop your crop photo(s) here, or click to browse from device gallery.</p>
+              <div class="upload-hint" data-i18n="uploadHint">Supported formats: JPG, PNG, WEBP (Single or Multiple Photos)</div>
               <button type="button" id="selectFileBtn" class="btn-secondary">
-                <span>📁</span> <span data-i18n="uploadButtonText">Select Photo from Device</span>
+                <span>📁</span> <span data-i18n="uploadButtonText">Select Photo(s) from Device</span>
               </button>
-              <input type="file" id="cropPhotoInput" accept="image/*" style="display:none;">
+              <input type="file" id="cropPhotoInput" accept="image/*" multiple style="display:none;">
               <img id="uploadPhotoPreview" class="upload-preview-img" alt="Uploaded Crop Image">
+              <div id="multiPhotoPreviewContainer" class="multi-photo-preview-grid" style="display:none;"></div>
             </div>
           </div>
 
@@ -437,7 +522,12 @@
               <span>⚡</span> <span data-i18n="badgeActionRequired">Treatment Action Required</span>
             </div>
             <div class="farmer-summary-tag">
-              👤 <span id="resFarmerNameVal">Farmer</span> | 📏 <span id="resLandAreaVal">1 Acre</span> | 📅 <span id="resDASVal">45 Days (DAS)</span>
+              <span>👤 <strong id="resFarmerNameVal">Farmer</strong> <span id="resFarmerTamilNameVal"></span></span> | 
+              <span>📍 <strong id="resDistrictVal">Thanjavur</strong></span> | 
+              <span>🌱 <strong id="resVarietyVal">BPT 5204</strong></span> | 
+              <span>📅 <span id="resSowingDateVal">Sown: -</span></span> | 
+              <span>⏱️ <strong id="resDASVal">26 Days (DAS)</strong></span> | 
+              <span>📏 <strong id="resLandAreaVal">2 Acres</strong></span>
             </div>
           </div>
 
@@ -461,20 +551,98 @@
               <!-- 2. Current Growth Stage & DAS -->
               <div class="info-row">
                 <span class="info-label" data-i18n="resGrowthStage">🌱 Growth Stage & Age</span>
-                <span id="resStageVal" style="font-size: 1.15rem; font-weight: 800; color: var(--primary);">Panicle Initiation / Booting Stage (50-75 DAS)</span>
+                <span id="resStageVal" style="font-size: 1.15rem; font-weight: 800; color: var(--primary);">Tillering Stage (26 Days / DAS)</span>
               </div>
 
               <!-- 3. Problem Detected -->
               <div class="info-row">
                 <span class="info-label" data-i18n="resProblem">🔍 Problem Detected</span>
-                <span id="resProblemVal" class="info-value-problem">Rice Blast (Leaf & Neck Blast)</span>
-                <span id="resScientificVal" class="scientific-name">(Magnaporthe oryzae)</span>
+                <span id="resProblemVal" class="info-value-problem">Stem Borer (Dead Heart)</span>
+                <span id="resScientificVal" class="scientific-name">(Scirpophaga incertulas)</span>
               </div>
 
               <!-- 4. Farmer Typed Symptoms & Observations (if provided) -->
               <div id="resSymptomsRow" class="info-row symptoms-summary-row" style="display:none;">
                 <span class="info-label" data-i18n="resTypedSymptomsDisplay">📝 Farmer Observations:</span>
                 <span id="resTypedSymptomsVal" class="symptoms-text-tag">-</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ====================================================================
+               7-POINT COMPREHENSIVE EDUCATIONAL LEARNING GUIDE (தமிழ் எளிய விளக்கம்)
+               ==================================================================== -->
+          <div class="educational-guide-card" id="sevenPointLearningCard">
+            <div class="guide-card-header">
+              <span>🌾</span>
+              <div>
+                <h3 data-i18n="educationalGuideTitle">7-Point Seed-to-Protection Agronomic Learning Guide</h3>
+                <p style="font-size: 0.85rem; color: #166534; font-weight: 600;">விவசாயிகளுக்கான எளிய தமிழ் விளக்கம் & கள மேலாண்மை வழிகாட்டி</p>
+              </div>
+            </div>
+
+            <div class="guide-grid-7">
+              <!-- Point 1: Stage & DAS -->
+              <div class="guide-point-box">
+                <div class="point-badge">1</div>
+                <div class="point-content">
+                  <strong data-i18n="guideStageTitle">1. Growth Stage & Crop Age (பயிர் பருவம் & வயது)</strong>
+                  <p id="resGuideStage">தூர்கட்டும் பருவம் (26 நாட்கள்). வேர்கள் பலப்பட்டு புதிய தூர்கள் வேகமாக வெடிக்கும் காலம்.</p>
+                </div>
+              </div>
+
+              <!-- Point 2: Field Condition -->
+              <div class="guide-point-box">
+                <div class="point-badge">2</div>
+                <div class="point-content">
+                  <strong data-i18n="guideStateTitle">2. Crop Field Condition & Visual State (தற்போதைய நிலை)</strong>
+                  <p id="resGuideState">பயிரில் இலை மற்றும் தண்டு பகுதிகள் ஸ்கேன் செய்யப்பட்டு ஆய்வு செய்யப்பட்டுள்ளது.</p>
+                </div>
+              </div>
+
+              <!-- Point 3: Cause / Symptoms -->
+              <div class="guide-point-box">
+                <div class="point-badge">3</div>
+                <div class="point-content">
+                  <strong data-i18n="guideCauseTitle">3. Cause & Diagnosis (பாதிப்பிற்கான காரணம்)</strong>
+                  <p id="resGuideCause">தண்டு துளைப்பான் புழு தண்டுக்குள் நுழைந்து சாற்றை உறிஞ்சுவதால் நடுக்குருத்து காய்ந்து போகிறது.</p>
+                </div>
+              </div>
+
+              <!-- Point 4: Immediate Exact Action -->
+              <div class="guide-point-box highlight-action">
+                <div class="point-badge">4</div>
+                <div class="point-content">
+                  <strong data-i18n="guideActionTitle">4. Necessary Action & Exact Remedy (தேவையான 1 மருந்து)</strong>
+                  <p id="resGuideAction">கோரோஜன் (குளோரான்ட்ரானிலிப்ரோல் 18.5% SC) ஏக்கருக்கு 60 மி.லி வீதம் 200 லிட்டர் நீரில் கலந்து தெளிக்கவும்.</p>
+                </div>
+              </div>
+
+              <!-- Point 5: What to Avoid -->
+              <div class="guide-point-box avoid-box">
+                <div class="point-badge">5</div>
+                <div class="point-content">
+                  <strong data-i18n="guideAvoidTitle">5. What to Avoid (தேவையில்லாத மருந்துகள் / வீண் செலவு தவிர்ப்பு)</strong>
+                  <p id="resGuideAvoid">🚫 தேவையற்ற 3-4 மருந்துகள் கலந்த காக்டெயில் தெளிப்பு மற்றும் வீண் டானிக்குகளை வாங்க வேண்டாம்.</p>
+                </div>
+              </div>
+
+              <!-- Point 6: Nutrition & Water -->
+              <div class="guide-point-box">
+                <div class="point-badge">6</div>
+                <div class="point-content">
+                  <strong data-i18n="guideNutritionTitle">6. Water & Balanced Nutrition Booster (நீர் & சத்து மேலாண்மை)</strong>
+                  <p id="resGuideNutrition">வயலில் 2-3 செ.மீ நீர் நிற்கும்படி பாசனம் செய்யவும். தேவையான சமச்சீர் தழை, சாம்பல் சத்து உரங்களை இடவும்.</p>
+                </div>
+              </div>
+
+              <!-- Point 7: Next Check Date -->
+              <div class="guide-point-box">
+                <div class="point-badge">7</div>
+                <div class="point-content">
+                  <strong data-i18n="guideNextCheckTitle">7. Next Field Inspection Date (அடுத்த கள ஆய்வு நாள்)</strong>
+                  <p id="resGuideNextCheck">7-10 நாட்களில் குருத்துக்களை மீண்டும் ஆய்வு செய்யவும். புதிய தூர் வெடிப்பை உறுதி செய்யவும்.</p>
+                </div>
               </div>
             </div>
           </div>

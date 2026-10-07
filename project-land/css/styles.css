@@ -582,6 +582,14 @@ body {
   border-color: #15803d;
 }
 
+.sowing-helper-text {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--primary);
+  font-weight: 600;
+  margin-top: 4px;
+}
+
 /* Buttons */
 .btn-primary {
   width: 100%;
@@ -739,6 +747,73 @@ body {
   margin: 16px auto 0;
   border-radius: var(--radius-md);
   display: none;
+}
+
+/* Multi-Photo Preview Grid & Thumbnails */
+.multi-photo-preview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(76px, 1fr));
+  gap: 10px;
+  margin-top: 14px;
+  padding: 10px;
+  background: var(--bg-subtle);
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--radius-md);
+}
+
+.multi-photo-thumb {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 2px solid var(--border-color);
+  background: #ffffff;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.multi-photo-thumb.active,
+.multi-photo-thumb:hover {
+  border-color: var(--primary-light);
+  box-shadow: 0 0 8px var(--primary-glow);
+  transform: scale(1.03);
+}
+
+.multi-photo-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.multi-photo-thumb .thumb-idx-badge {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  background: rgba(20, 83, 45, 0.85);
+  color: #ffffff;
+  font-size: 0.7rem;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: var(--radius-pill);
+}
+
+.multi-photo-thumb .thumb-remove-btn {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background: rgba(220, 38, 38, 0.9);
+  color: #ffffff;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 800;
+  cursor: pointer;
 }
 
 /* Scanner Symptoms Card, DAS Row & Quick Chips */
@@ -1013,6 +1088,120 @@ body {
   font-size: 0.92rem;
   font-weight: 700;
   color: #166534;
+}
+
+/* ==========================================================================
+   7-POINT COMPREHENSIVE EDUCATIONAL LEARNING GUIDE (தமிழ் எளிய விளக்கம்)
+   ========================================================================== */
+.educational-guide-card {
+  background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 100%);
+  border: 2px solid #86efac;
+  border-radius: var(--radius-lg);
+  padding: 22px;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow-sm);
+}
+
+.guide-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #dcfce7;
+}
+
+.guide-card-header span {
+  font-size: 2.2rem;
+}
+
+.guide-card-header h3 {
+  font-size: 1.22rem;
+  font-weight: 800;
+  color: #14532d;
+  margin-bottom: 2px;
+}
+
+.guide-grid-7 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 14px;
+}
+
+.guide-point-box {
+  display: flex;
+  gap: 12px;
+  background: #ffffff;
+  border: 1.5px solid #d1fae5;
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  transition: all 0.2s ease;
+}
+
+.guide-point-box:hover {
+  border-color: #34d399;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.12);
+  transform: translateY(-2px);
+}
+
+.guide-point-box.highlight-action {
+  background: #fefce8;
+  border: 2px solid #facc15;
+  grid-column: 1 / -1;
+}
+
+.guide-point-box.avoid-box {
+  background: #fff1f2;
+  border: 2px solid #fecdd3;
+}
+
+.point-badge {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  background: var(--primary);
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 800;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.guide-point-box.highlight-action .point-badge {
+  background: #ca8a04;
+}
+
+.guide-point-box.avoid-box .point-badge {
+  background: #e11d48;
+}
+
+.point-content {
+  flex: 1;
+}
+
+.point-content strong {
+  display: block;
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: #14532d;
+  margin-bottom: 4px;
+}
+
+.guide-point-box.highlight-action .point-content strong {
+  color: #854d0e;
+}
+
+.guide-point-box.avoid-box .point-content strong {
+  color: #9f1239;
+}
+
+.point-content p {
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: #334155;
+  font-weight: 500;
 }
 
 /* ==========================================================================
@@ -2638,6 +2827,41 @@ body.sunlight-mode .comparison-col.precision-shop {
 body.sunlight-mode .video-drop-zone {
   background: #ffffff;
   border: 2px dashed #000000;
+}
+
+body.sunlight-mode .educational-guide-card {
+  background: #ffffff;
+  border: 2px solid #000000;
+}
+
+body.sunlight-mode .guide-point-box {
+  background: #ffffff;
+  border: 2px solid #000000;
+  box-shadow: none;
+}
+
+body.sunlight-mode .guide-point-box.highlight-action {
+  border: 2px solid #000000;
+  background: #ffffff;
+}
+
+body.sunlight-mode .guide-point-box.avoid-box {
+  border: 2px solid #000000;
+  background: #ffffff;
+}
+
+body.sunlight-mode .point-badge {
+  background: #000000;
+  color: #ffffff;
+}
+
+body.sunlight-mode .multi-photo-preview-grid {
+  background: #ffffff;
+  border: 2px solid #000000;
+}
+
+body.sunlight-mode .multi-photo-thumb {
+  border: 2px solid #000000;
 }
 
 /* FOOTER */
